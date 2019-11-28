@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#ffc44f</color>
+    <color name="colorPrimary">#FD9651</color>
+    <color name="colorPrimaryDark">#FE8432</color>
     <color name="fontColor">#fff</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
-    <color name="orange_color">#ffc44f</color>
+    <color name="colorAccent">#fff</color>
+    <color name="orange_color">#FD9651</color>
+    <color name="buttonColor">#44D5A3</color>
+    <color name="titleColor">#333443</color>
+    <color name="captionColor">#A5ADBC</color>
+    <color name="buttonAlternative">#3732BF</color>
 </resources>
