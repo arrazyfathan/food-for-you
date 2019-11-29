@@ -9,4 +9,9 @@
     <color name="titleColor">#333443</color>
     <color name="captionColor">#A5ADBC</color>
     <color name="buttonAlternative">#3732BF</color>
+
+
+    //nav
+    <color name="colorWhite">#ffffff</color>
+    <color name="colorWgiteTransparent">#C4C4C4</color>
 </resources>
