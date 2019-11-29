@@ -2,4 +2,5 @@
     <string name="app_name">Food For You</string>
     <string name="hello_food">Hello Food !!</string>
     <string name="food_for_you">food for you</string>
+    <string name="design_by_dinoco">Design by Dinoco</string>
 </resources>

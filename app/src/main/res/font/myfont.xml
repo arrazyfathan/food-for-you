@@ -4,105 +4,105 @@
 
     <!--    Montserrat-->
     <font
-        android:font="@font/MontserratBlack"
+        android:font="@font/mblack"
         />
     <font
-        android:font="@font/MontserratBlackItalic"
+        android:font="@font/mblackitalic"
         />
     <font
-        android:font="@font/MontserratBold"
+        android:font="@font/mbold"
         />
     <font
-        android:font="@font/MontserratBoldItalic"
+        android:font="@font/mbolditalic"
         />
     <font
-        android:font="@font/MontserratExtraBold"
+        android:font="@font/mextrabold"
         />
     <font
-        android:font="@font/MontserratExtraBoldItalic"
+        android:font="@font/mextrabolditalic"
         />
     <font
-        android:font="@font/MontserratExtraLight"
+        android:font="@font/mextralight"
         />
     <font
-        android:font="@font/MontserratExtraLightItalic"
+        android:font="@font/mexralightitalic"
         />
     <font
-        android:font="@font/MontserratItalic"
+        android:font="@font/mitalic"
         />
     <font
-        android:font="@font/MontserratLight"
+        android:font="@font/mlight"
         />
     <font
-        android:font="@font/MontserratLightItalic"
+        android:font="@font/mlightitalic"
         />
     <font
-        android:font="@font/MontserratMedium"
+        android:font="@font/mmedium"
         />
     <font
-        android:font="@font/MontserratRegular"
+        android:font="@font/mregular"
         />
     <font
-        android:font="@font/MontserratMediumItalic"
+        android:font="@font/mmediumitalic"
         />
     <font
-        android:font="@font/MontserratSemiBold"
+        android:font="@font/msemibold"
         />
     <font
-        android:font="@font/MontserratSemiBoldItalic"
+        android:font="@font/msemibolditalic"
         />
+<!--    <font-->
+<!--        android:font="@font/MontserratThin"-->
+<!--        />-->
     <font
-        android:font="@font/MontserratThin"
-        />
-    <font
-        android:font="@font/MontserratThinItalic"
+        android:font="@font/mthinitalic"
         />
 
 
     <!--    Arial-->
     <font
-        android:font="@font/ARIALBI"
+        android:font="@font/arialbi"
         />
     <font
-        android:font="@font/ArialBlack"
+        android:font="@font/arialblack"
         />
     <font
-        android:font="@font/ArialBold"
+        android:font="@font/arialbold"
         />
     <font
-        android:font="@font/ArialBoldMT"
+        android:font="@font/arialboldmt"
         />
     <font
-        android:font="@font/ArialCEBoldItalic"
+        android:font="@font/arialcebolditalic"
         />
     <font
-        android:font="@font/ArialCEItalic"
+        android:font="@font/arialceitalic"
         />
     <font
-        android:font="@font/ArialCEMTBlact"
+        android:font="@font/arialceblack"
         />
     <font
-        android:font="@font/ArialCEMedium"
+        android:font="@font/arialcemedium"
         />
     <font
-        android:font="@font/ArialItalicMT"
+        android:font="@font/arialitalicmt"
         />
     <font
-        android:font="@font/ArialLight"
+        android:font="@font/ariallight"
         />
     <font
-        android:font="@font/ArialLightItalic"
+        android:font="@font/ariallightitalic"
         />
     <font
-        android:font="@font/ArialMTBold"
+        android:font="@font/arialmtbold"
         />
     <font
-        android:font="@font/ArialMedium"
+        android:font="@font/arialmedium"
         />
     <font
-        android:font="@font/ArialMediumItalic"
+        android:font="@font/arialmediumitalic"
         />
     <font
-        android:font="@font/ArialRegular"
+        android:font="@font/arialregular"
         />
 </font-family>

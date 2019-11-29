@@ -12,12 +12,26 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/food_for_you"
-        android:fontFamily="@font/MontserratSemiBold"
+        android:fontFamily="@font/msemibold"
         android:textSize="38sp"
         android:textColor="@color/fontColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/arialregular"
+        android:text="@string/design_by_dinoco"
+        android:textColor="@color/fontColor"
+        android:textSize="12sp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
