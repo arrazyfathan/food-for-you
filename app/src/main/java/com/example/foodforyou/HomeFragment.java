@@ -33,5 +33,4 @@ public class HomeFragment extends Fragment {
 
         ((MainActivity) getActivity()).setActionBarTitle("Home");
     }
-
 }

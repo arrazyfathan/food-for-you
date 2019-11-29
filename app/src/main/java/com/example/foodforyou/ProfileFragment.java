@@ -29,9 +29,4 @@ public class ProfileFragment extends Fragment {
     }
 
 
-    public void onResume(){
-        super.onResume();
-
-        ((MainActivity) getActivity()).setActionBarTitle("Profile");
-    }
 }

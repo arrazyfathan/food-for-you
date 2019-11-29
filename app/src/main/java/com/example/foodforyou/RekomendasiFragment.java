@@ -29,9 +29,4 @@ public class RekomendasiFragment extends Fragment {
     }
 
 
-    public void onResume(){
-        super.onResume();
-
-        ((MainActivity) getActivity()).setActionBarTitle("Rekomendasi");
-    }
 }

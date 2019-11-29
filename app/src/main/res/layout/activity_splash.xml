@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    android:background="@drawable/bg_splash"
 
     tools:context=".SplashActivity">
 
@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:text="@string/food_for_you"
         android:fontFamily="@font/msemibold"
-        android:textSize="38sp"
+        android:textSize="40sp"
         android:textColor="@color/fontColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -27,7 +27,7 @@
         android:fontFamily="@font/arialregular"
         android:text="@string/design_by_dinoco"
         android:textColor="@color/fontColor"
-        android:textSize="12sp"
+        android:textSize="13sp"
         android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -1,14 +1,581 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".HomeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Home" />
+        tools:context=".HomeFragment">
 
-</FrameLayout>
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="380dp"
+            android:background="@drawable/bg_home"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/view2"
+            android:layout_width="250dp"
+            android:layout_height="260dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/imagehome"
+            app:layout_constraintBottom_toBottomOf="@+id/view"
+            app:layout_constraintEnd_toEndOf="@+id/view"
+            app:layout_constraintTop_toTopOf="@+id/view" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="150dp"
+            android:fontFamily="@font/arialmedium"
+            android:text="Calorie"
+            android:textColor="@color/colorWhite"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/jumlah_kalori"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/view" />
+
+        <TextView
+            android:id="@+id/jumlah_kalori"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:fontFamily="@font/mbold"
+            android:text="1500"
+            android:textColor="@color/colorWhite"
+            android:textSize="75sp"
+            app:layout_constraintBottom_toBottomOf="@+id/view"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/label_bmi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginBottom="140dp"
+            android:fontFamily="@font/arialregular"
+            android:text="@string/label_bmi"
+            android:textColor="@color/colorWhite"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/view"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/jumlah_kalori" />
+
+        <TextView
+            android:id="@+id/bmi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:fontFamily="@font/arialregular"
+            android:text="32"
+            android:textColor="@color/colorWhite"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/label_bmi"
+            app:layout_constraintStart_toEndOf="@+id/label_bmi" />
+
+        <TextView
+            android:id="@+id/label_dikonsumsi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="16dp"
+            android:fontFamily="@font/arialregular"
+            android:text="Dikonsumsi :"
+            android:textColor="@color/colorWhite"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/view"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/dikonsumsi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/mbold"
+            android:text="300"
+            android:textColor="@color/colorWhite"
+            android:textSize="40sp"
+            app:layout_constraintStart_toStartOf="@+id/label_dikonsumsi"
+            app:layout_constraintTop_toBottomOf="@+id/label_dikonsumsi" />
+
+        <LinearLayout
+            android:id="@+id/quickaccess"
+            android:layout_width="match_parent"
+            android:layout_height="280dp"
+            android:layout_marginStart="6dp"
+            android:layout_marginEnd="6dp"
+            android:background="@drawable/bgquick"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/label_bmi">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="22dp"
+                android:layout_marginTop="18dp"
+                android:fontFamily="@font/arialbold"
+                android:text="@string/quick_access_label"
+                android:textColor="@color/titleColor"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="22dp"
+                android:text="@string/quick_access_caption"
+                android:textColor="@color/captionColor"
+                android:textSize="14sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="120dp"
+                        android:layout_height="160dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/bg_tab" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:fontFamily="@font/arialbold"
+                        android:text="Food"
+                        android:textColor="@color/titleColor"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="120dp"
+                        android:layout_height="160dp"
+                        android:layout_marginTop="8dp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/bg_tab" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:fontFamily="@font/arialbold"
+                        android:text="Drinks"
+                        android:textColor="@color/titleColor"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="120dp"
+                        android:layout_height="160dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/bg_tab" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:fontFamily="@font/arialbold"
+                        android:text="Fruits"
+                        android:textColor="@color/titleColor"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/mealplan_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/arialbold"
+            android:text="Meal Plan &amp; Exercise"
+            android:textColor="@color/titleColor"
+            android:textSize="18sp"
+            android:layout_marginStart="22dp"
+            app:layout_constraintStart_toStartOf="@+id/quickaccess"
+            app:layout_constraintTop_toBottomOf="@+id/quickaccess" />
+
+        <TextView
+            android:id="@+id/caption_mealplan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Atur jadwal pola makan anda"
+            android:textColor="@color/captionColor"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/mealplan_label"
+            app:layout_constraintTop_toBottomOf="@id/mealplan_label" />
+
+        <!-- Breakfast -->
+        <TableLayout
+            android:id="@+id/position_breakfast"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="22dp"
+            android:layout_marginEnd="22dp"
+            app:layout_constraintTop_toBottomOf="@+id/caption_mealplan"
+            app:layout_constraintStart_toStartOf="@id/caption_mealplan">
+
+            <TableRow
+                android:id="@+id/tableRowHeadlineBreakfast"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/meal_plan_gray">
+
+                <ImageView
+                    android:id="@+id/imageViewAddBreakfast"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    app:srcCompat="@drawable/ic_add_circle_grey" />
+
+                <TextView
+                    android:id="@+id/textViewHeadlineBreakfast"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:fontFamily="@font/arialregular"
+                    android:textColor="@color/titleColor"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="Breakfast"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/textViewEnergyBreakfast"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:textColor="@color/titleColor"
+                    android:layout_gravity="right"
+                    android:gravity="center"
+                    android:fontFamily="@font/arialregular"
+                    android:text="Calorie"
+                    android:textSize="18sp" />
+            </TableRow>
+        </TableLayout>
+        <TableLayout
+            android:id="@+id/tableLayoutBreakfastItems"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="22dp"
+            android:layout_marginEnd="22dp"
+            app:layout_constraintTop_toBottomOf="@+id/position_breakfast"
+            app:layout_constraintStart_toStartOf="@id/position_breakfast">
+
+        </TableLayout>
+        <!-- //Breakfast -->
+
+        <!-- Lunch -->
+        <TableLayout
+            android:id="@+id/position_lunch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="22dp"
+            android:layout_marginEnd="22dp"
+            app:layout_constraintTop_toBottomOf="@id/tableLayoutBreakfastItems"
+            app:layout_constraintStart_toStartOf="@id/tableLayoutBreakfastItems">
+
+            <TableRow
+                android:id="@+id/tableRowHeadlineLunch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/meal_plan_gray">
+
+                <ImageView
+                    android:id="@+id/imageViewAddLunch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    app:srcCompat="@drawable/ic_add_circle_grey" />
+
+                <TextView
+                    android:id="@+id/textViewHeadlineLunch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:fontFamily="@font/arialregular"
+                    android:textColor="@color/titleColor"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="Lunch"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/textViewEnergyLunch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:textColor="@color/titleColor"
+                    android:layout_gravity="right"
+                    android:gravity="center"
+                    android:fontFamily="@font/arialregular"
+                    android:text="Calorie"
+                    android:textSize="18sp" />
+            </TableRow>
+        </TableLayout>
+        <TableLayout
+            android:id="@+id/tableLayoutLunchItems"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="22dp"
+            android:layout_marginEnd="22dp"
+            app:layout_constraintTop_toBottomOf="@+id/position_lunch"
+            app:layout_constraintStart_toStartOf="@id/position_lunch">
+
+        </TableLayout>
+        <!-- //Lunch -->
+
+        <!-- Dinner -->
+        <TableLayout
+            android:id="@+id/position_dinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="22dp"
+            android:layout_marginEnd="22dp"
+            app:layout_constraintTop_toBottomOf="@id/tableLayoutLunchItems"
+            app:layout_constraintStart_toStartOf="@id/tableLayoutLunchItems">
+
+            <TableRow
+                android:id="@+id/tableRowHeadlineDinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/meal_plan_gray">
+
+                <ImageView
+                    android:id="@+id/imageViewAddDinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    app:srcCompat="@drawable/ic_add_circle_grey" />
+
+                <TextView
+                    android:id="@+id/textViewHeadlineDinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:fontFamily="@font/arialregular"
+                    android:textColor="@color/titleColor"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="Dinner"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/textViewEnergyDinnner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:textColor="@color/titleColor"
+                    android:layout_gravity="right"
+                    android:gravity="center"
+                    android:fontFamily="@font/arialregular"
+                    android:text="Calorie"
+                    android:textSize="18sp" />
+            </TableRow>
+        </TableLayout>
+        <TableLayout
+            android:id="@+id/tableLayoutDinnerItems"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="22dp"
+            android:layout_marginEnd="22dp"
+            app:layout_constraintTop_toBottomOf="@+id/position_dinner"
+            app:layout_constraintStart_toStartOf="@id/position_dinner">
+
+        </TableLayout>
+        <!-- //Lunch -->
+
+        <!-- Snack -->
+        <TableLayout
+            android:id="@+id/position_snack"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="22dp"
+            android:layout_marginEnd="22dp"
+            app:layout_constraintTop_toBottomOf="@id/tableLayoutDinnerItems"
+            app:layout_constraintStart_toStartOf="@id/tableLayoutDinnerItems">
+
+            <TableRow
+                android:id="@+id/tableRowHeadlineSnack"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/meal_plan_gray">
+
+                <ImageView
+                    android:id="@+id/imageViewAddSnack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    app:srcCompat="@drawable/ic_add_circle_grey" />
+
+                <TextView
+                    android:id="@+id/textViewHeadlineSnack"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:fontFamily="@font/arialregular"
+                    android:textColor="@color/titleColor"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="Snack"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/textViewEnergySnack"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:textColor="@color/titleColor"
+                    android:layout_gravity="right"
+                    android:gravity="center"
+                    android:fontFamily="@font/arialregular"
+                    android:text="Calorie"
+                    android:textSize="18sp" />
+            </TableRow>
+        </TableLayout>
+        <TableLayout
+            android:id="@+id/tableLayoutSnackItems"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="22dp"
+            android:layout_marginEnd="22dp"
+            app:layout_constraintTop_toBottomOf="@+id/position_snack"
+            app:layout_constraintStart_toStartOf="@id/position_snack">
+
+        </TableLayout>
+        <!-- //Lunch -->
+
+        <!-- Exercise -->
+        <TableLayout
+            android:id="@+id/position_exercise"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="22dp"
+            android:layout_marginEnd="22dp"
+            app:layout_constraintTop_toBottomOf="@id/tableLayoutSnackItems"
+            app:layout_constraintStart_toStartOf="@id/tableLayoutSnackItems">
+
+            <TableRow
+                android:id="@+id/tableRowHeadlineExercise"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/meal_plan_gray">
+
+                <ImageView
+                    android:id="@+id/imageViewAddExercise"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    app:srcCompat="@drawable/ic_add_circle_grey" />
+
+                <TextView
+                    android:id="@+id/textViewHeadlineExercise"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:fontFamily="@font/arialregular"
+                    android:textColor="@color/titleColor"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="Exercise"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/textViewEnergyExercise"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:textColor="@color/titleColor"
+                    android:layout_gravity="right"
+                    android:gravity="center"
+                    android:fontFamily="@font/arialregular"
+                    android:text="Calorie"
+                    android:textSize="18sp" />
+            </TableRow>
+        </TableLayout>
+        <TableLayout
+            android:id="@+id/tableLayoutExerciseItems"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="22dp"
+            android:layout_marginEnd="22dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/position_exercise"
+            app:layout_constraintStart_toStartOf="@id/position_exercise">
+
+        </TableLayout>
+        <!-- //Lunch -->
+
+<!--        <LinearLayout-->
+<!--            android:id="@+id/linearLayout"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:background="@color/colorPrimaryDark"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent">-->
+
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center_vertical"-->
+<!--                android:layout_marginLeft="16dp"-->
+<!--                android:layout_marginTop="16dp"-->
+<!--                android:layout_marginBottom="16dp"-->
+<!--                android:fontFamily="@font/arialmedium"-->
+<!--                android:text="Home"-->
+<!--                android:textColor="@color/colorWhite"-->
+<!--                android:textSize="24sp" />-->
+
+<!--        </LinearLayout>-->
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
