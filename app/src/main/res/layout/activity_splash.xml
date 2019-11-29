@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/food_for_you"
-        android:fontFamily="sans-serif"
+        android:fontFamily="@font/MontserratBlack"
         android:textSize="38sp"
         android:textColor="@color/fontColor"
         app:layout_constraintBottom_toBottomOf="parent"
