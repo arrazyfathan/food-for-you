@@ -3,20 +3,40 @@ package com.example.foodforyou;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.view.FrameMetrics;
 import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
+
+    private String title;
+    private String info;
+    private int imageResource;
+    private RecyclerView mRecyclerView;
+    private ArrayList<TipsFragment> mTipsData;
+    private TipsAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        mRecyclerView = findViewById(R.id.recyclerView);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mTipsData = new ArrayList<>();
+        mAdapter = new TipsAdapter(this,mTipsData);
+        mRecyclerView.setAdapter(mAdapter);
+
+        //Get Data
+        initializeData();
         //Load Fragment
         loadFragment(new HomeFragment());
 
@@ -45,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 fragment = new RekomendasiFragment();
                 break;
             case R.id.nav_tips:
-                fragment = new TipsFragment();
+                fragment = new TipsFragment(title,info,imageResource);
                 break;
             case R.id.nav_profil:
                 fragment = new ProfileFragment();
@@ -56,6 +76,21 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
     public void setActionBarTitle(String title) {
         getSupportActionBar().setTitle(title);
+    }
+
+    private void initializeData(){
+        String[] tipsList = getResources().getStringArray(R.array.tips_titles);
+        String[] tipsInfo = getResources().getStringArray(R.array.tips_info);
+        TypedArray tipsImageResources =
+                getResources().obtainTypedArray(R.array.tips_images);
+
+        mTipsData.clear();
+        for (int i=0;i<tipsList.length;i++) {
+            mTipsData.add(new TipsFragment(tipsList[i], tipsInfo[i],
+                    tipsImageResources.getResourceId(i, 0)));
+        }
+        tipsImageResources.recycle();
+        mAdapter.notifyDataSetChanged();
     }
 
 }

@@ -14,5 +14,18 @@
     <string name="quick_access_label">Quick Access</string>
     <string name="quick_access_caption">Temukan menu makan anda</string>
 
+    <string-array name="tips_titles">
+        <item>Baseball</item>
+        <item>Badminton</item>
+        <item>Basketball</item>
+        <item>Bowling</item>
+    </string-array>
+
+    <string-array name="tips_info">
+        <item>Here is some Baseball news!</item>
+        <item>Here is some Badminton news!</item>
+        <item>Here is some Basketball news!</item>
+        <item>Here is some Bowling news!</item>
+    </string-array>
 
 </resources>
