@@ -28,5 +28,10 @@ public class TipsFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_tips, container, false);
     }
 
+    public void onResume(){
+        super.onResume();
+
+        ((MainActivity) getActivity()).setActionBarTitle("Tips");
+    }
 
 }

@@ -17,6 +17,13 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+
+//        Transparent Action Bar
+        if (getSupportActionBar() != null){
+            getSupportActionBar().setElevation(0);
+        }
+
         //Load Fragment
         loadFragment(new HomeFragment());
 

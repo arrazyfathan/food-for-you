@@ -28,6 +28,9 @@ public class HomeFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_home, container, false);
     }
 
+
+
+    //Change Actionbar tilte based selected navigation bottom bar
     public void onResume(){
         super.onResume();
 
