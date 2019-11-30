@@ -1,12 +1,14 @@
 package com.example.foodforyou;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -46,12 +48,15 @@ class TipsAdapter extends RecyclerView.Adapter<TipsAdapter.ViewHolder> {
         private TextView mTitleText;
         private TextView mInfoText;
         private ImageView mTipsImage;
+        private CardView mCardView;
 
         ViewHolder (View itemView){
             super(itemView);
 
             mTitleText = itemView.findViewById(R.id.title);
-            mInfoText = itemView.findViewById(R.id.desc);
+            mInfoText = itemView.findViewById(R.id.subTitle);
+            mCardView = itemView.findViewById(R.id.cardview);
+            mTipsImage = itemView.findViewById(R.id.tipsImage);
         }
 
         void bindTo(TipsFragment currentTips){

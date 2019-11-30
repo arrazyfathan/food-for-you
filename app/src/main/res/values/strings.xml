@@ -13,6 +13,9 @@
     <string name="label_bmi">Index BMI :</string>
     <string name="quick_access_label">Quick Access</string>
     <string name="quick_access_caption">Temukan menu makan anda</string>
+    <string name="title_placeholder">Title</string>
+    <string name="news_placeholder">News</string>
+    <string name="tips_info_placeholder">Here is some news</string>
 
     <string-array name="tips_titles">
         <item>Baseball</item>
