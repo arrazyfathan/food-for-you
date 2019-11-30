@@ -34,6 +34,6 @@ public class HomeFragment extends Fragment {
     public void onResume(){
         super.onResume();
 
-        ((MainActivity) getActivity()).setActionBarTitle("Home");
+        //((MainActivity) getActivity()).setActionBarTitle("Home");
     }
 }
