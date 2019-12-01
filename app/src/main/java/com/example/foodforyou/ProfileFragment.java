@@ -28,5 +28,9 @@ public class ProfileFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_profile, container, false);
     }
 
+    public void onResume(){
+        super.onResume();
 
+        ((MainActivity) getActivity()).setActionBarTitle("Profile");
+    }
 }

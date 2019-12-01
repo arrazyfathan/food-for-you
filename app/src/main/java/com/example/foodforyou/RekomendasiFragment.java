@@ -28,5 +28,9 @@ public class RekomendasiFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_rekomendasi, container, false);
     }
 
+    public void onResume(){
+        super.onResume();
 
+        ((MainActivity) getActivity()).setActionBarTitle("Rekomendasi");
+    }
 }

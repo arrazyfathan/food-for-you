@@ -3,28 +3,26 @@ package com.example.foodforyou;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import android.content.res.TypedArray;
+
 import android.os.Bundle;
 import android.view.FrameMetrics;
 import android.view.MenuItem;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import java.util.ArrayList;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
-    private String title;
-    private String info;
-    private int imageResource;
-
-
     @Override
-    protected void onCreate( Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+
+//        Transparent Action Bar
+        if (getSupportActionBar() != null){
+            getSupportActionBar().setElevation(0);
+        }
 
         //Load Fragment
         loadFragment(new HomeFragment());
@@ -54,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 fragment = new RekomendasiFragment();
                 break;
             case R.id.nav_tips:
-                fragment = new TipsFragment(title,info,imageResource);
+                fragment = new TipsFragment();
                 break;
             case R.id.nav_profil:
                 fragment = new ProfileFragment();
@@ -66,8 +64,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     public void setActionBarTitle(String title) {
         getSupportActionBar().setTitle(title);
     }
-
-
 
 }
 

@@ -78,6 +78,11 @@ public class TipsFragment extends Fragment {
         mAdapter.notifyDataSetChanged();
     }
 
+    public void onResume(){
+        super.onResume();
+
+        ((MainActivity) getActivity()).setActionBarTitle("Tips");
+    }
 
 
 
