@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.Toolbar;
 
 import java.util.ArrayList;
 
@@ -26,7 +28,6 @@ public class TipsFragment extends Fragment {
     private RecyclerView mRecyclerView;
     private ArrayList<TipsFragment> mTipsData;
     private TipsAdapter mAdapter;
-
 
     public TipsFragment(String title, String info, int imageResource) {
         this.title = title;
@@ -55,6 +56,7 @@ public class TipsFragment extends Fragment {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mTipsData = new ArrayList<>();
         mAdapter = new TipsAdapter(getActivity(),mTipsData);
+        mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setAdapter(mAdapter);
 
         //Get Data
