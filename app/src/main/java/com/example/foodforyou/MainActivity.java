@@ -12,12 +12,14 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
+    private String title;
+    private String info;
+    private int imageResource;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
 
 //        Transparent Action Bar
         if (getSupportActionBar() != null){
@@ -52,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 fragment = new RekomendasiFragment();
                 break;
             case R.id.nav_tips:
-                fragment = new TipsFragment();
+                fragment = new TipsFragment(title,info,imageResource);
                 break;
             case R.id.nav_profil:
                 fragment = new ProfileFragment();

@@ -11,8 +11,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
-import android.widget.Toolbar;
 
 import java.util.ArrayList;
 
@@ -29,7 +27,7 @@ public class TipsFragment extends Fragment {
     private ArrayList<TipsFragment> mTipsData;
     private TipsAdapter mAdapter;
 
-    public TipsFragment(String title, String info, int imageResource) {
+    public TipsFragment(String title,String info, int imageResource) {
         this.title = title;
         this.info = info;
         this.imageResource = imageResource;
