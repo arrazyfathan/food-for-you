@@ -1,5 +1,7 @@
-
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <dimen name="activity_horizontal_margin">8dp</dimen>
     <dimen name="activity_vertical_margin">8dp</dimen>
+
+    <dimen name="design_bottom_navigation_text_size" tools:override="true">50sp</dimen>
+    <dimen name="design_bottom_navigation_active_text_size" tools:override="true">50sp</dimen>
 </resources>

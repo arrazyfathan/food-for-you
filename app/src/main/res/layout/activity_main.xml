@@ -13,15 +13,16 @@
         android:layout_above="@id/main_nav">
     </FrameLayout>
 
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/main_nav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        app:itemBackground="@color/colorWhite"
+        app:itemBackground="?android:attr/selectableItemBackground"
         app:itemIconTint="@color/nav_item_color"
         app:itemTextColor="@color/nav_item_color"
-        app:labelVisibilityMode="unlabeled"
+        app:labelVisibilityMode="selected"
         app:menu="@menu/nav_item">
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>

@@ -27,7 +27,7 @@
 
         <ImageView
             android:id="@+id/img"
-            android:src="@drawable/bottom_shadow"
+
             android:layout_alignBottom="@id/tipsImage"
             android:layout_width="match_parent"
             android:layout_height="50dp"/>
@@ -55,19 +55,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/img"
-            android:background="@drawable/round_white"
+
             android:padding="5dp"
             android:layout_alignParentRight="true"
             android:layout_marginRight="20dp"
             android:layout_marginTop="-50dp">
 
-            <ImageView
-                android:id="@+id/date"
-                android:src="@drawable/ic_date"
-                android:layout_width="18dp"
-                android:layout_height="18dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"/>
+<!--            <ImageView-->
+<!--                android:id="@+id/date"-->
+<!--                android:src="@drawable/ic_date"-->
+<!--                android:layout_width="18dp"-->
+<!--                android:layout_height="18dp"-->
+<!--                android:layout_marginLeft="5dp"-->
+<!--                android:layout_marginRight="5dp"/>-->
             <TextView
                 android:textColor="#606060"
                 android:id="@+id/publishedAt"
