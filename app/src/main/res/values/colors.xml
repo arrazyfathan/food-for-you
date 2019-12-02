@@ -22,4 +22,5 @@
     //nav
     <color name="colorWhite">#ffffff</color>
     <color name="colorWgiteTransparent">#C4C4C4</color>
+    <color name="default_color">#DFDFDF</color>
 </resources>

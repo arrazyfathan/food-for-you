@@ -157,13 +157,18 @@
                         android:layout_height="160dp"
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="8dp"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/bg_tab" />
+                        android:background="@drawable/quick_access_bg"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        android:src="@drawable/as" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
                         android:fontFamily="@font/arialbold"
                         android:text="Food"
                         android:textColor="@color/titleColor"
@@ -182,15 +187,19 @@
                         android:layout_width="120dp"
                         android:layout_height="160dp"
                         android:layout_marginTop="8dp"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/bg_tab" />
+                        android:background="?android:attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        android:src="@drawable/quick_access_bg" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
                         android:fontFamily="@font/arialbold"
-                        android:text="Drinks"
+                        android:text="Drink"
                         android:textColor="@color/titleColor"
                         android:textSize="14sp" />
 
@@ -208,15 +217,20 @@
                         android:layout_height="160dp"
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="8dp"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/bg_tab" />
+                        android:background="?android:attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        android:src="@drawable/quick_access_bg" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
                         android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="8dp"
                         android:fontFamily="@font/arialbold"
-                        android:text="Fruits"
+                        android:text="Fruit"
                         android:textColor="@color/titleColor"
                         android:textSize="14sp" />
 
@@ -228,11 +242,11 @@
             android:id="@+id/mealplan_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="22dp"
             android:fontFamily="@font/arialbold"
             android:text="Meal Plan &amp; Exercise"
             android:textColor="@color/titleColor"
             android:textSize="18sp"
-            android:layout_marginStart="22dp"
             app:layout_constraintStart_toStartOf="@+id/quickaccess"
             app:layout_constraintTop_toBottomOf="@+id/quickaccess" />
 
@@ -251,11 +265,11 @@
             android:id="@+id/position_breakfast"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             android:layout_marginStart="22dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="22dp"
-            app:layout_constraintTop_toBottomOf="@+id/caption_mealplan"
-            app:layout_constraintStart_toStartOf="@id/caption_mealplan">
+            app:layout_constraintStart_toStartOf="@id/caption_mealplan"
+            app:layout_constraintTop_toBottomOf="@+id/caption_mealplan">
 
             <TableRow
                 android:id="@+id/tableRowHeadlineBreakfast"
@@ -274,35 +288,36 @@
                     android:id="@+id/textViewHeadlineBreakfast"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="5dp"
-                    android:fontFamily="@font/arialregular"
-                    android:textColor="@color/titleColor"
                     android:layout_weight="1"
+                    android:fontFamily="@font/arialregular"
                     android:gravity="center_vertical"
+                    android:padding="5dp"
                     android:text="Breakfast"
+                    android:textColor="@color/titleColor"
                     android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/textViewEnergyBreakfast"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="5dp"
-                    android:textColor="@color/titleColor"
                     android:layout_gravity="right"
-                    android:gravity="center"
                     android:fontFamily="@font/arialregular"
+                    android:gravity="center"
+                    android:padding="5dp"
                     android:text="Calorie"
+                    android:textColor="@color/titleColor"
                     android:textSize="18sp" />
             </TableRow>
         </TableLayout>
+
         <TableLayout
             android:id="@+id/tableLayoutBreakfastItems"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="22dp"
             android:layout_marginEnd="22dp"
-            app:layout_constraintTop_toBottomOf="@+id/position_breakfast"
-            app:layout_constraintStart_toStartOf="@id/position_breakfast">
+            app:layout_constraintStart_toStartOf="@id/position_breakfast"
+            app:layout_constraintTop_toBottomOf="@+id/position_breakfast">
 
         </TableLayout>
         <!-- //Breakfast -->
@@ -312,11 +327,11 @@
             android:id="@+id/position_lunch"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             android:layout_marginStart="22dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="22dp"
-            app:layout_constraintTop_toBottomOf="@id/tableLayoutBreakfastItems"
-            app:layout_constraintStart_toStartOf="@id/tableLayoutBreakfastItems">
+            app:layout_constraintStart_toStartOf="@id/tableLayoutBreakfastItems"
+            app:layout_constraintTop_toBottomOf="@id/tableLayoutBreakfastItems">
 
             <TableRow
                 android:id="@+id/tableRowHeadlineLunch"
@@ -335,35 +350,36 @@
                     android:id="@+id/textViewHeadlineLunch"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="5dp"
-                    android:fontFamily="@font/arialregular"
-                    android:textColor="@color/titleColor"
                     android:layout_weight="1"
+                    android:fontFamily="@font/arialregular"
                     android:gravity="center_vertical"
+                    android:padding="5dp"
                     android:text="Lunch"
+                    android:textColor="@color/titleColor"
                     android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/textViewEnergyLunch"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="5dp"
-                    android:textColor="@color/titleColor"
                     android:layout_gravity="right"
-                    android:gravity="center"
                     android:fontFamily="@font/arialregular"
+                    android:gravity="center"
+                    android:padding="5dp"
                     android:text="Calorie"
+                    android:textColor="@color/titleColor"
                     android:textSize="18sp" />
             </TableRow>
         </TableLayout>
+
         <TableLayout
             android:id="@+id/tableLayoutLunchItems"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="22dp"
             android:layout_marginEnd="22dp"
-            app:layout_constraintTop_toBottomOf="@+id/position_lunch"
-            app:layout_constraintStart_toStartOf="@id/position_lunch">
+            app:layout_constraintStart_toStartOf="@id/position_lunch"
+            app:layout_constraintTop_toBottomOf="@+id/position_lunch">
 
         </TableLayout>
         <!-- //Lunch -->
@@ -373,11 +389,11 @@
             android:id="@+id/position_dinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             android:layout_marginStart="22dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="22dp"
-            app:layout_constraintTop_toBottomOf="@id/tableLayoutLunchItems"
-            app:layout_constraintStart_toStartOf="@id/tableLayoutLunchItems">
+            app:layout_constraintStart_toStartOf="@id/tableLayoutLunchItems"
+            app:layout_constraintTop_toBottomOf="@id/tableLayoutLunchItems">
 
             <TableRow
                 android:id="@+id/tableRowHeadlineDinner"
@@ -396,35 +412,36 @@
                     android:id="@+id/textViewHeadlineDinner"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="5dp"
-                    android:fontFamily="@font/arialregular"
-                    android:textColor="@color/titleColor"
                     android:layout_weight="1"
+                    android:fontFamily="@font/arialregular"
                     android:gravity="center_vertical"
+                    android:padding="5dp"
                     android:text="Dinner"
+                    android:textColor="@color/titleColor"
                     android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/textViewEnergyDinnner"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="5dp"
-                    android:textColor="@color/titleColor"
                     android:layout_gravity="right"
-                    android:gravity="center"
                     android:fontFamily="@font/arialregular"
+                    android:gravity="center"
+                    android:padding="5dp"
                     android:text="Calorie"
+                    android:textColor="@color/titleColor"
                     android:textSize="18sp" />
             </TableRow>
         </TableLayout>
+
         <TableLayout
             android:id="@+id/tableLayoutDinnerItems"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="22dp"
             android:layout_marginEnd="22dp"
-            app:layout_constraintTop_toBottomOf="@+id/position_dinner"
-            app:layout_constraintStart_toStartOf="@id/position_dinner">
+            app:layout_constraintStart_toStartOf="@id/position_dinner"
+            app:layout_constraintTop_toBottomOf="@+id/position_dinner">
 
         </TableLayout>
         <!-- //Lunch -->
@@ -434,11 +451,11 @@
             android:id="@+id/position_snack"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             android:layout_marginStart="22dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="22dp"
-            app:layout_constraintTop_toBottomOf="@id/tableLayoutDinnerItems"
-            app:layout_constraintStart_toStartOf="@id/tableLayoutDinnerItems">
+            app:layout_constraintStart_toStartOf="@id/tableLayoutDinnerItems"
+            app:layout_constraintTop_toBottomOf="@id/tableLayoutDinnerItems">
 
             <TableRow
                 android:id="@+id/tableRowHeadlineSnack"
@@ -457,35 +474,36 @@
                     android:id="@+id/textViewHeadlineSnack"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="5dp"
-                    android:fontFamily="@font/arialregular"
-                    android:textColor="@color/titleColor"
                     android:layout_weight="1"
+                    android:fontFamily="@font/arialregular"
                     android:gravity="center_vertical"
+                    android:padding="5dp"
                     android:text="Snack"
+                    android:textColor="@color/titleColor"
                     android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/textViewEnergySnack"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="5dp"
-                    android:textColor="@color/titleColor"
                     android:layout_gravity="right"
-                    android:gravity="center"
                     android:fontFamily="@font/arialregular"
+                    android:gravity="center"
+                    android:padding="5dp"
                     android:text="Calorie"
+                    android:textColor="@color/titleColor"
                     android:textSize="18sp" />
             </TableRow>
         </TableLayout>
+
         <TableLayout
             android:id="@+id/tableLayoutSnackItems"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="22dp"
             android:layout_marginEnd="22dp"
-            app:layout_constraintTop_toBottomOf="@+id/position_snack"
-            app:layout_constraintStart_toStartOf="@id/position_snack">
+            app:layout_constraintStart_toStartOf="@id/position_snack"
+            app:layout_constraintTop_toBottomOf="@+id/position_snack">
 
         </TableLayout>
         <!-- //Lunch -->
@@ -495,11 +513,11 @@
             android:id="@+id/position_exercise"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             android:layout_marginStart="22dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="22dp"
-            app:layout_constraintTop_toBottomOf="@id/tableLayoutSnackItems"
-            app:layout_constraintStart_toStartOf="@id/tableLayoutSnackItems">
+            app:layout_constraintStart_toStartOf="@id/tableLayoutSnackItems"
+            app:layout_constraintTop_toBottomOf="@id/tableLayoutSnackItems">
 
             <TableRow
                 android:id="@+id/tableRowHeadlineExercise"
@@ -518,27 +536,28 @@
                     android:id="@+id/textViewHeadlineExercise"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="5dp"
-                    android:fontFamily="@font/arialregular"
-                    android:textColor="@color/titleColor"
                     android:layout_weight="1"
+                    android:fontFamily="@font/arialregular"
                     android:gravity="center_vertical"
+                    android:padding="5dp"
                     android:text="Exercise"
+                    android:textColor="@color/titleColor"
                     android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/textViewEnergyExercise"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="5dp"
-                    android:textColor="@color/titleColor"
                     android:layout_gravity="right"
-                    android:gravity="center"
                     android:fontFamily="@font/arialregular"
+                    android:gravity="center"
+                    android:padding="5dp"
                     android:text="Calorie"
+                    android:textColor="@color/titleColor"
                     android:textSize="18sp" />
             </TableRow>
         </TableLayout>
+
         <TableLayout
             android:id="@+id/tableLayoutExerciseItems"
             android:layout_width="fill_parent"
@@ -546,8 +565,8 @@
             android:layout_marginStart="22dp"
             android:layout_marginEnd="22dp"
             android:layout_marginBottom="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/position_exercise"
-            app:layout_constraintStart_toStartOf="@id/position_exercise">
+            app:layout_constraintStart_toStartOf="@id/position_exercise"
+            app:layout_constraintTop_toBottomOf="@+id/position_exercise">
 
         </TableLayout>
         <!-- //Lunch -->
