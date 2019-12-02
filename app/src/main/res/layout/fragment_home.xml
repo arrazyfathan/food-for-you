@@ -37,10 +37,11 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="150dp"
+            android:layout_marginBottom="12dp"
             android:fontFamily="@font/arialmedium"
-            android:text="Calorie"
+            android:text="Calories Needed"
             android:textColor="@color/colorWhite"
-            android:textSize="18sp"
+            android:textSize="22sp"
             app:layout_constraintBottom_toTopOf="@+id/jumlah_kalori"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/view" />
@@ -49,7 +50,8 @@
             android:id="@+id/jumlah_kalori"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="12dp"
             android:fontFamily="@font/mbold"
             android:text="1500"
             android:textColor="@color/colorWhite"
@@ -59,10 +61,22 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="14dp"
+            android:fontFamily="@font/mmedium"
+            android:textSize="16sp"
+            android:text="Kkal"
+            android:textColor="@color/colorWhite"
+            app:layout_constraintBottom_toBottomOf="@+id/jumlah_kalori"
+            app:layout_constraintStart_toEndOf="@+id/jumlah_kalori" />
+
+
+        <TextView
             android:id="@+id/label_bmi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
             android:layout_marginBottom="140dp"
             android:fontFamily="@font/arialregular"
             android:text="@string/label_bmi"
@@ -91,7 +105,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginRight="16dp"
             android:fontFamily="@font/arialregular"
-            android:text="Dikonsumsi :"
+            android:text="Consumed :"
             android:textColor="@color/colorWhite"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="@+id/view"
@@ -111,10 +125,12 @@
         <LinearLayout
             android:id="@+id/quickaccess"
             android:layout_width="match_parent"
-            android:layout_height="280dp"
-            android:layout_marginStart="6dp"
-            android:layout_marginEnd="6dp"
-            android:background="@drawable/bgquick"
+            android:layout_height="260dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/quick_bg_shape"
+            android:elevation="2dp"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -124,8 +140,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="22dp"
-                android:layout_marginTop="18dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
                 android:fontFamily="@font/arialbold"
                 android:text="@string/quick_access_label"
                 android:textColor="@color/titleColor"
@@ -134,7 +150,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="22dp"
+                android:layout_marginStart="16dp"
                 android:text="@string/quick_access_caption"
                 android:textColor="@color/captionColor"
                 android:textSize="14sp" />
@@ -155,24 +171,14 @@
                     <ImageView
                         android:layout_width="120dp"
                         android:layout_height="160dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginBottom="12dp"
                         android:background="@drawable/quick_access_bg"
                         android:clickable="true"
                         android:focusable="true"
                         android:foreground="?android:attr/selectableItemBackground"
-                        android:src="@drawable/as" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginBottom="8dp"
-                        android:fontFamily="@font/arialbold"
-                        android:text="Food"
-                        android:textColor="@color/titleColor"
-                        android:textSize="14sp" />
+                        android:src="@drawable/foods_img" />
 
                 </LinearLayout>
 
@@ -186,22 +192,13 @@
                     <ImageView
                         android:layout_width="120dp"
                         android:layout_height="160dp"
-                        android:layout_marginTop="8dp"
-                        android:background="?android:attr/selectableItemBackground"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginBottom="12dp"
+                        android:background="@drawable/quick_access_bg"
                         android:clickable="true"
                         android:focusable="true"
                         android:foreground="?android:attr/selectableItemBackground"
-                        android:src="@drawable/quick_access_bg" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginBottom="8dp"
-                        android:fontFamily="@font/arialbold"
-                        android:text="Drink"
-                        android:textColor="@color/titleColor"
-                        android:textSize="14sp" />
+                        android:src="@drawable/drinks_img" />
 
                 </LinearLayout>
 
@@ -215,24 +212,14 @@
                     <ImageView
                         android:layout_width="120dp"
                         android:layout_height="160dp"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginTop="12dp"
                         android:layout_marginEnd="8dp"
-                        android:background="?android:attr/selectableItemBackground"
+                        android:layout_marginBottom="12dp"
+                        android:background="@drawable/quick_access_bg"
                         android:clickable="true"
                         android:focusable="true"
                         android:foreground="?android:attr/selectableItemBackground"
-                        android:src="@drawable/quick_access_bg" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginBottom="8dp"
-                        android:fontFamily="@font/arialbold"
-                        android:text="Fruit"
-                        android:textColor="@color/titleColor"
-                        android:textSize="14sp" />
+                        android:src="@drawable/fruits_img" />
 
                 </LinearLayout>
             </LinearLayout>
@@ -242,11 +229,12 @@
             android:id="@+id/mealplan_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="22dp"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="16dp"
             android:fontFamily="@font/arialbold"
             android:text="Meal Plan &amp; Exercise"
             android:textColor="@color/titleColor"
-            android:textSize="18sp"
+            android:textSize="20sp"
             app:layout_constraintStart_toStartOf="@+id/quickaccess"
             app:layout_constraintTop_toBottomOf="@+id/quickaccess" />
 
@@ -254,7 +242,7 @@
             android:id="@+id/caption_mealplan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Atur jadwal pola makan anda"
+            android:text="Set your eating schedule"
             android:textColor="@color/captionColor"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="@+id/mealplan_label"
@@ -266,7 +254,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="22dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="22dp"
             app:layout_constraintStart_toStartOf="@id/caption_mealplan"
             app:layout_constraintTop_toBottomOf="@+id/caption_mealplan">
@@ -275,19 +263,19 @@
                 android:id="@+id/tableRowHeadlineBreakfast"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/meal_plan_gray">
+                android:background="@drawable/bg_table">
 
                 <ImageView
                     android:id="@+id/imageViewAddBreakfast"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:padding="5dp"
-                    app:srcCompat="@drawable/ic_add_circle_grey" />
+                    app:srcCompat="@drawable/button_add_ws" />
 
                 <TextView
                     android:id="@+id/textViewHeadlineBreakfast"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="50dp"
                     android:layout_weight="1"
                     android:fontFamily="@font/arialregular"
                     android:gravity="center_vertical"
@@ -299,7 +287,7 @@
                 <TextView
                     android:id="@+id/textViewEnergyBreakfast"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="50dp"
                     android:layout_gravity="right"
                     android:fontFamily="@font/arialregular"
                     android:gravity="center"
@@ -337,19 +325,19 @@
                 android:id="@+id/tableRowHeadlineLunch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/meal_plan_gray">
+                android:background="@drawable/bg_table">
 
                 <ImageView
                     android:id="@+id/imageViewAddLunch"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:padding="5dp"
-                    app:srcCompat="@drawable/ic_add_circle_grey" />
+                    app:srcCompat="@drawable/button_add_ws" />
 
                 <TextView
                     android:id="@+id/textViewHeadlineLunch"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="50dp"
                     android:layout_weight="1"
                     android:fontFamily="@font/arialregular"
                     android:gravity="center_vertical"
@@ -361,7 +349,7 @@
                 <TextView
                     android:id="@+id/textViewEnergyLunch"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="50dp"
                     android:layout_gravity="right"
                     android:fontFamily="@font/arialregular"
                     android:gravity="center"
@@ -398,20 +386,20 @@
             <TableRow
                 android:id="@+id/tableRowHeadlineDinner"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/meal_plan_gray">
+                android:layout_height="50dp"
+                android:background="@drawable/bg_table">
 
                 <ImageView
                     android:id="@+id/imageViewAddDinner"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:padding="5dp"
-                    app:srcCompat="@drawable/ic_add_circle_grey" />
+                    app:srcCompat="@drawable/button_add_ws" />
 
                 <TextView
                     android:id="@+id/textViewHeadlineDinner"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="50dp"
                     android:layout_weight="1"
                     android:fontFamily="@font/arialregular"
                     android:gravity="center_vertical"
@@ -423,7 +411,7 @@
                 <TextView
                     android:id="@+id/textViewEnergyDinnner"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="50dp"
                     android:layout_gravity="right"
                     android:fontFamily="@font/arialregular"
                     android:gravity="center"
@@ -461,19 +449,19 @@
                 android:id="@+id/tableRowHeadlineSnack"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/meal_plan_gray">
+                android:background="@drawable/bg_table">
 
                 <ImageView
                     android:id="@+id/imageViewAddSnack"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:padding="5dp"
-                    app:srcCompat="@drawable/ic_add_circle_grey" />
+                    app:srcCompat="@drawable/button_add_ws" />
 
                 <TextView
                     android:id="@+id/textViewHeadlineSnack"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="50dp"
                     android:layout_weight="1"
                     android:fontFamily="@font/arialregular"
                     android:gravity="center_vertical"
@@ -485,7 +473,7 @@
                 <TextView
                     android:id="@+id/textViewEnergySnack"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="50dp"
                     android:layout_gravity="right"
                     android:fontFamily="@font/arialregular"
                     android:gravity="center"
@@ -523,19 +511,19 @@
                 android:id="@+id/tableRowHeadlineExercise"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/meal_plan_gray">
+                android:background="@drawable/bg_table">
 
                 <ImageView
                     android:id="@+id/imageViewAddExercise"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:padding="5dp"
-                    app:srcCompat="@drawable/ic_add_circle_grey" />
+                    app:srcCompat="@drawable/button_add_ws" />
 
                 <TextView
                     android:id="@+id/textViewHeadlineExercise"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="50dp"
                     android:layout_weight="1"
                     android:fontFamily="@font/arialregular"
                     android:gravity="center_vertical"
@@ -547,7 +535,7 @@
                 <TextView
                     android:id="@+id/textViewEnergyExercise"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="50dp"
                     android:layout_gravity="right"
                     android:fontFamily="@font/arialregular"
                     android:gravity="center"

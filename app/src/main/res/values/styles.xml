@@ -9,11 +9,11 @@
         <item name="colorControlHighlight">#07000000</item>
     </style>
 
-    <array name="tips_images">
-        <item>@drawable/img_baseball</item>
-        <item>@drawable/img_badminton</item>
-        <item>@drawable/img_basketball</item>
-        <item>@drawable/img_bowling</item>
-    </array>
+<!--    <array name="tips_images">-->
+<!--        <item>@drawable/img_baseball</item>-->
+<!--        <item>@drawable/img_badminton</item>-->
+<!--        <item>@drawable/img_basketball</item>-->
+<!--        <item>@drawable/img_bowling</item>-->
+<!--    </array>-->
 
 </resources>

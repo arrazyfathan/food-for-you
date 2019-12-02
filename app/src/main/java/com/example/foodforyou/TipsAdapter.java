@@ -69,7 +69,7 @@ class TipsAdapter extends RecyclerView.Adapter<TipsAdapter.ViewHolder> {
             mTipsImage = itemView.findViewById(R.id.tipsImage);
             mImg= itemView.findViewById(R.id.img);
             mAuthor= itemView.findViewById(R.id.author);
-            mDate= itemView.findViewById(R.id.date);
+//            mDate= itemView.findViewById(R.id.date);
             mPublish= itemView.findViewById(R.id.publishedAt);
             share = itemView.findViewById(R.id.btnShare);
             visit = itemView.findViewById(R.id.btnVisit);

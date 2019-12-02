@@ -58,23 +58,23 @@ public class TipsFragment extends Fragment {
         mRecyclerView.setAdapter(mAdapter);
 
         //Get Data
-        initializeData();
+        //initializeData();
         return view;
     }
 
-    private void initializeData(){
-        String[] tipsList = getResources().getStringArray(R.array.tips_titles);
-        String[] tipsInfo = getResources().getStringArray(R.array.tips_info);
-        TypedArray tipsImageResources = getResources().obtainTypedArray(R.array.tips_images);
-
-        mTipsData.clear();
-        for (int i=0;i<tipsList.length;i++) {
-            mTipsData.add(new TipsFragment(tipsList[i], tipsInfo[i],
-                    tipsImageResources.getResourceId(i, 0)));
-        }
-        tipsImageResources.recycle();
-        mAdapter.notifyDataSetChanged();
-    }
+//    private void initializeData(){
+//        String[] tipsList = getResources().getStringArray(R.array.tips_titles);
+//        String[] tipsInfo = getResources().getStringArray(R.array.tips_info);
+//        TypedArray tipsImageResources = getResources().obtainTypedArray(R.array.tips_images);
+//
+//        mTipsData.clear();
+//        for (int i=0;i<tipsList.length;i++) {
+//            mTipsData.add(new TipsFragment(tipsList[i], tipsInfo[i],
+//                    tipsImageResources.getResourceId(i, 0)));
+//        }
+//        tipsImageResources.recycle();
+//        mAdapter.notifyDataSetChanged();
+//    }
 
     public void onResume(){
         super.onResume();

@@ -10,9 +10,9 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="label_bmi">Index BMI :</string>
+    <string name="label_bmi">Body Mass Index : </string>
     <string name="quick_access_label">Quick Access</string>
-    <string name="quick_access_caption">Temukan menu makan anda</string>
+    <string name="quick_access_caption">Find your best food menu</string>
     <string name="title_placeholder">Title</string>
     <string name="news_placeholder">News</string>
     <string name="tips_info_placeholder">Here is some news</string>
