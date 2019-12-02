@@ -2,6 +2,7 @@ package com.example.foodforyou;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,13 +20,20 @@ import java.util.ArrayList;
 
 class TipsAdapter extends RecyclerView.Adapter<TipsAdapter.ViewHolder> {
 
-    private ArrayList<TipsFragment> mTipsData;
+   /* private ArrayList<TipsFragment> mTipsData;*/
     private Context mContext;
+    private String[] mTitleText;
+    private String[] mInfoText;
+    private int[] imageResource;
+    private String[] placeGuide;
 
 
-    TipsAdapter(Context context, ArrayList<TipsFragment> tipsData){
-        this.mTipsData = tipsData;
-        this.mContext = context;
+    public TipsAdapter(Context mContext , String[] mTitleText, String[] mInfoText, int[] imageResource, String[] placeGuide){
+        this.mContext = mContext;
+        this.imageResource = imageResource;
+        this.mTitleText = mTitleText;
+        this.mInfoText = mInfoText;
+        this.placeGuide = placeGuide;
     }
 
     @Override
@@ -37,14 +45,38 @@ class TipsAdapter extends RecyclerView.Adapter<TipsAdapter.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder (TipsAdapter.ViewHolder holder, int position){
-        TipsFragment currentTips = mTipsData.get(position);
-        holder.bindTo(currentTips);
+    public void onBindViewHolder (final ViewHolder holder, int position){
+        /*TipsFragment currentTips = mTipsData.get(position);
+        holder.bindTo(currentTips);*/
+        holder.mTitleText.setText(mTitleText[position]);
+        holder.mInfoText.setText(mInfoText[position]);
+        holder.mTipsImage.setImageResource(imageResource[position]);
+        holder.share.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.putExtra(Intent.EXTRA_TEXT, "View Website "
+                        + mTitleText[holder.getAdapterPosition()] +
+                        "\nHere is the link to the full review: " + placeGuide[holder.
+                        getAdapterPosition()]);
+                intent.setType("text/plain");
+                mContext.startActivity(Intent.createChooser(intent, "Send To"));
+            }
+        });
+        holder.visit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse(placeGuide[holder.getAdapterPosition()]));
+                mContext.startActivity(intent);
+            }
+        });
+
     }
 
     @Override
     public int getItemCount(){
-        return mTipsData.size();
+        return imageResource.length;
     }
 
     class ViewHolder extends RecyclerView.ViewHolder{
@@ -73,12 +105,6 @@ class TipsAdapter extends RecyclerView.Adapter<TipsAdapter.ViewHolder> {
             mPublish= itemView.findViewById(R.id.publishedAt);
             share = itemView.findViewById(R.id.btnShare);
             visit = itemView.findViewById(R.id.btnVisit);
-        }
-
-        void bindTo(TipsFragment currentTips){
-            mTitleText.setText(currentTips.getTitle());
-            mInfoText.setText(currentTips.getInfo());
-            Glide.with(mContext).load(currentTips.getImageResource()).into(mTipsImage);
         }
     }
 }

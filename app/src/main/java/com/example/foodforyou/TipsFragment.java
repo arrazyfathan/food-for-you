@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toolbar;
 
 import java.util.ArrayList;
 
@@ -20,20 +22,40 @@ import java.util.ArrayList;
  */
 public class TipsFragment extends Fragment {
 
-    private String title;
-    private String info;
-    private final int imageResource;
+
+    private String[] mTitleText;
+    private String[] mInfoText;
+    private int[] imageResource;
     private RecyclerView mRecyclerView;
     private ArrayList<TipsFragment> mTipsData;
-    private TipsAdapter mAdapter;
+    private RecyclerView.Adapter mAdapter;
+    private String[] placeGuide;
 
-    public TipsFragment(String title,String info, int imageResource) {
-        this.title = title;
-        this.info = info;
+    public TipsFragment(String[] mTitleText,String[] mInfoText, int[] imageResource, String[] placeGuide) {
+        this.mTitleText = mTitleText;
+        this.mInfoText= mInfoText;
         this.imageResource = imageResource;
+        this.placeGuide = placeGuide;
     }
 
-    String getTitle() {
+    public String[] getTitle() {
+        return mTitleText;
+    }
+
+    public String[] getInfo() {
+        return mInfoText;
+    }
+
+    public String[] getplaceGuide() {
+        return placeGuide;
+    }
+
+    public int[] getImageResource() {
+        return imageResource;
+    }
+
+
+    /*String getTitle() {
         return title;
     }
 
@@ -43,37 +65,45 @@ public class TipsFragment extends Fragment {
 
     public int getImageResource() {
         return imageResource;
-    }
+    }*/
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_tips, container, false);
-        // Inflate the layout for this fragment
         mRecyclerView = (RecyclerView)view.findViewById(R.id.recyclerView);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        mTipsData = new ArrayList<>();
-        mAdapter = new TipsAdapter(getActivity(),mTipsData);
-        mRecyclerView.setAdapter(mAdapter);
+        imageResource = new int[]{R.drawable.img_bowling, R.drawable.img_basketball,
+                R.drawable.img_baseball, R.drawable.img_badminton};
+        mInfoText = new String[]{
+                "Navagio Beach",
+                "Anse Source d'Argent Beach",
+                "As Catedrais Beach",
+                "La Concha Beach",
+                };
+        mTitleText = new String[]{
+                "Here is some Baseball news!",
+                "Here is some Baseball news!",
+                "Here is some Baseball news!",
+                "Here is some Baseball news!"
+        };
+        placeGuide = new String[]{
+                "https://www.tripadvisor.com.my/Attraction_Review-g7777607-" +
+                "d671779-Reviews-Navagio_Beach_Shipwreck_Beach-Anafonitria_Zakynthos_Ionian_Islands.html",
+                "https://www.tripadvisor.com.my/Attraction_Review-g477968-d637885-Reviews-Anse_Source_D_Argent" +
+                        "-La_Digue_Island.html",
+                "https://www.tripadvisor.com.my/Attraction_Review-g609028-d1547522-Reviews-As_Catedrais_Beach-Ribadeo_" +
+                        "Province_of_Lugo_Galicia.html",
+                "https://www.tripadvisor.com.my/Attraction_Review-g187457-d675885-Reviews-La_Concha_Beach-San_Sebastian" +
+                        "_Donostia_Province_of_Guipuzcoa_Basque_Country.html",
+                };
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(),
+                LinearLayoutManager.VERTICAL, false);
+        mRecyclerView.setLayoutManager(linearLayoutManager);
+        mAdapter = new TipsAdapter(getActivity(), mTitleText,mInfoText, imageResource, placeGuide);
         mRecyclerView.setAdapter(mAdapter);
 
-        //Get Data
-        initializeData();
         return view;
-    }
-
-    private void initializeData(){
-        String[] tipsList = getResources().getStringArray(R.array.tips_titles);
-        String[] tipsInfo = getResources().getStringArray(R.array.tips_info);
-        TypedArray tipsImageResources = getResources().obtainTypedArray(R.array.tips_images);
-
-        mTipsData.clear();
-        for (int i=0;i<tipsList.length;i++) {
-            mTipsData.add(new TipsFragment(tipsList[i], tipsInfo[i],
-                    tipsImageResources.getResourceId(i, 0)));
-        }
-        tipsImageResources.recycle();
-        mAdapter.notifyDataSetChanged();
     }
 
     public void onResume(){

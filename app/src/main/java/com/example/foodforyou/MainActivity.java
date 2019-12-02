@@ -12,9 +12,10 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
-    private String title;
-    private String info;
-    private int imageResource;
+    private String[] mTitleText;
+    private String[] mInfoText;
+    private int[] imageResource;
+    private String[] placeGuide;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +55,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 fragment = new RekomendasiFragment();
                 break;
             case R.id.nav_tips:
-                fragment = new TipsFragment(title,info,imageResource);
+                fragment = new TipsFragment(mTitleText,mInfoText,imageResource, placeGuide);
                 break;
             case R.id.nav_profil:
                 fragment = new ProfileFragment();
