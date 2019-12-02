@@ -10,10 +10,10 @@
     </style>
 
     <array name="tips_images">
-<!--        <item>@drawable/img_baseball</item>-->
-<!--        <item>@drawable/img_badminton</item>-->
-<!--        <item>@drawable/img_basketball</item>-->
-<!--        <item>@drawable/img_bowling</item>-->
+        <item>@drawable/img_baseball</item>
+        <item>@drawable/img_badminton</item>
+        <item>@drawable/img_basketball</item>
+        <item>@drawable/img_bowling</item>
     </array>
 
 </resources>

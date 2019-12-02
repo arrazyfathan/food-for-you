@@ -5,10 +5,12 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.cardview.widget.CardView;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -28,7 +30,9 @@ class TipsAdapter extends RecyclerView.Adapter<TipsAdapter.ViewHolder> {
 
     @Override
     public TipsAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
-        return new ViewHolder(LayoutInflater.from(mContext).inflate(R.layout.tips_item,parent,false));
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.tips_item, parent, false);
+        return new ViewHolder(view);
 
     }
 
@@ -47,8 +51,14 @@ class TipsAdapter extends RecyclerView.Adapter<TipsAdapter.ViewHolder> {
 
         private TextView mTitleText;
         private TextView mInfoText;
+        private TextView mAuthor;
         private ImageView mTipsImage;
+        private ImageView mDate;
+        private TextView mPublish;
+        private ImageView mImg;
         private CardView mCardView;
+        private Button share;
+        private Button visit;
 
         ViewHolder (View itemView){
             super(itemView);
@@ -57,6 +67,12 @@ class TipsAdapter extends RecyclerView.Adapter<TipsAdapter.ViewHolder> {
             mInfoText = itemView.findViewById(R.id.subTitle);
             mCardView = itemView.findViewById(R.id.cardview);
             mTipsImage = itemView.findViewById(R.id.tipsImage);
+            mImg= itemView.findViewById(R.id.img);
+            mAuthor= itemView.findViewById(R.id.author);
+            mDate= itemView.findViewById(R.id.date);
+            mPublish= itemView.findViewById(R.id.publishedAt);
+            share = itemView.findViewById(R.id.btnShare);
+            visit = itemView.findViewById(R.id.btnVisit);
         }
 
         void bindTo(TipsFragment currentTips){

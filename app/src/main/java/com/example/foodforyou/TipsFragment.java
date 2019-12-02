@@ -27,8 +27,7 @@ public class TipsFragment extends Fragment {
     private ArrayList<TipsFragment> mTipsData;
     private TipsAdapter mAdapter;
 
-
-    public TipsFragment(String title, String info, int imageResource) {
+    public TipsFragment(String title,String info, int imageResource) {
         this.title = title;
         this.info = info;
         this.imageResource = imageResource;
@@ -55,6 +54,7 @@ public class TipsFragment extends Fragment {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mTipsData = new ArrayList<>();
         mAdapter = new TipsAdapter(getActivity(),mTipsData);
+        mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setAdapter(mAdapter);
 
         //Get Data
