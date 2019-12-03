@@ -16,6 +16,10 @@
     <string name="title_placeholder">Title</string>
     <string name="news_placeholder">News</string>
     <string name="tips_info_placeholder">Here is some news</string>
+    <string name="male_radio_label">Male</string>
+    <string name="female_radio_label">Female</string>
+    <string name="mail_label">Enter your e-mail address</string>
+    <string name="level_activity_label">Level Activity :</string>
 
     <!--<string-array name="tips_titles">
         <item>Baseball</item>
@@ -32,18 +36,29 @@
     </string-array>-->
 
     <string-array name="array_months">
-        <item>Jan</item>
-        <item>Feb</item>
-        <item>Mar</item>
-        <item>Apr</item>
+        <item>January</item>
+        <item>February</item>
+        <item>March</item>
+        <item>April</item>
         <item>May</item>
-        <item>Jun</item>
-        <item>Jul</item>
-        <item>Aug</item>
-        <item>Sep</item>
-        <item>Oct</item>
-        <item>Nov</item>
-        <item>Dec</item>
+        <item>June</item>
+        <item>July</item>
+        <item>August</item>
+        <item>September</item>
+        <item>October</item>
+        <item>November</item>
+        <item>December</item>
+    </string-array>
+
+    <string-array name="array_weekly_goals">
+        <item>Loose weight</item>
+        <item>Gain weight</item>
+    </string-array>
+
+    <string-array name="array_weekly_goals_kg">
+        <item>0.5</item>
+        <item>1</item>
+        <item>1.5</item>
     </string-array>
 
     <string-array name="array_mesurments">

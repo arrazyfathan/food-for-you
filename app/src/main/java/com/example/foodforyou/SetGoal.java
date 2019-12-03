@@ -8,29 +8,23 @@ import android.view.View;
 
 import java.util.Objects;
 
-public class SignUp extends AppCompatActivity {
-
-
+public class SetGoal extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_up);
+        setContentView(R.layout.activity_set_goal);
 
         //Transparent Action Bar
         if (getSupportActionBar() != null){
             getSupportActionBar().setElevation(0);
         }
 
-        Objects.requireNonNull(getSupportActionBar()).setTitle("Sign Up");
-        
-
-
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Set Goal");
     }
 
-
-    public void KeMenu(View view) {
-        Intent intent = new Intent(SignUp.this, SetGoal.class);
+    public void mainMenu(View view) {
+        Intent intent = new Intent(SetGoal.this, MainActivity.class);
         startActivity(intent);
     }
 }
