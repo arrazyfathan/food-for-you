@@ -7,13 +7,33 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="colorControlHighlight">#07000000</item>
+
+        <!-- For the resting Spinner style -->
+        <item name="android:spinnerItemStyle">
+            @style/spinnerItemStyle
+        </item>
+
+        <!-- For each individual Spinner list item once clicked on -->
+        <item name="android:spinnerDropDownItemStyle">
+            @style/spinnerDropDownItemStyle
+        </item>
     </style>
 
-<!--    <array name="tips_images">-->
-<!--        <item>@drawable/img_baseball</item>-->
-<!--        <item>@drawable/img_badminton</item>-->
-<!--        <item>@drawable/img_basketball</item>-->
-<!--        <item>@drawable/img_bowling</item>-->
-<!--    </array>-->
+    <style name="spinnerItemStyle">
+        <item name="android:fontFamily">@font/arialregular</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/captionColor</item>
+    </style>
+
+    <style name="spinnerDropDownItemStyle">
+        <item name="android:fontFamily">@font/arialregular</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/captionColor</item>
+    </style>
+
+
+
 
 </resources>
