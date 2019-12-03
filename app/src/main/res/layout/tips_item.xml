@@ -27,7 +27,6 @@
 
         <ImageView
             android:id="@+id/img"
-
             android:layout_alignBottom="@id/tipsImage"
             android:layout_width="match_parent"
             android:layout_height="50dp"/>
@@ -35,13 +34,15 @@
         <TextView
             android:id="@+id/author"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="wrap_content"
             android:drawablePadding="10dp"
+            android:padding="5dp"
             android:ellipsize="end"
             android:maxLines="1"
-            android:textColor="@android:color/white"
+            android:background="@drawable/round_white"
+            android:textColor="@android:color/black"
             android:singleLine="true"
-            android:layout_marginEnd="160dp"
+            android:layout_marginEnd="80sp"
             android:gravity="bottom"
             android:layout_alignLeft="@+id/title"
             android:layout_alignStart="@+id/title"
@@ -55,27 +56,26 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/img"
-
             android:padding="5dp"
             android:layout_alignParentRight="true"
             android:layout_marginRight="20dp"
             android:layout_marginTop="-50dp">
 
-<!--            <ImageView-->
-<!--                android:id="@+id/date"-->
-<!--                android:src="@drawable/ic_date"-->
-<!--                android:layout_width="18dp"-->
-<!--                android:layout_height="18dp"-->
-<!--                android:layout_marginLeft="5dp"-->
-<!--                android:layout_marginRight="5dp"/>-->
-            <TextView
+<!--            <ImageView
+                android:id="@+id/date"
+                android:src="@drawable/ic_date"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"/>-->
+<!--            <TextView
                 android:textColor="#606060"
                 android:id="@+id/publishedAt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="27dp"
                 android:layout_marginRight="10dp"
-                android:text="01 Desember 2019" />
+                android:text="01 Desember 2019" />-->
         </FrameLayout>
 
         <TextView
@@ -108,11 +108,13 @@
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
             android:layout_below="@+id/subTitle"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
-            android:text="Share" />
+            android:text="Share"
+            android:layout_toEndOf="@+id/btnVisit"
+            android:layout_toRightOf="@+id/btnVisit"/>
 
         <Button
             android:id="@+id/btnVisit"
@@ -120,12 +122,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/subTitle"
-            android:layout_marginLeft="10dp"
-            android:layout_marginStart="10dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
             android:layout_marginTop="10dp"
-            android:layout_toEndOf="@+id/btnShare"
-            android:layout_toRightOf="@+id/btnShare"
-            android:text="Open" />
+            android:text="Detail" />
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

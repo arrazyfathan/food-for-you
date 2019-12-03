@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     private String[] mInfoText;
     private int[] imageResource;
     private String[] placeGuide;
+    private String[] mAuthor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 fragment = new RekomendasiFragment();
                 break;
             case R.id.nav_tips:
-                fragment = new TipsFragment(mTitleText,mInfoText,imageResource, placeGuide);
+                fragment = new TipsFragment(mTitleText,mInfoText,imageResource, placeGuide, mAuthor);
                 break;
             case R.id.nav_profil:
                 fragment = new ProfileFragment();

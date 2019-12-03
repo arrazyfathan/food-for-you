@@ -30,12 +30,14 @@ public class TipsFragment extends Fragment {
     private ArrayList<TipsFragment> mTipsData;
     private RecyclerView.Adapter mAdapter;
     private String[] placeGuide;
+    private String[] mAuthor;
 
-    public TipsFragment(String[] mTitleText,String[] mInfoText, int[] imageResource, String[] placeGuide) {
+    public TipsFragment(String[] mTitleText,String[] mInfoText, int[] imageResource, String[] placeGuide,String[] mAuthor) {
         this.mTitleText = mTitleText;
         this.mInfoText= mInfoText;
         this.imageResource = imageResource;
         this.placeGuide = placeGuide;
+        this.mAuthor = mAuthor;
     }
 
     public String[] getTitle() {
@@ -54,18 +56,10 @@ public class TipsFragment extends Fragment {
         return imageResource;
     }
 
-
-    /*String getTitle() {
-        return title;
+    public String[] getmAuthor() {
+        return mAuthor;
     }
 
-    String getInfo() {
-        return info;
-    }
-
-    public int getImageResource() {
-        return imageResource;
-    }*/
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -74,33 +68,37 @@ public class TipsFragment extends Fragment {
         mRecyclerView = (RecyclerView)view.findViewById(R.id.recyclerView);
         imageResource = new int[]{R.drawable.img_bowling, R.drawable.img_basketball,
                 R.drawable.img_baseball, R.drawable.img_badminton};
+        mAuthor= new String[]{
+                "Virgina Maulita Putri - wolipop-detik.com",
+                "Septia Shidqiyyah - liputan6.com",
+                "dr. Fitrina Aprilia - halodoc.com",
+                "Novita Joseph - hellosehat.com"
+        };
         mInfoText = new String[]{
-                "Navagio Beach",
-                "Anse Source d'Argent Beach",
-                "As Catedrais Beach",
-                "La Concha Beach",
+                "Memiliki tubuh yang ideal merupakan idaman banyak wanita. Banyak cara yang bisa dilakukan untuk memiliki ..." ,
+                "Sudah menjadi rahasia umum, jika setiap orang pasti menginginkan tubuh ideal dengan berat badan sekecil ... ",
+                "Makananan sehat adalah makanan yang seharusnya mengandung beragam nutrisi yang dibutuhkan oleh ...",
+                "akan makananan sehat merupakan salah satu hal yang harus dilakukan untuk menjaga kesehatan tubuh. Bukan hanya ..." ,
                 };
         mTitleText = new String[]{
-                "Here is some Baseball news!",
-                "Here is some Baseball news!",
-                "Here is some Baseball news!",
-                "Here is some Baseball news!"
+                "11 Tips Diet Sehat untuk Turunkan Berat Badan Secara Aman dan Alami",
+                "8 Cara Diet Sehat Menurunkan Berat Badan yang Baik dan Benar Agar Tidak Membahayakan Tubuh",
+                "Makanan Sehat",
+                "13 Tips Makan Sehat untuk Orang yang Super Sibuk"
         };
         placeGuide = new String[]{
-                "https://www.tripadvisor.com.my/Attraction_Review-g7777607-" +
-                "d671779-Reviews-Navagio_Beach_Shipwreck_Beach-Anafonitria_Zakynthos_Ionian_Islands.html",
-                "https://www.tripadvisor.com.my/Attraction_Review-g477968-d637885-Reviews-Anse_Source_D_Argent" +
-                        "-La_Digue_Island.html",
-                "https://www.tripadvisor.com.my/Attraction_Review-g609028-d1547522-Reviews-As_Catedrais_Beach-Ribadeo_" +
-                        "Province_of_Lugo_Galicia.html",
-                "https://www.tripadvisor.com.my/Attraction_Review-g187457-d675885-Reviews-La_Concha_Beach-San_Sebastian" +
-                        "_Donostia_Province_of_Guipuzcoa_Basque_Country.html",
+                "https://wolipop.detik.com/health-and-diet/d-4731356/11-tips-diet-sehat-untuk-turunkan-berat-badan-secara-aman-dan-alami",
+                "https://www.liputan6.com/health/read/3677875/8-cara-diet-sehat-menurunkan-berat-badan-yang-baik-dan-benar-agar-tidak-membahayakan-tubuh",
+                "https://www.halodoc.com/kesehatan/makanan-sehat",
+                "https://hellosehat.com/hidup-sehat/nutrisi/makanan-sehat-untuk-orang-sibuk-2/"
+
+
                 };
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(),
                 LinearLayoutManager.VERTICAL, false);
         mRecyclerView.setLayoutManager(linearLayoutManager);
-        mAdapter = new TipsAdapter(getActivity(), mTitleText,mInfoText, imageResource, placeGuide);
+        mAdapter = new TipsAdapter(getActivity(), mTitleText,mInfoText, imageResource, placeGuide,mAuthor);
         mRecyclerView.setAdapter(mAdapter);
 
         return view;
