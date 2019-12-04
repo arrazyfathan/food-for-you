@@ -157,8 +157,16 @@ public class SignUp extends AppCompatActivity {
 
         //Gender radio button
         RadioGroup radioGroupGender = (RadioGroup) findViewById(R.id.radioGroupGender);
-        int selectedId =radioGroupGender.getCheckedRadioButtonId();
-        RadioButton radioButtonGender = (RadioButton) findViewById(selectedId);
+        int radioButtonID = radioGroupGender.getCheckedRadioButtonId();
+        View radioButtonGender = radioGroupGender.findViewById(radioButtonID);
+        int position = radioGroupGender.indexOfChild(radioButtonGender);
+        String stringGender = "";
+        if(position == 0){
+            stringGender = "Male";
+        }
+        else{
+            stringGender = "Female";
+        }
 
         //Mesurement Spinner
         Spinner spinnerMesurment = (Spinner) findViewById(R.id.spinnerMesurment);
@@ -167,21 +175,60 @@ public class SignUp extends AppCompatActivity {
         // Height
         TextInputEditText editTextHeightCm = (TextInputEditText) findViewById(R.id.editTextHeight);
         String stringHeightCm = editTextHeightCm.getText().toString();
-
         double heightCm = 0;
-
         try {
             heightCm = Double.parseDouble(stringHeightCm);
         }catch (NumberFormatException nfe){
             TexterrorMessage = "Height has to be  a number.";
         }
 
-        Toast.makeText(this, " Height cm " + heightCm , Toast.LENGTH_LONG).show();
+
+        //Weight
+        TextInputEditText editTextWeightKg = (TextInputEditText) findViewById(R.id.editTextWeight);
+        String stringWeightKg = editTextWeightKg.getText().toString();
+        double weightKg = 0;
+        try {
+            weightKg = Double.parseDouble(stringWeightKg);
+        }catch (NumberFormatException nfe) {
+            TexterrorMessage = "Weight has to be a number";
+        }
+
+
+        //Activity Level
+        Spinner spinnerActivityLevel = (Spinner) findViewById(R.id.spinnerActivityLevel);
+        String stringActivityLevel = spinnerActivityLevel.getSelectedItem().toString();
+        int intActivityLevel = spinnerActivityLevel.getSelectedItemPosition();
+        //  0: Little to no exercise
+        // 1: Light exercise (1–3 days per week)
+        // 2: Moderate exercise (3–5 days per week)
+        // 3: Heavy exercise (6–7 days per week)
+        // 4: Very heavy exercise (twice per day, extra heavy workouts)
+
 
 
         //Error Handling
         if (TexterrorMessage.isEmpty()){
             errorMessage.setVisibility(View.GONE);
+
+
+            // inset data into database
+            DBAdapter db = new DBAdapter(this);
+            db.open();
+
+            //quoteSmart
+            String stringEmailSQL = db.quoteSmart(stringEmail);
+            String dateOfBirthSQL = db.quoteSmart(dateOfBirth);
+            String stringGenderSQL = db.quoteSmart(stringGender);
+            double heightCmSQL = db.quoteSmart(heightCm);
+            int intActivityLevelSQL = db.quoteSmart(intActivityLevel);
+            double weightKgSQL = db.quoteSmart(weightKg);
+
+            String stringInput = "NULL, " + stringEmailSQL + "," + dateOfBirthSQL + "," + stringGenderSQL + "," + heightCmSQL + "," + intActivityLevelSQL + "," + weightKgSQL;
+
+
+            db.insert("users",
+                    "user_id, user_email, user_dob, user_gender, user_height, user_activity_level, user_weight",
+                    stringInput);
 
         }else {
             errorMessage.setText(TexterrorMessage);

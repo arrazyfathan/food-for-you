@@ -5,23 +5,23 @@
 
 
     <!-- Add -->
-    <item android:id="@+id/menu_action_food_add"
-        android:icon="@drawable/button_add_ws"
-        android:title="@string/add_food"
-        app:showAsAction="always"/>
+<!--    <item android:id="@+id/menu_action_food_add"-->
+<!--        android:icon="@drawable/button_add_ws"-->
+<!--        android:title="@string/add_food"-->
+<!--        app:showAsAction="always"/>-->
 
-    <!-- Edit -->
-    <item android:id="@+id/menu_action_food_edit"
-        android:icon="@drawable/ic_action_edit"
-        android:title="@string/edit_food"
-        app:showAsAction="always"/>
+<!--    &lt;!&ndash; Edit &ndash;&gt;-->
+<!--    <item android:id="@+id/menu_action_food_edit"-->
+<!--        android:icon="@drawable/ic_action_edit"-->
+<!--        android:title="@string/edit_food"-->
+<!--        app:showAsAction="always"/>-->
 
 
-    <!-- Delete -->
-    <item android:id="@+id/menu_action_food_delete"
-        android:icon="@drawable/ic_action_delete"
-        android:title="@string/delete_food"
-        app:showAsAction="always"/>
+<!--    &lt;!&ndash; Delete &ndash;&gt;-->
+<!--    <item android:id="@+id/menu_action_food_delete"-->
+<!--        android:icon="@drawable/ic_action_delete"-->
+<!--        android:title="@string/delete_food"-->
+<!--        app:showAsAction="always"/>-->
 
 
 </menu>
