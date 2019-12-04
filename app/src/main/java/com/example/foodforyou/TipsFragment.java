@@ -78,7 +78,7 @@ public class TipsFragment extends Fragment {
                 "Memiliki tubuh yang ideal merupakan idaman banyak wanita. Banyak cara yang bisa dilakukan untuk memiliki ..." ,
                 "Sudah menjadi rahasia umum, jika setiap orang pasti menginginkan tubuh ideal dengan berat badan sekecil ... ",
                 "Makananan sehat adalah makanan yang seharusnya mengandung beragam nutrisi yang dibutuhkan oleh ...",
-                "akan makananan sehat merupakan salah satu hal yang harus dilakukan untuk menjaga kesehatan tubuh. Bukan hanya ..." ,
+                "Makan makananan sehat merupakan salah satu hal yang harus dilakukan untuk menjaga kesehatan tubuh. Bukan hanya ..." ,
                 };
         mTitleText = new String[]{
                 "11 Tips Diet Sehat untuk Turunkan Berat Badan Secara Aman dan Alami",

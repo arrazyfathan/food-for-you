@@ -10,9 +10,13 @@
     android:id="@+id/cardview"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp">
+    android:layout_margin="8dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?android:attr/selectableItemBackground">
 
     <RelativeLayout
+        android:id="@+id/btnVisit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -36,12 +40,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawablePadding="10dp"
+
             android:padding="5dp"
             android:ellipsize="end"
             android:maxLines="1"
             android:background="@drawable/round_white"
             android:textColor="@android:color/black"
             android:singleLine="true"
+            android:textSize="12sp"
             android:layout_marginEnd="80sp"
             android:gravity="bottom"
             android:layout_alignLeft="@+id/title"
@@ -59,7 +65,7 @@
             android:padding="5dp"
             android:layout_alignParentRight="true"
             android:layout_marginRight="20dp"
-            android:layout_marginTop="-50dp">
+            android:layout_marginTop="-40dp">
 
 <!--            <ImageView
                 android:id="@+id/date"
@@ -82,12 +88,11 @@
             android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-light"
-            android:textStyle="bold"
+            android:fontFamily="@font/arialbold"
             android:textColor="@color/colorTextTitle"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
-            android:textSize="17sp"
+            android:textSize="16sp"
             android:layout_marginTop="10dp"
             android:layout_below="@id/img"
             android:text="@string/news_placeholder" />
@@ -96,36 +101,46 @@
             android:id="@+id/subTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/captionColor"
             android:layout_below="@id/title"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_marginTop="5dp"
             android:padding="8dp"
-            android:text="@string/tips_info_placeholder" />
+            android:text="@string/tips_info_placeholder"
+            android:textSize="14sp"
+            android:autoSizeTextType="uniform"/>
 
-        <Button
+        <ImageButton
             android:id="@+id/btnShare"
             style="?android:attr/borderlessButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_below="@+id/subTitle"
             android:layout_marginLeft="10dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:text="Share"
-            android:layout_toEndOf="@+id/btnVisit"
-            android:layout_toRightOf="@+id/btnVisit"/>
-
-        <Button
+            android:layout_marginStart="280dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/ic_share_black_24dp"
+            android:tint="@color/colorWhite"
+            android:background="@drawable/bgshare"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackground"/>
+        <!--android:layout_toEndOf="@+id/btnVisit"
+        android:layout_toRightOf="@+id/btnVisit"-->
+        <!--<Button
             android:id="@+id/btnVisit"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="wrap_content"
+            android:background="@drawable/button_style"
             android:layout_height="wrap_content"
             android:layout_below="@+id/subTitle"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_marginTop="10dp"
-            android:text="Detail" />
+            android:text="Detail"
+            android:textColor="@color/colorWhite"/>-->
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>
