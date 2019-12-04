@@ -6,8 +6,13 @@ import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
 
+import com.facebook.stetho.Stetho;
+import com.facebook.stetho.okhttp3.StethoInterceptor;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import okhttp3.OkHttpClient;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
@@ -15,13 +20,38 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     private String[] mInfoText;
     private int[] imageResource;
     private String[] placeGuide;
+    private String[] mAuthor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        Transparent Action Bar
+        //Stetho
+        Stetho.initializeWithDefaults(this);
+        new OkHttpClient.Builder()
+                .addNetworkInterceptor(new StethoInterceptor())
+                .build();
+
+        // Database
+        DBAdapter db = new DBAdapter(this);
+        db.open();
+
+        //Count rows in food
+        int numberRows = db.count("food");
+        if (numberRows < 1) {
+            DBSetupInsert setupInsert = new DBSetupInsert(this);
+            setupInsert.insertAllFood();
+            setupInsert.insertAllCaegories();
+        }
+
+
+        db.close();
+        //close database
+
+
+
+        // Transparent Action Bar
         if (getSupportActionBar() != null){
             getSupportActionBar().setElevation(0);
         }
@@ -54,7 +84,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 fragment = new FoodFragment();
                 break;
             case R.id.nav_tips:
-                fragment = new TipsFragment(mTitleText,mInfoText,imageResource, placeGuide);
+                fragment = new TipsFragment(mTitleText,mInfoText,imageResource, placeGuide, mAuthor);
                 break;
             case R.id.nav_profil:
                 fragment = new ProfileFragment();

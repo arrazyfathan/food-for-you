@@ -7,7 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.cardview.widget.CardView;
@@ -26,14 +28,17 @@ class TipsAdapter extends RecyclerView.Adapter<TipsAdapter.ViewHolder> {
     private String[] mInfoText;
     private int[] imageResource;
     private String[] placeGuide;
+    private String[] mAuthor;
 
 
-    public TipsAdapter(Context mContext , String[] mTitleText, String[] mInfoText, int[] imageResource, String[] placeGuide){
+
+    public TipsAdapter(Context mContext , String[] mTitleText, String[] mInfoText, int[] imageResource, String[] placeGuide,String[] mAuthor){
         this.mContext = mContext;
         this.imageResource = imageResource;
         this.mTitleText = mTitleText;
         this.mInfoText = mInfoText;
         this.placeGuide = placeGuide;
+        this.mAuthor = mAuthor;
     }
 
     @Override
@@ -50,6 +55,7 @@ class TipsAdapter extends RecyclerView.Adapter<TipsAdapter.ViewHolder> {
         holder.bindTo(currentTips);*/
         holder.mTitleText.setText(mTitleText[position]);
         holder.mInfoText.setText(mInfoText[position]);
+        holder.mAuthor.setText(mAuthor[position]);
         holder.mTipsImage.setImageResource(imageResource[position]);
         holder.share.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,7 +69,7 @@ class TipsAdapter extends RecyclerView.Adapter<TipsAdapter.ViewHolder> {
                 mContext.startActivity(Intent.createChooser(intent, "Send To"));
             }
         });
-        holder.visit.setOnClickListener(new View.OnClickListener() {
+        holder.mCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Intent.ACTION_VIEW);
@@ -85,12 +91,10 @@ class TipsAdapter extends RecyclerView.Adapter<TipsAdapter.ViewHolder> {
         private TextView mInfoText;
         private TextView mAuthor;
         private ImageView mTipsImage;
-        private ImageView mDate;
-        private TextView mPublish;
         private ImageView mImg;
         private CardView mCardView;
-        private Button share;
-        private Button visit;
+        private ImageButton share;
+        private RelativeLayout visit;
 
         ViewHolder (View itemView){
             super(itemView);
@@ -101,8 +105,6 @@ class TipsAdapter extends RecyclerView.Adapter<TipsAdapter.ViewHolder> {
             mTipsImage = itemView.findViewById(R.id.tipsImage);
             mImg= itemView.findViewById(R.id.img);
             mAuthor= itemView.findViewById(R.id.author);
-//            mDate= itemView.findViewById(R.id.date);
-            mPublish= itemView.findViewById(R.id.publishedAt);
             share = itemView.findViewById(R.id.btnShare);
             visit = itemView.findViewById(R.id.btnVisit);
         }

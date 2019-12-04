@@ -10,6 +10,7 @@
         android:id="@+id/main_frame"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginBottom="5dp"
         android:layout_above="@id/main_nav">
     </FrameLayout>
 
@@ -23,7 +24,9 @@
         app:itemIconTint="@color/nav_item_color"
         app:itemTextColor="@color/nav_item_color"
         app:labelVisibilityMode="selected"
-        app:menu="@menu/nav_item">
+        app:menu="@menu/nav_item"
+        app:itemIconSize="@dimen/bottom_navigation_icon_size">
+
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 

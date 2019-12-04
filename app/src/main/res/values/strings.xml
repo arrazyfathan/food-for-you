@@ -16,9 +16,6 @@
     <string name="title_placeholder">Title</string>
     <string name="news_placeholder">News</string>
     <string name="tips_info_placeholder">Here is some news</string>
-    <string name="add_food">Add Food</string>
-    <string name="edit_food">Edit Food</string>
-    <string name="delete_food">Delete Food</string>
 
     <!--<string-array name="tips_titles">
         <item>Baseball</item>
