@@ -38,6 +38,9 @@
     <string name="day">Day</string>
     <string name="month">Month</string>
     <string name="year">Year</string>
+    <string name="add_food">Add Food</string>
+    <string name="edit_food">Edit Food</string>
+    <string name="delete_food">Delete Food</string>
 
     <string-array name="array_months">
         <item>January</item>
