@@ -157,6 +157,15 @@ public class DBAdapter {
                 value = value.replace("\\x1a", "\\Z");
             }
         }
+        value = "'" + value + "'";
+        return value;
+    }
+
+    public double quoteSmart(double value){
+        return value;
+    }
+
+    public int quoteSmart(int value){
         return value;
     }
 
