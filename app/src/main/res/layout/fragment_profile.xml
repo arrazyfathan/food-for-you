@@ -10,36 +10,38 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="350dp"
-        android:layout_marginTop="10dp">
-
+        android:layout_height="350dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="300dp"
             android:orientation="vertical"
-            android:background="@color/colorWhite">
+            android:background="@drawable/sign_up_bg">
             <ImageView
                 android:layout_marginTop="45dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
-                android:src="@drawable/ic_action_user"/>
+                android:src="@drawable/ic_action_user"
+                android:tint="@color/colorWhite"/>
             <TextView
                 android:layout_marginTop="10dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Dio Agus Nofrizal"
-                android:textColor="@color/titleColor"
+                android:textColor="@color/colorWhite"
                 android:textStyle="bold"
                 android:textSize="20sp"/>
         </LinearLayout>
         <androidx.cardview.widget.CardView
-            android:layout_width="350dp"
+            android:layout_width="match_parent"
             android:layout_height="80dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="260dp">
+            android:layout_marginTop="260dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/bg_shapeprofil">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -55,7 +57,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Kalori"
-                        android:textSize="16sp"
+                        android:textSize="14sp"
                         android:textColor="@color/titleColor"
                         />
                     <TextView
@@ -63,8 +65,8 @@
                         android:layout_height="wrap_content"
                         android:text="1500"
                         android:textStyle="bold"
-                        android:textSize="12sp"
-                        android:paddingTop="10dp"
+                        android:textSize="20sp"
+                        android:paddingTop="3dp"
                         android:textColor="@color/orange_color"/>
 
                 </LinearLayout>
@@ -78,7 +80,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Dikomsumsi"
-                        android:textSize="16sp"
+                        android:textSize="14sp"
                         android:textColor="@color/titleColor"
                         />
                     <TextView
@@ -86,8 +88,8 @@
                         android:layout_height="wrap_content"
                         android:text="300"
                         android:textStyle="bold"
-                        android:textSize="12sp"
-                        android:paddingTop="10dp"
+                        android:textSize="20sp"
+                        android:paddingTop="3dp"
                         android:textColor="@color/orange_color"/>
 
                 </LinearLayout>
@@ -101,7 +103,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Index BMI"
-                        android:textSize="16sp"
+                        android:textSize="14sp"
                         android:textColor="@color/titleColor"
                         />
                     <TextView
@@ -109,8 +111,8 @@
                         android:layout_height="wrap_content"
                         android:text="32"
                         android:textStyle="bold"
-                        android:textSize="12sp"
-                        android:paddingTop="10dp"
+                        android:textSize="20sp"
+                        android:paddingTop="3dp"
                         android:textColor="@color/orange_color"/>
 
                 </LinearLayout>
@@ -120,18 +122,22 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="105dp"
+        android:layout_height="110dp"
         android:orientation="vertical"
         android:layout_gravity="center"
-        android:background="@color/colorWhite">
+        android:background="@color/colorWhite"
+        >
         <LinearLayout
             android:orientation="horizontal"
-            android:paddingLeft="20dp"
+
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginStart="22dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="22dp">
             <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:src="@drawable/ic_action_email"/>
             <TextView
                 android:textStyle="bold"
@@ -141,28 +147,31 @@
                 android:paddingLeft="20dp"
                 android:text="dio@gmail.com"
                 android:textColor="@color/titleColor"
-                android:textSize="12sp"/>
+                android:textSize="14sp"
+                />
         </LinearLayout>
         <LinearLayout
             android:layout_marginTop="20dp"
             android:orientation="horizontal"
-            android:paddingLeft="20dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginStart="22dp"
+            android:layout_marginEnd="22dp">
             <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:src="@drawable/ic_action_phone"/>
+
             <TextView
                 android:textStyle="bold"
-
                 android:layout_gravity="center_vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="20dp"
-                android:text="+266 225 225"
+                android:text="Male"
                 android:textColor="@color/titleColor"
-                android:textSize="12sp"/>
+                android:textSize="14sp"
+                />
         </LinearLayout>
 
     </LinearLayout>
