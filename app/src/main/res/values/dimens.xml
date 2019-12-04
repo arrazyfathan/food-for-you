@@ -2,6 +2,8 @@
     <dimen name="activity_horizontal_margin">8dp</dimen>
     <dimen name="activity_vertical_margin">8dp</dimen>
 
-    <dimen name="design_bottom_navigation_text_size" tools:override="true">50sp</dimen>
-    <dimen name="design_bottom_navigation_active_text_size" tools:override="true">50sp</dimen>
+<!--    <dimen name="design_bottom_navigation_text_size" tools:override="true">30sp</dimen>-->
+    <dimen name="design_bottom_navigation_active_text_size" tools:override="true">40sp</dimen>
+    <dimen name="design_bottom_navigation_height" tools:override="true">50dp</dimen>
+    <dimen name="bottom_navigation_icon_size" tools:override="true">20dp</dimen>
 </resources>
