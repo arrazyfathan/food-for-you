@@ -26,7 +26,7 @@ public class SplashActivity extends Activity {
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     } finally {
-                        startActivity(new Intent(SplashActivity.this, SignUp.class));
+                        startActivity(new Intent(SplashActivity.this, MainActivity.class));
                         finish();
                     }
                 }

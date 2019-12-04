@@ -35,6 +35,10 @@
         <item>Here is some Bowling news!</item>
     </string-array>-->
 
+    <string name="day">Day</string>
+    <string name="month">Month</string>
+    <string name="year">Year</string>
+
     <string-array name="array_months">
         <item>January</item>
         <item>February</item>

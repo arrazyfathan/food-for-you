@@ -96,18 +96,34 @@
                 </RadioGroup>
             </LinearLayout>
 
+            <TextView
+                android:id="@+id/errorMessage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:background="@color/meal_plan_gray"
+                android:fontFamily="@font/arialregular"
+                android:padding="6dp"
+                android:visibility="gone"
+                android:textAlignment="center"
+                android:textSize="12sp" />
+
+
             <com.google.android.material.textfield.TextInputLayout
+                android:layout_marginTop="12dp"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+
                 android:hint="@string/mail_label"
                 android:textColorHint="@color/captionColor">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/arialregular"
+                    android:inputType="textEmailAddress"
                     android:textSize="14sp" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -121,10 +137,12 @@
                 android:textColorHint="@color/captionColor">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextHeight"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/arialregular"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    android:inputType="number"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -140,7 +158,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/arialregular"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    android:inputType="number"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -157,7 +176,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/arialregular"
-                    android:text="Date of bird  :"
+                    android:text="Date of birth  :"
                     android:textSize="16sp" />
 
                 <LinearLayout
@@ -335,32 +354,19 @@
                 <Spinner
                     android:id="@+id/spinnerMesurment"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:entries="@array/array_mesurments"/>
 
             </LinearLayout>
 
-            <!--            <TextView-->
-            <!--                android:id="@+id/errorMessage"-->
-            <!--                android:layout_marginTop="12dp"-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:padding="6dp"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:text="Make sure your data is complete"-->
-            <!--                android:background="@color/meal_plan_gray"-->
-            <!--                android:textSize="12sp"-->
-            <!--                android:fontFamily="@font/arialregular"-->
-            <!--                android:textAlignment="center"-->
-            <!--                android:layout_marginBottom="12dp"-->
-            <!--                />-->
-
             <Button
+                android:id="@+id/buttonSignUp"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginBottom="12dp"
                 android:background="@drawable/button_style"
                 android:fontFamily="@font/arialmedium"
-                android:onClick="KeMenu"
                 android:text="Sign Up"
                 android:textAllCaps="false"
                 android:textColor="@color/colorWhite"

@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.FrameMetrics;
 import android.view.MenuItem;
@@ -46,10 +47,17 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             setupInsert.insertAllCaegories();
         }
 
+        //Check user login
+        numberRows = db.count("users");
+        if (numberRows <1 ){
+            Toast.makeText(this,"Anda belum login", Toast.LENGTH_LONG).show();
+            Intent i = new Intent(MainActivity.this, SignUp.class);
+            startActivity(i);
+        }
+
 
         db.close();
         //close database
-
 
 
         // Transparent Action Bar
