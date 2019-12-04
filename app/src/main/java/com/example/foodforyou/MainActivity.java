@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.FrameMetrics;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -90,7 +89,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 fragment = new HomeFragment();
                 break;
             case R.id.nav_rekomendasi:
-                fragment = new RekomendasiFragment();
+                fragment = new FoodFragment();
                 break;
             case R.id.nav_tips:
                 fragment = new TipsFragment(mTitleText,mInfoText,imageResource, placeGuide, mAuthor);

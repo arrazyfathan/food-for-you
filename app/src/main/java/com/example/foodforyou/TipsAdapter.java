@@ -7,7 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.cardview.widget.CardView;
@@ -27,6 +29,7 @@ class TipsAdapter extends RecyclerView.Adapter<TipsAdapter.ViewHolder> {
     private int[] imageResource;
     private String[] placeGuide;
     private String[] mAuthor;
+
 
 
     public TipsAdapter(Context mContext , String[] mTitleText, String[] mInfoText, int[] imageResource, String[] placeGuide,String[] mAuthor){
@@ -66,7 +69,7 @@ class TipsAdapter extends RecyclerView.Adapter<TipsAdapter.ViewHolder> {
                 mContext.startActivity(Intent.createChooser(intent, "Send To"));
             }
         });
-        holder.visit.setOnClickListener(new View.OnClickListener() {
+        holder.mCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Intent.ACTION_VIEW);
@@ -90,8 +93,8 @@ class TipsAdapter extends RecyclerView.Adapter<TipsAdapter.ViewHolder> {
         private ImageView mTipsImage;
         private ImageView mImg;
         private CardView mCardView;
-        private Button share;
-        private Button visit;
+        private ImageButton share;
+        private RelativeLayout visit;
 
         ViewHolder (View itemView){
             super(itemView);
