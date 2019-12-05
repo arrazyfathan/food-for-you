@@ -20,6 +20,24 @@
     <string name="female_radio_label">Female</string>
     <string name="mail_label">Enter your e-mail address</string>
     <string name="level_activity_label">Level Activity :</string>
+    <string name="are_you_sure_you_want_to_delete">Are you sure you want to delete?</string>
+
+    //food delete
+    <string name="cancel">Cancel</string>
+    <string name="delete">Delete</string>
+
+    //food view
+    <string name="name">Name</string>
+    <string name="manufactor">Manufactor</string>
+    <string name="about">About</string>
+    <string name="description">Description</string>
+    <string name="calories_table">Calories table</string>
+    <string name="energy">Energy</string>
+    <string name="proteins">Proteins</string>
+    <string name="carbs">Carbs</string>
+    <string name="fat">Fat</string>
+    <string name="per_hundred_gran">Per 100 gram</string>
+    <string name="per_meal">Per meal</string>
 
     <!--<string-array name="tips_titles">
         <item>Baseball</item>
@@ -41,6 +59,7 @@
     <string name="add_food">Add Food</string>
     <string name="edit_food">Edit Food</string>
     <string name="delete_food">Delete Food</string>
+    <string name="blank" />
 
     <string-array name="array_months">
         <item>January</item>

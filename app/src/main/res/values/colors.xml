@@ -10,10 +10,8 @@
     <color name="captionColor">#A5ADBC</color>
     <color name="buttonAlternative">#3732BF</color>
     <color name="grey_color">#EEEEEE</color>
-
-
+    <color name="colorAppDarkGrey">#262626</color>
     <color name="meal_plan_gray">#F5F5F5</color>
-
     <color name="colorBackground">#f9f9fa</color>
     <color name="colorTextSubtitle">#4e4e4e</color>
     <color name="colorTextTitle">#262626</color>
