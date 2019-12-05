@@ -31,19 +31,37 @@ public class MainActivity extends AppCompatActivity
     /*
     food for you
     Topik atau masalah yang ingin diselesaikankan pada aplikasi ini adalah permasalahan berat badan.
+    Dimana dengan aplikasi ini pengguna dapat megngetahui berapa kebutuhan kalori yang dibutuhkan setiapharinya,
+    sehingga pengguna dapat mengontrol kalori yang masuk kedalam tubuh agar sesuai dengan kebutuhan.
+
+
     Mengapa aplikasi tersebut harus dibangun di Android ?
-    Karena pengguna android sangat banyak
-    Pengguna yang akan menggunakan aplikasi ini adalah masyarakat umum (Remaja, Orang tua dll)
-    Clientnya adalah ahli gizi
+    Karena pengguna android sangat banyak. Selain karena penggunanya bnyak kasus ini membutuhkan monitoring kebutuhan
+    kalori setiap harinya, sehingga jika inggin hasil yang maksimal pengguna harus konsisten mengecek kebutuhan
+    kalori setiap harinya. Harus di android karena bisa dibawa kemana-mana.
+
+
+    Pengguna yang akan menggunakan aplikasi ini adalah masyarakat umum (Remaja, Orang tua dll) yang mempunyai masalah
+    berat badan.
+
+    Clientnya adalah ahli gizi.
+
+
     Inputnya
         Data pengguna berupa : nama pengguna, email, berat bedan, tinggi badan, tingkat aktivitas,
                                tanggal lahir, target berat badan.
-        Data makanan         : nama makanan,
+        Data makanan         : nama makanan, jumlah kalori.
+
+
     Outputnya
         Index BMI, kebutuhan kalori per hari dan  kategori makanan.
+
+
     Fungsi-fungsi/fitur apa saja yang ada pada aplikasi tersebut
         1. Fitur sistem pendukung dalam pemilihan makanan
-        2. Fitur perhitungan index BMI
+        2. Fitur perhitungan index BMI dan BMR
+        3. Menghitung jumlah kalori yang dimakan setiap harinya.
+      
     */
 
     @Override
