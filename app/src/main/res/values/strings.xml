@@ -22,11 +22,15 @@
     <string name="level_activity_label">Level Activity :</string>
     <string name="are_you_sure_you_want_to_delete">Are you sure you want to delete?</string>
 
-    //food delete add
+    //food delete add edit
     <string name="cancel">Cancel</string>
     <string name="delete">Delete</string>
     <string name="save">Save</string>
     <string name="parent">Parent</string>
+    <string name="barcode">Barcode</string>
+    <string name="category">Category</string>
+    <string name="main">Main</string>
+    <string name="general">General</string>
 
     //home edit delete select
     <string name="portion_size">Portion size</string>
@@ -57,6 +61,10 @@
     <string name="if_you_want_to_keep_your_weight">If you want to keep your weight</string>
     <string name="with_activity_">With activity</string>
     <string name="without_activity">Without activity</string>
+    <string name="target">Target</string>
+    <string name="method">Method</string>
+    <string name="activity">Activity</string>
+    <string name="advanced">Advanced</string>
 
     //food view
     <string name="name">Name</string>
@@ -68,9 +76,15 @@
     <string name="proteins">Proteins</string>
     <string name="carbs">Carbs</string>
     <string name="fat">Fat</string>
-    <string name="per_hundred_gran">Per 100 gram</string>
+    <string name="per_hundred_gran">(Per 100 gram)</string>
     <string name="per_meal">Per meal</string>
+    <string name="serving">Serving</string>
+    <string name="sub">Sub</string>
+    <string name="mesurment">Mesurment</string>
+    <string name="word">Word</string>
 
+    //diary
+    <string name="add_to_diary">Add to diary</string>
     <!--<string-array name="tips_titles">
         <item>Baseball</item>
         <item>Badminton</item>
@@ -93,6 +107,16 @@
     <string name="delete_food">Delete Food</string>
     <string name="blank" />
     <string name="logout">Logout</string>
+    <string name="food_size">Size</string>
+    <string name="food_mesurment">mesurment</string>
+    <string name="food_number">Number</string>
+    <string name="food_word">word</string>
+    <string name="food_energy">energy</string>
+    <string name="food_protein">proteins</string>
+    <string name="food_carbs">carbs</string>
+    <string name="food_fat">Fat</string>
+    <string name="food_size_pcs">size</string>
+    <string name="food_portion">Portion size</string>
 
     <string-array name="array_months">
         <item>January</item>
@@ -118,6 +142,12 @@
         <item>Bread</item>
         <item>Cheese</item>
         <item>Dairy and eggs</item>
+    </string-array>
+
+    <string-array name="array_food_sub">
+        <item>Health</item>
+        <item>Meal substitutes</item>
+        <item>Protein bars</item>
     </string-array>
 
     <string-array name="array_weekly_goals_kg">
