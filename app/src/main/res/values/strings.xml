@@ -92,6 +92,7 @@
     <string name="edit_food">Edit Food</string>
     <string name="delete_food">Delete Food</string>
     <string name="blank" />
+    <string name="logout">Logout</string>
 
     <string-array name="array_months">
         <item>January</item>

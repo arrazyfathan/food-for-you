@@ -110,33 +110,44 @@ public class SignUp extends AppCompatActivity {
         }
 
         //Date of Bird Month
-        Spinner spinnerDOBMonth = (Spinner) findViewById(R.id.spinnerDOBMonth);
+
+        Spinner spinnerDOBMonth = (Spinner)findViewById(R.id.spinnerDOBMonth);
         String stringDOBMonth = spinnerDOBMonth.getSelectedItem().toString();
-        if (stringDOBMonth.startsWith("January")){
-            stringDOBMonth = "01";
-        }else if (stringDOBMonth.startsWith("February")){
-            stringDOBMonth = "02";
-        }else if (stringDOBMonth.startsWith("March")){
-            stringDOBMonth = "03";
-        }else if (stringDOBMonth.startsWith("April")){
-            stringDOBMonth = "04";
-        }else if (stringDOBMonth.startsWith("May")){
-            stringDOBMonth = "05";
-        }else if (stringDOBMonth.startsWith("June")){
-            stringDOBMonth = "06";
-        }else if (stringDOBMonth.startsWith("July")){
-            stringDOBMonth = "07";
-        }else if (stringDOBMonth.startsWith("August")){
-            stringDOBMonth = "08";
-        }else if (stringDOBMonth.startsWith("September")){
-            stringDOBMonth = "09";
-        }else if (stringDOBMonth.startsWith("October")){
-            stringDOBMonth = "10";
-        }else if (stringDOBMonth.startsWith("November")){
-            stringDOBMonth = "11";
-        }else if (stringDOBMonth.startsWith("December")){
-            stringDOBMonth = "12";
+        int positionDOBMonth = spinnerDOBMonth.getSelectedItemPosition();
+        int month = positionDOBMonth+1;
+        if(month < 10){
+            stringDOBMonth = "0" + month;
         }
+        else{
+            stringDOBMonth = "" + month;
+        }
+//        Spinner spinnerDOBMonth = (Spinner) findViewById(R.id.spinnerDOBMonth);
+//        String stringDOBMonth = spinnerDOBMonth.getSelectedItem().toString();
+//        if (stringDOBMonth.startsWith("January")){
+//            stringDOBMonth = "01";
+//        }else if (stringDOBMonth.startsWith("February")){
+//            stringDOBMonth = "02";
+//        }else if (stringDOBMonth.startsWith("March")){
+//            stringDOBMonth = "03";
+//        }else if (stringDOBMonth.startsWith("April")){
+//            stringDOBMonth = "04";
+//        }else if (stringDOBMonth.startsWith("May")){
+//            stringDOBMonth = "05";
+//        }else if (stringDOBMonth.startsWith("June")){
+//            stringDOBMonth = "06";
+//        }else if (stringDOBMonth.startsWith("July")){
+//            stringDOBMonth = "07";
+//        }else if (stringDOBMonth.startsWith("August")){
+//            stringDOBMonth = "08";
+//        }else if (stringDOBMonth.startsWith("September")){
+//            stringDOBMonth = "09";
+//        }else if (stringDOBMonth.startsWith("October")){
+//            stringDOBMonth = "10";
+//        }else if (stringDOBMonth.startsWith("November")){
+//            stringDOBMonth = "11";
+//        }else if (stringDOBMonth.startsWith("December")){
+//            stringDOBMonth = "12";
+//        }
 
         //Date of Bird Year
         Spinner spinnerDOBYear = (Spinner)findViewById(R.id.spinnerDOBYear);
@@ -160,12 +171,13 @@ public class SignUp extends AppCompatActivity {
         int radioButtonID = radioGroupGender.getCheckedRadioButtonId();
         View radioButtonGender = radioGroupGender.findViewById(radioButtonID);
         int position = radioGroupGender.indexOfChild(radioButtonGender);
+
         String stringGender = "";
         if(position == 0){
-            stringGender = "Male";
-        }
+                stringGender = "male";
+            }
         else{
-            stringGender = "Female";
+            stringGender = "female";
         }
 
         //Mesurement Spinner
@@ -196,7 +208,6 @@ public class SignUp extends AppCompatActivity {
 
         //Activity Level
         Spinner spinnerActivityLevel = (Spinner) findViewById(R.id.spinnerActivityLevel);
-        String stringActivityLevel = spinnerActivityLevel.getSelectedItem().toString();
         int intActivityLevel = spinnerActivityLevel.getSelectedItemPosition();
         //  0: Little to no exercise
         // 1: Light exercise (1–3 days per week)
@@ -223,29 +234,23 @@ public class SignUp extends AppCompatActivity {
             int intActivityLevelSQL = db.quoteSmart(intActivityLevel);
             double weightKgSQL = db.quoteSmart(weightKg);
 
-            String stringInput = "NULL, " + stringEmailSQL + "," + dateOfBirthSQL + "," + stringGenderSQL + "," + heightCmSQL + "," + intActivityLevelSQL;
+            String stringInput = "NULL, " + stringEmailSQL + "," + dateOfBirthSQL + "," + stringGenderSQL + "," + heightCmSQL;
 
 
             // Input for user
             db.insert("users",
-                    "user_id, user_email, user_dob, user_gender, user_height, user_activity_level",
+                    "_id, user_email, user_dob, user_gender, user_height",
                     stringInput);
 
             // Input for gaols
             DateFormat dfl = new SimpleDateFormat("yyyy-MM-dd");
             String goalDate = dfl.format(Calendar.getInstance().getTime());
 
-//            Calendar calendar = Calendar.getInstance();
-//            int year = calendar.get(Calendar.YEAR);
-//            int month = calendar.get(Calendar.MONTH);
-//            int mDay = calendar.get(Calendar.DAY_OF_MONTH);
-//            String goalDate = year + "-" + month + "-" + mDay;
-
             String goalDateSQL = db.quoteSmart(goalDate);
 
-            stringInput = "NULL, " + weightKgSQL + "," + goalDateSQL;
+            stringInput = "NULL, " + weightKgSQL + "," + goalDateSQL + "," +intActivityLevelSQL;
             db.insert("goal",
-                    "goal_id, goal_current_weight, goal_date",
+                    "_id, goal_current_weight, goal_date,goal_activity_level",
                     stringInput);
 
             db.close();

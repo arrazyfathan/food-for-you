@@ -23,6 +23,24 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     private String[] placeGuide;
     private String[] mAuthor;
 
+    /*
+    food for you
+    Topik atau masalah yang ingin diselesaikankan pada aplikasi ini adalah permasalahan berat badan.
+    Mengapa aplikasi tersebut harus dibangun di Android ?
+    Karena pengguna android sangat banyak
+    Pengguna yang akan menggunakan aplikasi ini adalah masyarakat umum (Remaja, Orang tua dll)
+    Clientnya adalah ahli gizi
+    Inputnya
+        Data pengguna berupa : nama pengguna, email, berat bedan, tinggi badan, tingkat aktivitas,
+                               tanggal lahir, target berat badan.
+        Data makanan         : nama makanan,
+    Outputnya
+        Index BMI, kebutuhan kalori per hari dan  kategori makanan.
+    Fungsi-fungsi/fitur apa saja yang ada pada aplikasi tersebut
+        1. Fitur sistem pendukung dalam pemilihan makanan
+        2. Fitur perhitungan index BMI
+    */
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
