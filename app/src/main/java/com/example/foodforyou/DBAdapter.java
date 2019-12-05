@@ -13,7 +13,7 @@ public class DBAdapter {
 
     //* 01 Variables ---------------------------------------- */
     private static final String databaseName = "foodforyou";
-    private static final int databaseVersion = 70;
+    private static final int databaseVersion = 1;
 
     /* 02 Database variables ------------------------------- */
     private final Context context;
@@ -113,6 +113,7 @@ public class DBAdapter {
                         " category_id INTEGER," +
                         " category_name VARCHAR," +
                         " category_parent_id INT," +
+                        " category_icon VARCHAR," +
                         " category_note VARCHAR);");
 
             } catch (SQLException e) {
