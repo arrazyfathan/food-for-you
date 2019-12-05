@@ -5,27 +5,28 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 public class DBAdapter {
 
-    // variabel
+    //* 01 Variables ---------------------------------------- */
     private static final String databaseName = "foodforyou";
-    private static final int databaseVersion = 56;
+    private static final int databaseVersion = 70;
 
-    // Database variable
+    /* 02 Database variables ------------------------------- */
     private final Context context;
     private DatabaseHelper DBHelper;
     private SQLiteDatabase db;
 
-    //Class DBAdapter
+    /* 03 Class DbAdapter ---------------------------------- */
     public DBAdapter(Context ctx) {
         this.context = ctx;
         DBHelper = new DatabaseHelper(context);
     }
 
-    //Database Helper
+    /* 04 DatabaseHelper ------------------------------------ */
     private static class DatabaseHelper extends SQLiteOpenHelper {
         DatabaseHelper(Context context) {
             super(context, databaseName, null, databaseVersion);
@@ -74,7 +75,8 @@ public class DBAdapter {
 
             try {
                 db.execSQL("CREATE TABLE IF NOT EXISTS food_diary_cal_eaten(" +
-                        " cal_eaten_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                        " _id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                        " cal_eaten_id INTEGER , " +
                         " cal_eaten_date DATE," +
                         " cal_eaten_meal_no INT," +
                         " cal_eaten_energy INT," +
@@ -88,7 +90,8 @@ public class DBAdapter {
 
             try {
                 db.execSQL("CREATE TABLE IF NOT EXISTS food_diary( " +
-                        " fd_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                        " _id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                        " fd_id INTEGER , " +
                         " fd_date DATE, " +
                         " fs_meal_number INT, " +
                         " fd_food_id INT, " +
@@ -106,10 +109,11 @@ public class DBAdapter {
 
             try {
                 db.execSQL("CREATE TABLE IF NOT EXISTS categories (" +
-                        " category_id INTEGER PRIMARY KEY AUTOINCREMENT," +
-                        " category_name VARCHAR, " +
+                        " _id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                        " category_id INTEGER," +
+                        " category_name VARCHAR," +
                         " category_parent_id INT," +
-                        " category_notes VARCHAR);");
+                        " category_note VARCHAR);");
 
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -119,7 +123,8 @@ public class DBAdapter {
             try {
 
                 db.execSQL("CREATE TABLE IF NOT EXISTS food (" +
-                        " food_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                        " _id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                        " food_id INTEGER , " +
                         " food_name VARCHAR, " +
                         " food_serving_size DOUBLE, " +
                         " food_serving_mesurment VARCHAR, " +
@@ -151,12 +156,12 @@ public class DBAdapter {
 
         @Override
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-            db.execSQL("DROP TABLE IF EXISTS users");
             db.execSQL("DROP TABLE IF EXISTS goal");
+            db.execSQL("DROP TABLE IF EXISTS users");
             db.execSQL("DROP TABLE IF EXISTS food_diary_cal_eaten");
             db.execSQL("DROP TABLE IF EXISTS food_diary");
-            db.execSQL("DROP TABLE IF EXISTS fooddiary");
             db.execSQL("DROP TABLE IF EXISTS categories");
+            db.execSQL("DROP TABLE IF EXISTS food");
             onCreate(db);
 
             String TAG = "tag";
@@ -165,32 +170,33 @@ public class DBAdapter {
     }
 
 
-    // Open database
+    /* 05 Open database --------------------------------------------------------- */
     public DBAdapter open() throws SQLException {
         db = DBHelper.getWritableDatabase();
         return this;
     }
 
-    //Close Database
+    /* 06 Close database --------------------------------------------------------- */
     public void close() {
         DBHelper.close();
     }
 
-    //Quote Smart
-    public String quoteSmart(String value) {
-        //is Nmeric?
+    /* 07 Quote smart ------------------------------------------------------------ */
+    public String quoteSmart(String value){
+        // Is numeric?
         boolean isNumeric = false;
         try {
             double myDouble = Double.parseDouble(value);
             isNumeric = true;
-        } catch (NumberFormatException nfe) {
-            System.out.println("Cpould not parse " + nfe);
         }
-        if (isNumeric == false) {
-            //
+        catch(NumberFormatException nfe) {
+            System.out.println("Could not parse " + nfe);
+        }
+        if(isNumeric == false){
+            // Escapes special characters in a string for use in an SQL statement
             if (value != null && value.length() > 0) {
                 value = value.replace("\\", "\\\\");
-                value = value.replace("'", "\\");
+                value = value.replace("'", "\\'");
                 value = value.replace("\0", "\\0");
                 value = value.replace("\n", "\\n");
                 value = value.replace("\r", "\\r");
@@ -198,68 +204,58 @@ public class DBAdapter {
                 value = value.replace("\\x1a", "\\Z");
             }
         }
+
         value = "'" + value + "'";
+
         return value;
     }
-
     public double quoteSmart(double value) {
         return value;
     }
-
     public int quoteSmart(int value) {
         return value;
     }
 
     //Insert Data
-    public void insert(String table, String fields, String values) {
-        db.execSQL("INSERT INTO " + table + "(" + fields + ") VALUES (" + values + ")");
+    public void insert(String table, String fields, String values){
+
+        try {
+            db.execSQL("INSERT INTO " + table +  "(" + fields + ") VALUES (" + values + ")");
+        }
+        catch(SQLiteException e){
+            System.out.println("Insert error: " + e.toString());
+        }
     }
 
     //Count data in table
-    public int count(String table) {
-        Cursor mCount = db.rawQuery("SELECT COUNT(*) FROM " + table + "", null);
-        mCount.moveToFirst();
-        int count = mCount.getInt(0);
-        mCount.close();
-        return count;
-    }
-
-    //Select
-    public Cursor selectPrimaryKey(String table, String primaryKey, long rowId, String[] fields) throws SQLException {
-
-
-        Cursor mCursor = db.query(table, fields, primaryKey + "=" + rowId, null, null, null, null, null);
-        if (mCursor != null) {
-            mCursor.moveToFirst();
-
+    public int count(String table)
+    {
+        try {
+            Cursor mCount = db.rawQuery("SELECT COUNT(*) FROM " + table + "", null);
+            mCount.moveToFirst();
+            int count = mCount.getInt(0);
+            mCount.close();
+            return count;
         }
-        return mCursor;
+        catch(SQLiteException e){
+            return -1;
+        }
+
     }
-
-    //Update
-    public boolean update(String table, String primaryKey, long rowId, String field, String value) {
-        value = value.substring(1, value.length() - 1);
-
-        ContentValues args = new ContentValues();
-        args.put(field, value);
-        return db.update(table, args, primaryKey + "=" + rowId, null) > 0;
-    }
-
-    public boolean update(String table, String primaryKey, long rowId, String field, double value) {
-        ContentValues args = new ContentValues();
-        args.put(field, value);
-        return db.update(table, args, primaryKey + "=" + rowId, null) > 0;
-    }
-
-    public boolean update(String table, String primaryKey, long rowId, String field, int value) {
-        ContentValues args = new ContentValues();
-        args.put(field, value);
-        return db.update(table, args, primaryKey + "=" + rowId, null) > 0;
-    }
-
 
     //Select
-    public Cursor select(String table, String[] fields) throws SQLException {
+//    public Cursor selectPrimaryKey(String table, String primaryKey, long rowId, String[] fields) throws SQLException {
+//
+//
+//        Cursor mCursor = db.query(table, fields, primaryKey + "=" + rowId, null, null, null, null, null);
+//        if (mCursor != null) {
+//            mCursor.moveToFirst();
+//
+//        }
+//        return mCursor;
+//    }
+    public Cursor select(String table, String[] fields) throws SQLException
+    {
         Cursor mCursor = db.query(table, fields, null, null, null, null, null, null);
         if (mCursor != null) {
             mCursor.moveToFirst();
@@ -268,29 +264,9 @@ public class DBAdapter {
     }
 
     // Select All where (String)
-    public Cursor select(String table, String[] fields, String whereClause, String whereCondition) throws SQLException {
+    public Cursor select(String table, String[] fields, String whereClause, String whereCondition) throws SQLException
+    {
         Cursor mCursor = db.query(table, fields, whereClause + "=" + whereCondition, null, null, null, null, null);
-        if (mCursor != null) {
-            mCursor.moveToFirst();
-        }
-        return mCursor;
-    }
-
-    // Select All where (String)
-    public Cursor select(String table, String[] fields, String[] whereClause, String[] whereCondition, String[] whereAndOr) throws SQLException {
-
-        String where = "";
-        int arraySize = whereClause.length;
-        for (int x = 0; x < arraySize; x++) {
-            if (where.equals("")) {
-                where = whereClause[x] + "=" + whereCondition[x];
-            } else {
-                where = where + " " + whereAndOr[x - 1] + " " + whereClause[x] + "=" + whereCondition[x];
-            }
-        }
-        //Toast.makeText(context, where, Toast.LENGTH_SHORT).show();
-
-        Cursor mCursor = db.query(table, fields, where, null, null, null, null, null);
         if (mCursor != null) {
             mCursor.moveToFirst();
         }
@@ -306,21 +282,24 @@ public class DBAdapter {
         return mCursor;
     }
 
-    // Select with order
-    public Cursor select(String table, String[] fields, String whereClause, String whereCondition, String orderBy, String OrderMethod) throws SQLException
-    {
-        Cursor mCursor = null;
-        if(whereClause.equals("")) {
-            // We dont want to se where
-            mCursor = db.query(table, fields, null, null, null, null, orderBy + " " + OrderMethod, null);
-        }
-        else {
-            mCursor = db.query(table, fields, whereClause + "=" + whereCondition, null, null, null, orderBy + " " + OrderMethod, null);
-        }
-        if (mCursor != null) {
-            mCursor.moveToFirst();
-        }
-        return mCursor;
+    //Update
+    public boolean update(String table, String primaryKey, long rowId, String field, String value) {
+        value = value.substring(1, value.length()-1); // removes ' after running quote smart
+        ContentValues args = new ContentValues();
+        args.put(field, value);
+        return db.update(table, args, primaryKey + "=" + rowId, null) > 0;
+    }
+
+    public boolean update(String table, String primaryKey, long rowId, String field, double value) {
+        ContentValues args = new ContentValues();
+        args.put(field, value);
+        return db.update(table, args, primaryKey + "=" + rowId, null) > 0;
+    }
+
+    public boolean update(String table, String primaryKey, long rowId, String field, int value) {
+        ContentValues args = new ContentValues();
+        args.put(field, value);
+        return db.update(table, args, primaryKey + "=" + rowId, null) > 0;
     }
 
 }

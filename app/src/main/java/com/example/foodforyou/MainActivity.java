@@ -5,8 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.facebook.stetho.Stetho;
@@ -15,7 +18,9 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import okhttp3.OkHttpClient;
 
-public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity
+        implements BottomNavigationView.OnNavigationItemSelectedListener,
+        CategoriesFragment.OnFragmentInteractionListener{
 
     private String[] mTitleText;
     private String[] mInfoText;
@@ -58,16 +63,17 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         //Count rows in food
         int numberRows = db.count("food");
+
         if (numberRows < 1) {
             DBSetupInsert setupInsert = new DBSetupInsert(this);
+            setupInsert.insertAllCategories();
             setupInsert.insertAllFood();
-            setupInsert.insertAllCaegories();
+
         }
 
         //Check user login
         numberRows = db.count("users");
         if (numberRows <1 ){
-            Toast.makeText(this,"Anda belum login", Toast.LENGTH_LONG).show();
             Intent i = new Intent(MainActivity.this, SignUp.class);
             startActivity(i);
         }
@@ -123,5 +129,14 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         getSupportActionBar().setTitle(title);
     }
 
+
+    public void toCategoryFood(View view) {
+       loadFragment(new CategoriesFragment());
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
+    }
 }
 

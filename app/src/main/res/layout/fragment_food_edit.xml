@@ -1,0 +1,582 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fitsSystemWindows="true">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginRight="24dp"
+        android:layout_marginLeft="24dp">
+
+
+
+        <!-- General Table -->
+        <TextView
+            android:id="@+id/textViewEditGeneral"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:text="@string/general"
+            android:textSize="18sp"
+            android:fontFamily="@font/arialbold"
+            android:textColor="@color/titleColor"/>
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <!-- Headline -->
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:id="@+id/textViewViewFoodName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:hint="@string/name"
+                android:textColorHint="@color/captionColor">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextEditFoodName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/arialregular"
+                    android:textSize="14sp"
+                    android:ems="10"/>
+            </com.google.android.material.textfield.TextInputLayout>
+            <!-- //Headline -->
+
+            <!-- Manufactor -->
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:id="@+id/textViewViewFoodManufactor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:hint="@string/manufactor"
+                android:textColorHint="@color/captionColor">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextEditFoodManufactor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/arialregular"
+                    android:textSize="14sp"
+                    android:ems="10"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- //Manufactor -->
+
+            <!-- Description -->
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:id="@+id/textViewViewFoodDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:hint="@string/description"
+                android:textColorHint="@color/captionColor">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextEditFoodDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/arialregular"
+                    android:textSize="14sp"
+                    android:ems="10"/>
+            </com.google.android.material.textfield.TextInputLayout>
+            <!-- //Description -->
+
+            <!-- Barcode -->
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:id="@+id/textViewEditFoodBarcode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:hint="@string/barcode"
+                android:textColorHint="@color/captionColor">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextEditFoodBarcode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/arialregular"
+                    android:textSize="14sp"
+                    android:ems="10"
+                    android:inputType="numberSigned"/>
+            </com.google.android.material.textfield.TextInputLayout>
+            <!-- //Barcode -->
+
+        </TableLayout>
+        <!-- //General Table -->
+
+
+        <!-- Category Table -->
+        <TextView
+            android:id="@+id/textViewEditCategory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:text="@string/category"
+            android:textSize="18sp"
+            android:fontFamily="@font/arialbold"
+            android:textColor="@color/titleColor"/>
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <!-- Main category -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textViewEditFoodMain"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/arialregular"
+                    android:text="@string/main"
+                    android:textSize="16sp" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginRight="3dp"
+                    android:background="@drawable/spinner_bg"
+                    android:orientation="horizontal">
+
+                    <Spinner
+                        android:id="@+id/spinnerEditFoodCategoryMain"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="5dp"
+                        android:background="@android:color/transparent"
+                        android:entries="@array/array_categories_parent"
+                        android:fontFamily="@font/arialregular"
+                        android:gravity="center"
+                        android:spinnerMode="dropdown"
+                        android:textSize="14sp" />
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="center"
+                        android:src="@drawable/drop" />
+
+                </RelativeLayout>
+            </LinearLayout>
+
+            <!-- //Main Category -->
+
+            <!-- Sub category -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textViewEditFoodSub"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/arialregular"
+                    android:text="@string/sub"
+                    android:textSize="16sp" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginRight="3dp"
+                    android:background="@drawable/spinner_bg"
+                    android:orientation="horizontal">
+
+                    <Spinner
+                        android:id="@+id/spinnerEditFoodCategorySub"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="5dp"
+                        android:background="@android:color/transparent"
+                        android:entries="@array/array_food_sub"
+                        android:fontFamily="@font/arialregular"
+                        android:gravity="center"
+                        android:spinnerMode="dropdown"
+                        android:textSize="14sp" />
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="center"
+                        android:src="@drawable/drop" />
+
+                </RelativeLayout>
+            </LinearLayout>
+
+            <!-- //Sub Category -->
+
+        </TableLayout>
+        <!-- //General Table -->
+
+
+        <!-- Serving Table -->
+        <TextView
+            android:id="@+id/textViewEditServing"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:text="@string/serving"
+            android:textSize="18sp"
+            android:fontFamily="@font/arialbold"
+            android:textColor="@color/titleColor"/>
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textViewViewFoodWord"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/arialregular"
+                android:text="@string/word"
+                android:textSize="16sp" />
+
+            <!-- Size and Mesurment -->
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:id="@+id/textViewEditFoodNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:hint="@string/food_number"
+                    android:textColorHint="@color/captionColor">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editTextEditFoodNumber"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/arialregular"
+                        android:textSize="14sp"
+                        android:ems="5"
+                        android:inputType="numberDecimal"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:id="@+id/textViewEditFoodWord"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="10dp"
+                    android:hint="@string/food_word"
+                    android:textColorHint="@color/captionColor">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editTextEditFoodWord"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/arialregular"
+                        android:textSize="14sp"
+                        android:ems="6"
+                        android:inputType="text"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </TableRow>
+            </LinearLayout>
+            <!-- //Size and Mesurment -->
+
+
+            <!-- Number and Word -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textViewViewFoodMesurment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/arialregular"
+                    android:text="@string/mesurment"
+                    android:textSize="16sp" />
+
+                <!-- Size and Mesurment -->
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:id="@+id/textViewEditFoodSize"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:hint="@string/food_size"
+                        android:textColorHint="@color/captionColor">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/editTextEditFoodSize"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/arialregular"
+                            android:textSize="14sp"
+                            android:ems="5"
+                            android:inputType="numberDecimal"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:id="@+id/textViewEditFoodMesurement"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginStart="10sp"
+                        android:hint="@string/food_mesurment"
+                        android:textColorHint="@color/captionColor">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/editTextEditFoodMesurment"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/arialregular"
+                            android:textSize="14sp"
+                            android:ems="6"
+                            android:inputType="text"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </TableRow>
+            </LinearLayout>
+            <!-- //Number and Word -->
+
+        </TableLayout>
+        <!-- //Serving Table -->
+
+
+
+        <!-- Calories table -->
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp">
+            <TextView
+                android:id="@+id/textViewViewFoodCaloriesTable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/calories_table"
+                android:textSize="18sp"
+                android:fontFamily="@font/arialbold"
+                android:textColor="@color/titleColor"/>
+            <TextView
+                android:id="@+id/textViewViewFoodBlankPerHundred"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:text="@string/per_hundred_gran" />
+        </TableRow>
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp">
+
+
+                <TextView
+                    android:id="@+id/textViewViewFoodEnergy"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="6dp"
+                    android:text="@string/energy"
+                    android:fontFamily="@font/arialbold"
+                    android:gravity="center"/>
+                <TextView
+                    android:id="@+id/textViewViewFoodProteins"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="6dp"
+                    android:text="@string/proteins"
+                    android:fontFamily="@font/arialbold"
+                    android:gravity="center"/>
+                <TextView
+                    android:id="@+id/textViewViewFoodCarbs"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="6dp"
+                    android:text="@string/carbs"
+                    android:fontFamily="@font/arialbold"
+                    android:gravity="center"/>
+                <TextView
+                    android:id="@+id/textViewViewFoodFat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="6dp"
+                    android:text="@string/fat"
+                    android:fontFamily="@font/arialbold"
+                    android:gravity="center"/>
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp">
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:id="@+id/textViewEditFoodEnergyPerHundred"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="6dp"
+                    android:hint="@string/food_energy"
+                    android:textColorHint="@color/captionColor">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editTextEditFoodEnergyPerHundred"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/arialregular"
+                        android:textSize="14sp"
+                        android:ems="4"
+                        android:inputType="numberDecimal"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!--<EditText
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="6dp"
+                    android:inputType="numberDecimal"/>-->
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:id="@+id/textViewEditFoodProteinsPerHundred"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="6dp"
+                    android:hint="@string/food_protein"
+                    android:textColorHint="@color/captionColor">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editTextEditFoodProteinsPerHundred"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/arialregular"
+                        android:textSize="14sp"
+                        android:ems="4"
+                        android:inputType="numberDecimal"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!--<EditText
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="6dp"
+                    android:inputType="numberDecimal" />-->
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:id="@+id/textViewEditFoodCarbsPerHundred"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="6dp"
+                    android:hint="@string/food_carbs"
+                    android:textColorHint="@color/captionColor">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editTextEditFoodCarbsPerHundred"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/arialregular"
+                        android:textSize="14sp"
+                        android:ems="4"
+                        android:inputType="numberDecimal"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:id="@+id/textViewEditFoodFatPerHundred"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="6dp"
+                    android:hint="@string/food_fat"
+                    android:textColorHint="@color/captionColor">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editTextEditFoodFatPerHundred"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/arialregular"
+                        android:textSize="14sp"
+                        android:ems="4"
+                        android:inputType="numberDecimal"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </TableRow>
+
+        </TableLayout>
+        <!-- //Calories table -->
+
+
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="25dp"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/blank"
+                android:layout_marginTop="12dp" />
+
+            <Button
+                android:id="@+id/buttonEditFood"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:text="@string/save"
+                android:background="@drawable/button_style"
+                android:gravity="center"
+                android:textColor="@color/colorWhite"
+                android:fontFamily="@font/arialmedium"
+                android:textAllCaps="false"/>
+
+
+        </TableRow>
+
+
+    </LinearLayout>
+</ScrollView>
