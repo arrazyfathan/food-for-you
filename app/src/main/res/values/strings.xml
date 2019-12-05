@@ -22,9 +22,41 @@
     <string name="level_activity_label">Level Activity :</string>
     <string name="are_you_sure_you_want_to_delete">Are you sure you want to delete?</string>
 
-    //food delete
+    //food delete add
     <string name="cancel">Cancel</string>
     <string name="delete">Delete</string>
+    <string name="save">Save</string>
+    <string name="parent">Parent</string>
+
+    //home edit delete select
+    <string name="portion_size">Portion size</string>
+    <string name="pcs">pcs</string>
+    <string name="unlink">Unlink</string>
+    <string name="gram">gram</string>
+    <string name="edit">Edit</string>
+    <string name="select_meal">Select meal</string>
+    <string name="breakfast">Breakfast</string>
+    <string name="lunch">Lunch</string>
+    <string name="before_training">Before training</string>
+    <string name="after_training">After training</string>
+    <string name="dinner">Dinner</string>
+    <string name="snacks">Snacks</string>
+    <string name="supper">Supper</string>
+
+    //goal edit
+    <string name="status">Status</string>
+    <string name="weight">Weight</string>
+    <string name="target_weight">Target weight</string>
+    <string name="kg">kg</string>
+    <string name="i_want_to">I want to</string>
+    <string name="weekly_goal">Weekly goal </string>
+    <string name="kg_each_week">(kg each week)</string>
+    <string name="activity_level">Activity level</string>
+    <string name="numbers">Numbers</string>
+    <string name="if_you_want_to_loose_weight">If you want to loose weight</string>
+    <string name="if_you_want_to_keep_your_weight">If you want to keep your weight</string>
+    <string name="with_activity_">With activity</string>
+    <string name="without_activity">Without activity</string>
 
     //food view
     <string name="name">Name</string>
@@ -79,6 +111,12 @@
     <string-array name="array_weekly_goals">
         <item>Loose weight</item>
         <item>Gain weight</item>
+    </string-array>
+
+    <string-array name="array_categories_parent">
+        <item>Bread</item>
+        <item>Cheese</item>
+        <item>Dairy and eggs</item>
     </string-array>
 
     <string-array name="array_weekly_goals_kg">
