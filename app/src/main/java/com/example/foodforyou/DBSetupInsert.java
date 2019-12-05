@@ -14,16 +14,7 @@ public class DBSetupInsert {
     }
 
     // Setup insert to food ----------------------------------------------------------------------
-    public void setupInsertToFood(String values) {
 
-        DBAdapter db = new DBAdapter(context);
-        db.open();
-        db.insert("food",
-                "_id, food_name, food_serving_size, food_serving_mesurment, food_serving_name_number, food_energy_calculated, food_proteins_calculated, food_carbohydrates_calculated, food_fat_calculated, food_user_id, food_category_id, food_notes",
-                values);
-
-        db.close();
-    }
 
 
     // Setup insert to categories --------------------------------------------------------------------
@@ -39,14 +30,6 @@ public class DBSetupInsert {
         catch (SQLiteException e){
             // Toast.makeText(context, "Error; Could not insert categories.", Toast.LENGTH_SHORT).show();
         }
-    }
-
-
-    //Insert all food into food table
-    public void insertAllFood(){
-        setupInsertToFood("NULL, 'Ayam Goreng', '100', 'gram', '1', '260', '21.93', '10.76', '14.55', 'NULL', 'NULL', 'NULL'");
-        setupInsertToFood("NULL, 'Ayam Godog', '100', 'gram', '1', '260', '21.93', '10.76', '14.55', 'NULL', 'NULL', 'NULL'");
-
     }
 
     //Insert all categories into categories table
@@ -116,4 +99,29 @@ public class DBSetupInsert {
         setupInsertToCategories("NULL, 'Potato chips', '41', NULL");
 
     }
+
+
+
+    public void setupInsertToFood(String values) {
+        try {
+            DBAdapter db = new DBAdapter(context);
+            db.open();
+            db.insert("food",
+                    "_id, food_name, food_serving_size, food_serving_mesurment, food_serving_name_number, food_energy_calculated, food_proteins_calculated, food_carbohydrates_calculated, food_fat_calculated, food_user_id, food_category_id, food_notes",
+                    values);
+
+            db.close();
+
+        }catch (SQLiteException e){
+        }
+    }
+
+    //Insert all food into food table
+    public void insertAllFood(){
+        setupInsertToFood("NULL, 'Ayam Goreng', '100', 'gram', '1', '260', '21.93', '10.76', '14.55', 'NULL', 'NULL', 'NULL'");
+        setupInsertToFood("NULL, 'Ayam Godog', '100', 'gram', '1', '260', '21.93', '10.76', '14.55', 'NULL', 'NULL', 'NULL'");
+
+    }
+
+
 }

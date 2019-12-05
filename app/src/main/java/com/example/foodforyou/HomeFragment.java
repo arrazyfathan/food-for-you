@@ -40,7 +40,6 @@ public class HomeFragment extends Fragment {
     public void onActivityCreated(Bundle saveInstanceState) {
         super.onActivityCreated(saveInstanceState);
 
-        initalizeHome();
 
 
     }
@@ -54,41 +53,6 @@ public class HomeFragment extends Fragment {
         ((MainActivity) getActivity()).setActionBarTitle("Home");
     }
 
-    private void initalizeHome(){
-        getGoal();
-    }
 
 
-    public void getGoal(){
-        /* Database */
-        DBAdapter db = new DBAdapter(getActivity());
-        db.open();
-
-        int numberRows = db.count("users");
-        if (numberRows <1 ){
-            Intent i = new Intent(getActivity(), SignUp.class);
-            startActivity(i);
-        }
-
-        String fieldsGoal[] = new String[]{
-                "_id",
-                "goal_energy_with_activity_and_diet",
-                "goal_bmi"
-        };
-        Cursor cursorGoal = db.select("goal", fieldsGoal);
-        cursorGoal.moveToLast();
-        String stringGoalEnergyWithActivityAndDiet = cursorGoal.getString(1);
-        String stringBmi = cursorGoal.getString(2);
-
-        // TextView goal
-        TextView textViewBodyGoalWithActivity = (TextView) getActivity().findViewById(R.id.jumlah_kalori);
-        textViewBodyGoalWithActivity.setText(stringGoalEnergyWithActivityAndDiet);
-
-        //TextView bmi
-        TextView textViewBmi = (TextView) getActivity().findViewById(R.id.bmi);
-        textViewBmi.setText(stringBmi);
-
-
-        db.close();
-    }
 }

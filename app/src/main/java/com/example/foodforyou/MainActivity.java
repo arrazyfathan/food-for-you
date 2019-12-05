@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,7 +18,9 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import okhttp3.OkHttpClient;
 
-public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity
+        implements BottomNavigationView.OnNavigationItemSelectedListener,
+        CategoriesFragment.OnFragmentInteractionListener{
 
     private String[] mTitleText;
     private String[] mInfoText;
@@ -60,10 +63,12 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         //Count rows in food
         int numberRows = db.count("food");
+
         if (numberRows < 1) {
             DBSetupInsert setupInsert = new DBSetupInsert(this);
-            setupInsert.insertAllFood();
             setupInsert.insertAllCategories();
+            setupInsert.insertAllFood();
+
         }
 
         //Check user login
@@ -127,6 +132,11 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
     public void toCategoryFood(View view) {
        loadFragment(new CategoriesFragment());
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
     }
 }
 
