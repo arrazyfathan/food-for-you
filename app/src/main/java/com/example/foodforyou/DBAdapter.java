@@ -1,5 +1,6 @@
 package com.example.foodforyou;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
@@ -11,7 +12,7 @@ public class DBAdapter {
 
     // variabel
     private static final String databaseName = "foodforyou";
-    private static final int databaseVersion = 32;
+    private static final int databaseVersion = 56;
 
     // Database variable
     private final Context context;
@@ -34,11 +35,20 @@ public class DBAdapter {
 
             try {
                 db.execSQL("CREATE TABLE IF NOT EXISTS goal (" +
-                        " goal_id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                        " _id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                        " goal_id INT," +
                         " goal_current_weight INT," +
                         " goal_target_weight INT," +
+                        " goal_i_want_to INT," +
                         " goal_weekly_goal VARCHAR," +
-                        " goal_date DATE);");
+                        " goal_activity_level INT, " +
+                        " goal_date DATE," +
+                        " goal_energy_bmr INT," +
+                        " goal_energy_diet INT," +
+                        " goal_energy_with_activity INT," +
+                        " goal_energy_with_activity_and_diet INT, " +
+                        " goal_bmi INT, " +
+                        " goal_notes VARCHAR);");
 
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -47,15 +57,14 @@ public class DBAdapter {
 
             try {
                 db.execSQL("CREATE TABLE IF NOT EXISTS users(" +
-                        " user_id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                        " _id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                        " user_id INTEGER," +
                         " user_email VARCHAR," +
                         " user_passsword VARCHAR," +
                         " user_salt VARCHAR," +
                         " user_dob DATE," +
                         " user_gender INT," +
-                        " user_locationn VARCHAR," +
                         " user_height INT," +
-                        " user_activity_level INT," +
                         " user_last_seen TIME," +
                         " user_note VARCHAR);");
             } catch (SQLException e) {
@@ -142,7 +151,7 @@ public class DBAdapter {
 
         @Override
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+            db.execSQL("DROP TABLE IF EXISTS users");
             db.execSQL("DROP TABLE IF EXISTS goal");
             db.execSQL("DROP TABLE IF EXISTS food_diary_cal_eaten");
             db.execSQL("DROP TABLE IF EXISTS food_diary");
@@ -215,5 +224,103 @@ public class DBAdapter {
         return count;
     }
 
+    //Select
+    public Cursor selectPrimaryKey(String table, String primaryKey, long rowId, String[] fields) throws SQLException {
+
+
+        Cursor mCursor = db.query(table, fields, primaryKey + "=" + rowId, null, null, null, null, null);
+        if (mCursor != null) {
+            mCursor.moveToFirst();
+
+        }
+        return mCursor;
+    }
+
+    //Update
+    public boolean update(String table, String primaryKey, long rowId, String field, String value) {
+        value = value.substring(1, value.length() - 1);
+
+        ContentValues args = new ContentValues();
+        args.put(field, value);
+        return db.update(table, args, primaryKey + "=" + rowId, null) > 0;
+    }
+
+    public boolean update(String table, String primaryKey, long rowId, String field, double value) {
+        ContentValues args = new ContentValues();
+        args.put(field, value);
+        return db.update(table, args, primaryKey + "=" + rowId, null) > 0;
+    }
+
+    public boolean update(String table, String primaryKey, long rowId, String field, int value) {
+        ContentValues args = new ContentValues();
+        args.put(field, value);
+        return db.update(table, args, primaryKey + "=" + rowId, null) > 0;
+    }
+
+
+    //Select
+    public Cursor select(String table, String[] fields) throws SQLException {
+        Cursor mCursor = db.query(table, fields, null, null, null, null, null, null);
+        if (mCursor != null) {
+            mCursor.moveToFirst();
+        }
+        return mCursor;
+    }
+
+    // Select All where (String)
+    public Cursor select(String table, String[] fields, String whereClause, String whereCondition) throws SQLException {
+        Cursor mCursor = db.query(table, fields, whereClause + "=" + whereCondition, null, null, null, null, null);
+        if (mCursor != null) {
+            mCursor.moveToFirst();
+        }
+        return mCursor;
+    }
+
+    // Select All where (String)
+    public Cursor select(String table, String[] fields, String[] whereClause, String[] whereCondition, String[] whereAndOr) throws SQLException {
+
+        String where = "";
+        int arraySize = whereClause.length;
+        for (int x = 0; x < arraySize; x++) {
+            if (where.equals("")) {
+                where = whereClause[x] + "=" + whereCondition[x];
+            } else {
+                where = where + " " + whereAndOr[x - 1] + " " + whereClause[x] + "=" + whereCondition[x];
+            }
+        }
+        //Toast.makeText(context, where, Toast.LENGTH_SHORT).show();
+
+        Cursor mCursor = db.query(table, fields, where, null, null, null, null, null);
+        if (mCursor != null) {
+            mCursor.moveToFirst();
+        }
+        return mCursor;
+    }
+
+    // Select All where (Long)
+    public Cursor select(String table, String[] fields, String whereClause, long whereCondition) throws SQLException {
+        Cursor mCursor = db.query(table, fields, whereClause + "=" + whereCondition, null, null, null, null, null);
+        if (mCursor != null) {
+            mCursor.moveToFirst();
+        }
+        return mCursor;
+    }
+
+    // Select with order
+    public Cursor select(String table, String[] fields, String whereClause, String whereCondition, String orderBy, String OrderMethod) throws SQLException
+    {
+        Cursor mCursor = null;
+        if(whereClause.equals("")) {
+            // We dont want to se where
+            mCursor = db.query(table, fields, null, null, null, null, orderBy + " " + OrderMethod, null);
+        }
+        else {
+            mCursor = db.query(table, fields, whereClause + "=" + whereCondition, null, null, null, orderBy + " " + OrderMethod, null);
+        }
+        if (mCursor != null) {
+            mCursor.moveToFirst();
+        }
+        return mCursor;
+    }
 
 }
