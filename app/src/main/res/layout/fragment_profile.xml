@@ -4,125 +4,136 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfileFragment"
     android:background="@color/grey_color"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".ProfileFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="340dp">
+        android:layout_height="300dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="290dp"
-            android:orientation="vertical"
-            android:background="@color/colorPrimaryDark">
+            android:layout_height="250dp"
+            android:background="@color/colorPrimaryDark"
+            android:orientation="vertical">
+
             <ImageView
-                android:layout_marginTop="45dp"
-                android:layout_gravity="center_horizontal"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
-                android:src="@drawable/ic_action_user"
-                android:tint="@color/colorWhite"/>
-            <TextView
-                android:layout_marginTop="10dp"
                 android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/ic_action_user"
+                android:tint="@color/colorWhite" />
+
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
                 android:text="Dio Agus Nofrizal"
                 android:textColor="@color/colorWhite"
-                android:textStyle="bold"
-                android:textSize="20sp"/>
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
             <TextView
-                android:layout_marginTop="8dp"
-                android:layout_gravity="center_horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="8dp"
                 android:text="35 Juli 1999"
                 android:textColor="@color/colorWhite"
-                android:textStyle="bold"
-                android:textSize="12sp"/>
+                android:textSize="12sp"
+                android:textStyle="bold" />
         </LinearLayout>
+
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="250dp"
             android:layout_marginStart="16dp"
+            android:layout_marginTop="210dp"
             android:layout_marginEnd="16dp"
             android:background="@drawable/bg_shapeprofil">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
                 android:weightSum="3">
+
                 <LinearLayout
-                    android:gravity="center"
-                    android:orientation="vertical"
                     android:layout_width="0dp"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:layout_height="match_parent">
+                    android:gravity="center"
+                    android:orientation="vertical">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Kalori"
-                        android:textSize="14sp"
                         android:textColor="@color/titleColor"
-                        />
+                        android:textSize="14sp" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="1500"
-                        android:textStyle="bold"
-                        android:textSize="20sp"
                         android:paddingTop="3dp"
-                        android:textColor="@color/orange_color"/>
+                        android:text="1500"
+                        android:textColor="@color/orange_color"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
 
                 </LinearLayout>
+
                 <LinearLayout
-                    android:gravity="center"
-                    android:orientation="vertical"
                     android:layout_width="0dp"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:layout_height="match_parent">
+                    android:gravity="center"
+                    android:orientation="vertical">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Dikomsumsi"
-                        android:textSize="14sp"
                         android:textColor="@color/titleColor"
-                        />
+                        android:textSize="14sp" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="300"
-                        android:textStyle="bold"
-                        android:textSize="20sp"
                         android:paddingTop="3dp"
-                        android:textColor="@color/orange_color"/>
+                        android:text="300"
+                        android:textColor="@color/orange_color"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
 
                 </LinearLayout>
+
                 <LinearLayout
-                    android:gravity="center"
-                    android:orientation="vertical"
                     android:layout_width="0dp"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:layout_height="match_parent">
+                    android:gravity="center"
+                    android:orientation="vertical">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Index BMI"
-                        android:textSize="14sp"
                         android:textColor="@color/titleColor"
-                        />
+                        android:textSize="14sp" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="32"
-                        android:textStyle="bold"
-                        android:textSize="20sp"
                         android:paddingTop="3dp"
-                        android:textColor="@color/orange_color"/>
+                        android:text="32"
+                        android:textColor="@color/orange_color"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
 
                 </LinearLayout>
             </LinearLayout>
@@ -131,88 +142,138 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="135dp"
-        android:orientation="vertical"
+        android:layout_height="170dp"
         android:layout_gravity="center"
-        android:background="@color/colorWhite">
+        android:background="@color/colorWhite"
+        android:orientation="vertical">
+
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="22dp"
             android:layout_marginTop="15dp"
-            android:layout_marginEnd="22dp">
+            android:layout_marginEnd="22dp"
+            android:orientation="horizontal">
+
             <ImageView
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:src="@drawable/ic_action_email"/>
-            <TextView
-                android:textStyle="bold"
                 android:layout_gravity="center_vertical"
-                android:layout_width="wrap_content"
+                android:src="@drawable/ic_action_email" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingLeft="20dp"
-                android:text="dio@gmail.com"
-                android:textColor="@color/titleColor"
-                android:textSize="14sp"
-                />
+                android:layout_gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:paddingLeft="20dp"
+                    android:text="Email"
+                    android:textColor="@color/titleColor"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="20dp"
+                    android:text="dio@gmail.com"
+                    android:textColor="@color/titleColor"
+                    android:textSize="12sp" />
+            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_marginStart="22dp"
             android:layout_marginTop="15dp"
-            android:layout_marginEnd="22dp">
+            android:layout_marginEnd="22dp"
+            android:orientation="horizontal">
 
             <ImageView
                 android:layout_width="25dp"
                 android:layout_height="25dp"
+                android:layout_gravity="center_vertical"
                 android:src="@drawable/ic_gender" />
 
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:paddingLeft="20dp"
-                android:text="Male"
-                android:textColor="@color/titleColor"
-                android:textSize="14sp"
-                android:textStyle="bold" />
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:paddingLeft="20dp"
+                    android:text="Gender"
+                    android:textColor="@color/titleColor"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="20dp"
+                    android:text="Male"
+                    android:textColor="@color/titleColor"
+                    android:textSize="12sp" />
+            </LinearLayout>
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_marginStart="22dp"
             android:layout_marginTop="15dp"
-            android:layout_marginEnd="22dp">
+            android:layout_marginEnd="22dp"
+            android:orientation="horizontal">
 
             <ImageView
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:src="@drawable/ic_target" />
+                android:src="@drawable/ic_target"
+                android:layout_gravity="center_vertical"/>
 
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:paddingLeft="20dp"
-                android:text="80 Kg"
-                android:textColor="@color/titleColor"
-                android:textSize="14sp"
-                android:textStyle="bold" />
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:paddingLeft="20dp"
+                    android:text="Target"
+                    android:textColor="@color/titleColor"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="20dp"
+                    android:text="Your target weight is 80 kg"
+                    android:textColor="@color/titleColor"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
         </LinearLayout>
-
     </LinearLayout>
-
-    <Button
-        android:textColor="#fff"
-        android:background="@drawable/button_style"
-        android:layout_marginTop="15dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Tips"/>
-</LinearLayout>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/button_style"
+            android:text="Tips"
+            android:textColor="#fff" />
+    </LinearLayout>
