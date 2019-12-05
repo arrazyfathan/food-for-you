@@ -171,6 +171,7 @@
                     android:orientation="vertical">
 
                     <ImageView
+                        android:id="@+id/foodCategory"
                         android:layout_width="110dp"
                         android:layout_height="140dp"
                         android:layout_marginStart="8dp"
@@ -180,7 +181,8 @@
                         android:focusable="true"
                         android:foreground="?android:attr/selectableItemBackground"
                         android:src="@drawable/foods_img"
-                        android:scaleType="fitXY"/>
+                        android:scaleType="fitXY"
+                        android:onClick="toCategoryFood"/>
 
                 </LinearLayout>
 

@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.facebook.stetho.Stetho;
@@ -61,13 +63,12 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         if (numberRows < 1) {
             DBSetupInsert setupInsert = new DBSetupInsert(this);
             setupInsert.insertAllFood();
-            setupInsert.insertAllCaegories();
+            setupInsert.insertAllCategories();
         }
 
         //Check user login
         numberRows = db.count("users");
         if (numberRows <1 ){
-            Toast.makeText(this,"Anda belum login", Toast.LENGTH_LONG).show();
             Intent i = new Intent(MainActivity.this, SignUp.class);
             startActivity(i);
         }
@@ -123,5 +124,9 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         getSupportActionBar().setTitle(title);
     }
 
+
+    public void toCategoryFood(View view) {
+       loadFragment(new CategoriesFragment());
+    }
 }
 

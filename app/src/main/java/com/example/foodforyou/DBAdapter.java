@@ -12,7 +12,7 @@ public class DBAdapter {
 
     // variabel
     private static final String databaseName = "foodforyou";
-    private static final int databaseVersion = 56;
+    private static final int databaseVersion = 68;
 
     // Database variable
     private final Context context;
@@ -74,7 +74,8 @@ public class DBAdapter {
 
             try {
                 db.execSQL("CREATE TABLE IF NOT EXISTS food_diary_cal_eaten(" +
-                        " cal_eaten_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                        " _id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                        " cal_eaten_id INTEGER , " +
                         " cal_eaten_date DATE," +
                         " cal_eaten_meal_no INT," +
                         " cal_eaten_energy INT," +
@@ -88,7 +89,8 @@ public class DBAdapter {
 
             try {
                 db.execSQL("CREATE TABLE IF NOT EXISTS food_diary( " +
-                        " fd_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                        " _id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                        " fd_id INTEGER , " +
                         " fd_date DATE, " +
                         " fs_meal_number INT, " +
                         " fd_food_id INT, " +
@@ -106,10 +108,11 @@ public class DBAdapter {
 
             try {
                 db.execSQL("CREATE TABLE IF NOT EXISTS categories (" +
-                        " category_id INTEGER PRIMARY KEY AUTOINCREMENT," +
-                        " category_name VARCHAR, " +
+                        " _id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                        " category_id INTEGER," +
+                        " category_name VARCHAR," +
                         " category_parent_id INT," +
-                        " category_notes VARCHAR);");
+                        " category_note VARCHAR);");
 
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -119,7 +122,8 @@ public class DBAdapter {
             try {
 
                 db.execSQL("CREATE TABLE IF NOT EXISTS food (" +
-                        " food_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                        " _id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                        " food_id INTEGER , " +
                         " food_name VARCHAR, " +
                         " food_serving_size DOUBLE, " +
                         " food_serving_mesurment VARCHAR, " +
