@@ -223,12 +223,36 @@ public class SignUp extends AppCompatActivity {
             int intActivityLevelSQL = db.quoteSmart(intActivityLevel);
             double weightKgSQL = db.quoteSmart(weightKg);
 
-            String stringInput = "NULL, " + stringEmailSQL + "," + dateOfBirthSQL + "," + stringGenderSQL + "," + heightCmSQL + "," + intActivityLevelSQL + "," + weightKgSQL;
+            String stringInput = "NULL, " + stringEmailSQL + "," + dateOfBirthSQL + "," + stringGenderSQL + "," + heightCmSQL + "," + intActivityLevelSQL;
 
 
+            // Input for user
             db.insert("users",
-                    "user_id, user_email, user_dob, user_gender, user_height, user_activity_level, user_weight",
+                    "user_id, user_email, user_dob, user_gender, user_height, user_activity_level",
                     stringInput);
+
+            // Input for gaols
+            DateFormat dfl = new SimpleDateFormat("yyyy-MM-dd");
+            String goalDate = dfl.format(Calendar.getInstance().getTime());
+
+//            Calendar calendar = Calendar.getInstance();
+//            int year = calendar.get(Calendar.YEAR);
+//            int month = calendar.get(Calendar.MONTH);
+//            int mDay = calendar.get(Calendar.DAY_OF_MONTH);
+//            String goalDate = year + "-" + month + "-" + mDay;
+
+            String goalDateSQL = db.quoteSmart(goalDate);
+
+            stringInput = "NULL, " + weightKgSQL + "," + goalDateSQL;
+            db.insert("goal",
+                    "goal_id, goal_current_weight, goal_date",
+                    stringInput);
+
+            db.close();
+
+            //Move User back to mainactivity
+            Intent i = new Intent(SignUp.this, SetGoal.class);
+            startActivity(i);
 
         }else {
             errorMessage.setText(TexterrorMessage);

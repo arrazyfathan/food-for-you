@@ -11,7 +11,7 @@ public class DBAdapter {
 
     // variabel
     private static final String databaseName = "foodforyou";
-    private static final int databaseVersion = 15;
+    private static final int databaseVersion = 32;
 
     // Database variable
     private final Context context;
@@ -26,56 +26,88 @@ public class DBAdapter {
 
     //Database Helper
     private static class DatabaseHelper extends SQLiteOpenHelper {
-        DatabaseHelper(Context context){
+        DatabaseHelper(Context context) {
             super(context, databaseName, null, databaseVersion);
         }
 
         public void onCreate(SQLiteDatabase db) {
+
             try {
+                db.execSQL("CREATE TABLE IF NOT EXISTS goal (" +
+                        " goal_id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                        " goal_current_weight INT," +
+                        " goal_target_weight INT," +
+                        " goal_weekly_goal VARCHAR," +
+                        " goal_date DATE);");
 
-                db.execSQL("CREATE TABLE IF NOT EXISTS users("+
-                        " user_id INTEGER PRIMARY KEY AUTOINCREMENT,"+
-                        " user_email VARCHAR,"+
-                        " user_passsword VARCHAR,"+
-                        " user_salt VARCHAR,"+
-                        " user_dob DATE,"+
-                        " user_gender INT,"+
-                        " user_locationn VARCHAR,"+
-                        " user_height INT,"+
-                        " user_activity_level INT,"+
-                        " user_weight INT,"+
-                        " user_target_weight INT,"+
-                        " user_target_weight_level INT,"+
-                        " user_last_seen TIME,"+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+
+            try {
+                db.execSQL("CREATE TABLE IF NOT EXISTS users(" +
+                        " user_id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                        " user_email VARCHAR," +
+                        " user_passsword VARCHAR," +
+                        " user_salt VARCHAR," +
+                        " user_dob DATE," +
+                        " user_gender INT," +
+                        " user_locationn VARCHAR," +
+                        " user_height INT," +
+                        " user_activity_level INT," +
+                        " user_last_seen TIME," +
                         " user_note VARCHAR);");
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
 
-                db.execSQL("CREATE TABLE IF NOT EXISTS food_diary_cal_eaten("+
-                        " cal_eaten_id INTEGER PRIMARY KEY AUTOINCREMENT, "+
-                        " cal_eaten_date DATE,"+
-                        " cal_eaten_meal_no INT,"+
-                        " cal_eaten_energy INT,"+
-                        " cal_eaten_proteins INT,"+
-                        " cal_eaten_carbs INT,"+
+
+            try {
+                db.execSQL("CREATE TABLE IF NOT EXISTS food_diary_cal_eaten(" +
+                        " cal_eaten_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                        " cal_eaten_date DATE," +
+                        " cal_eaten_meal_no INT," +
+                        " cal_eaten_energy INT," +
+                        " cal_eaten_proteins INT," +
+                        " cal_eaten_carbs INT," +
                         " cal_eaten_fat INT);");
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
 
-                db.execSQL("CREATE TABLE IF NOT EXISTS food_diary( "+
-                        " fd_id INTEGER PRIMARY KEY AUTOINCREMENT, "+
-                        " fd_date DATE, "+
-                        " fs_meal_number INT, "+
-                        " fd_food_id INT, "+
-                        " fd_serving_size DOUBLE,"+
-                        " fd_serving_mesurment VARCHAR, "+
-                        " fd_energy_calculated DOUBLE,"+
-                        " fd_protein_caculated DOUBLE,"+
-                        " fd_carbohydrates_calculated DOUBLE, "+
-                        " fd_fat_calculated INT, "+
+
+            try {
+                db.execSQL("CREATE TABLE IF NOT EXISTS food_diary( " +
+                        " fd_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                        " fd_date DATE, " +
+                        " fs_meal_number INT, " +
+                        " fd_food_id INT, " +
+                        " fd_serving_size DOUBLE," +
+                        " fd_serving_mesurment VARCHAR, " +
+                        " fd_energy_calculated DOUBLE," +
+                        " fd_protein_caculated DOUBLE," +
+                        " fd_carbohydrates_calculated DOUBLE, " +
+                        " fd_fat_calculated INT, " +
                         " fd_fat_meal_id INT);");
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
 
+
+            try {
                 db.execSQL("CREATE TABLE IF NOT EXISTS categories (" +
-                        " category_id INTEGER PRIMARY KEY AUTOINCREMENT,"+
-                        " category_name VARCHAR, "+
-                        " category_parent_id INT,"+
+                        " category_id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                        " category_name VARCHAR, " +
+                        " category_parent_id INT," +
                         " category_notes VARCHAR);");
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+
+            try {
 
                 db.execSQL("CREATE TABLE IF NOT EXISTS food (" +
                         " food_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
@@ -101,7 +133,7 @@ public class DBAdapter {
                         " food_image_c VARCHAR, " +
                         " food_notes VARCHAR); ");
 
-            }catch (SQLException e){
+            } catch (SQLException e) {
                 e.printStackTrace();
             }
 
@@ -109,8 +141,9 @@ public class DBAdapter {
         }
 
         @Override
-        public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion){
+        public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
+            db.execSQL("DROP TABLE IF EXISTS goal");
             db.execSQL("DROP TABLE IF EXISTS food_diary_cal_eaten");
             db.execSQL("DROP TABLE IF EXISTS food_diary");
             db.execSQL("DROP TABLE IF EXISTS fooddiary");
@@ -118,7 +151,7 @@ public class DBAdapter {
             onCreate(db);
 
             String TAG = "tag";
-            Log.w(TAG,  "Upgrading database from version " + oldVersion + " to " + newVersion + ", which will destroy all old data" );
+            Log.w(TAG, "Upgrading database from version " + oldVersion + " to " + newVersion + ", which will destroy all old data");
         }
     }
 
@@ -130,24 +163,23 @@ public class DBAdapter {
     }
 
     //Close Database
-    public void close(){
+    public void close() {
         DBHelper.close();
     }
 
     //Quote Smart
-    public String quoteSmart(String value){
+    public String quoteSmart(String value) {
         //is Nmeric?
         boolean isNumeric = false;
         try {
             double myDouble = Double.parseDouble(value);
             isNumeric = true;
-        }
-        catch (NumberFormatException nfe){
+        } catch (NumberFormatException nfe) {
             System.out.println("Cpould not parse " + nfe);
         }
-        if (isNumeric == false){
+        if (isNumeric == false) {
             //
-            if (value != null && value.length() > 0){
+            if (value != null && value.length() > 0) {
                 value = value.replace("\\", "\\\\");
                 value = value.replace("'", "\\");
                 value = value.replace("\0", "\\0");
@@ -161,21 +193,21 @@ public class DBAdapter {
         return value;
     }
 
-    public double quoteSmart(double value){
+    public double quoteSmart(double value) {
         return value;
     }
 
-    public int quoteSmart(int value){
+    public int quoteSmart(int value) {
         return value;
     }
 
     //Insert Data
-    public void insert(String table, String fields, String values){
-        db.execSQL("INSERT INTO " + table + "(" + fields +") VALUES (" + values + ")");
+    public void insert(String table, String fields, String values) {
+        db.execSQL("INSERT INTO " + table + "(" + fields + ") VALUES (" + values + ")");
     }
 
     //Count data in table
-    public int count(String table){
+    public int count(String table) {
         Cursor mCount = db.rawQuery("SELECT COUNT(*) FROM " + table + "", null);
         mCount.moveToFirst();
         int count = mCount.getInt(0);
