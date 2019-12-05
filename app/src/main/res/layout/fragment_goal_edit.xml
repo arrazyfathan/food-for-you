@@ -40,6 +40,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
+
+
                     <com.google.android.material.textfield.TextInputLayout
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:id="@+id/textViewGoalCurrentWeight"
@@ -210,9 +212,7 @@
                 </RelativeLayout>
             </LinearLayout>
 
-            //weekly
-
-            <LinearLayout
+           <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -233,8 +233,9 @@
                         android:id="@+id/textViewKgEachWeek"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="2dp"
                         android:text="@string/kg_each_week" />
-                </TableRow>>
+                </TableRow>
 
 
                 <RelativeLayout

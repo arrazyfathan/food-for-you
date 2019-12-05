@@ -1,15 +1,8 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".FoodFragment">
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Food Fragment"
-        android:textSize="23sp"/>
+    android:layout_height="match_parent">
+    // tambah ContexCategoryFragment
 
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
@@ -19,12 +12,13 @@
         android:overScrollMode="never"
         android:scrollbars="none" >
 
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
 
             <ListView
-                android:id="@+id/listViewFood"
+                android:id="@+id/listViewAddFoodToDiary"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:dividerHeight="1dp"
@@ -34,13 +28,5 @@
         </RelativeLayout>
 
     </ScrollView>
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/buttonAddFood"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:src="@drawable/ic_add_food"
-        android:layout_margin="16dp"
-        app:fabSize="normal"
-        app:elevation="6dp" />
+
 </FrameLayout>
