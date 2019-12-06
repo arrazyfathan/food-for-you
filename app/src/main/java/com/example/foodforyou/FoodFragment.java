@@ -35,7 +35,7 @@ public class FoodFragment extends Fragment {
 
     public void onResume(){
         super.onResume();
-        ((MainActivity) getActivity()).setActionBarTitle("Profile");
+        ((MainActivity) getActivity()).setActionBarTitle("Food List");
 
     }
 }
