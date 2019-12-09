@@ -24,7 +24,10 @@ import okhttp3.OkHttpClient;
 
 public class MainActivity extends AppCompatActivity
         implements BottomNavigationView.OnNavigationItemSelectedListener,
-        CategoriesFragment.OnFragmentInteractionListener{
+        CategoriesFragment.OnFragmentInteractionListener,
+        FoodFragment.OnFragmentInteractionListener,
+        HomeFragment.OnFragmentInteractionListener,
+        ProfileFragment.OnFragmentInteractionListener{
 
     private String[] mTitleText;
     private String[] mInfoText;

@@ -139,4 +139,7 @@ public class ProfileFragment extends Fragment {
 
 
     }
+
+    public interface OnFragmentInteractionListener {
+    }
 }

@@ -3,6 +3,7 @@ package com.example.foodforyou;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -20,7 +21,6 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
@@ -30,19 +30,18 @@ import com.google.android.material.textfield.TextInputEditText;
 import java.util.ArrayList;
 
 
-public class CategoriesFragment extends Fragment  {
+public class CategoriesFragment extends Fragment {
 
+
+    /* Variables */
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
 
-
-    /* Variables */
     private View mainView;
     Cursor categoriesCursor;
 
@@ -52,24 +51,14 @@ public class CategoriesFragment extends Fragment  {
     private String currentId;
     private String currenName;
 
-    // Holder for buttons on toolbar
     private String currentCategoryId;
     private String currentCategoryName;
 
 
     public CategoriesFragment() {
-        // Required empty public constructor
+
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment CategoriesFragment.
-     */
-    // TODO: Rename and change types and number of parameters
     public static CategoriesFragment newInstance(String param1, String param2) {
         CategoriesFragment fragment = new CategoriesFragment();
         Bundle args = new Bundle();
@@ -99,7 +88,6 @@ public class CategoriesFragment extends Fragment  {
         rootView.addView(mainView);
     }
 
-
     /*- on Activity Created --------------------------------------------------------- */
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
@@ -117,20 +105,13 @@ public class CategoriesFragment extends Fragment  {
         /* Set title */
         ((MainActivity) getActivity()).setActionBarTitle("Categories");
 
-
     } // onActivityCreated
 
 
-
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-
-
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mainView = inflater.inflate(R.layout.fragment_categories, container, false);
         return mainView;
-
-
     }
 
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
@@ -161,12 +142,9 @@ public class CategoriesFragment extends Fragment  {
 
     /*- populate List -------------------------------------------------------------- */
     public void populateList(String parentID, String parentName) {
-
-        /* Database */
         DBAdapter db = new DBAdapter(getActivity());
         db.open();
 
-        // Get categories
         String fields[] = new String[]{
                 "_id",
                 "category_name",
@@ -358,29 +336,49 @@ public class CategoriesFragment extends Fragment  {
         DBAdapter db = new DBAdapter(getActivity());
         db.open();
 
+        Cursor c;
+        String fieldsC[] = new String[]{"category_parent_id"};
+        String currentIdSQL = db.quoteSmart(currentId);
+        c = db.select("categories", fieldsC, "_id", currentIdSQL);
+        String currentParentID = c.getString(0);
+        int intCurrentParentID = 0;
+        try {
+            intCurrentParentID = Integer.parseInt(currentParentID);
+        } catch (NumberFormatException nfe) {
+            System.out.println("Could not parse" + nfe);
+        }
+
         TextInputEditText editTextName = getActivity().findViewById(R.id.editTextName);
         editTextName.setText(currenName);
 
-        String fields[] = new String[] {
+        String fields[] = new String[]{
                 "_id",
                 "category_name",
                 "category_parent_id"
         };
-        Cursor dbCursor = db.select("categories",fields, "category_parent_id", "0", "category_name", "ASC");
+        Cursor dbCursor = db.select("categories", fields, "category_parent_id", "0", "category_name", "ASC");
 
         int dbCursorCount = dbCursor.getCount();
-        String[] arraySpinnerCategories = new String[dbCursorCount+1];
+        String[] arraySpinnerCategories = new String[dbCursorCount + 1];
 
         arraySpinnerCategories[0] = "-";
 
-        for (int x=1;x<dbCursorCount+1;x++){
+        int correctParentID = 0;
+        for (int x = 1; x < dbCursorCount + 1; x++) {
             arraySpinnerCategories[x] = dbCursor.getString(1).toString();
+
+            if (dbCursor.getString(0).toString().equals(currentParentID)) {
+                correctParentID = x;
+            }
+
             dbCursor.moveToNext();
         }
 
         Spinner spinnerParent = (Spinner) getActivity().findViewById(R.id.spinnerCategoryParent);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, arraySpinnerCategories);
         spinnerParent.setAdapter(adapter);
+
+        spinnerParent.setSelection(correctParentID);
 
         /* Close db */
         db.close();
@@ -396,6 +394,7 @@ public class CategoriesFragment extends Fragment  {
         });
 
     }
+
 
     /*- Edit category submit on click -------------------------------------------- */
     public void editCategorySubmitOnClick() {
@@ -413,7 +412,6 @@ public class CategoriesFragment extends Fragment  {
             Toast.makeText(getActivity(), "Please fill in a name.", Toast.LENGTH_SHORT).show();
             error = 1;
         }
-
 
         // Parent
         Spinner spinner = (Spinner) getActivity().findViewById(R.id.spinnerCategoryParent);
@@ -436,19 +434,16 @@ public class CategoriesFragment extends Fragment  {
         }
 
         if (error == 0) {
-            // Current ID to long
-            long longCurrentID = Long.parseLong(currentCategoryId);
+            long longCurrentId = Long.parseLong(currentId);
 
-            // Ready variables
-            long currentIDSQL = (long) db.quoteSmart(longCurrentID);
+            long currentIdSQL = db.quoteSmart(longCurrentId);
             String stringNameSQL = db.quoteSmart(stringName);
-            String parentIDSQL = db.quoteSmart(parentID);
+            String parentIdSQL = db.quoteSmart(parentID);
 
-            // Insert into database
-            String input = "NULL, " + stringNameSQL + ", " + parentIDSQL;
-            // db.insert("categories", "_id, category_name, category_parent_id", input);
-            db.update("categories", "_id", currentIDSQL, "category_name", stringNameSQL);
-            db.update("categories", "_id", currentIDSQL, "category_parent_id", parentIDSQL);
+            String input = "NULL, +" + stringNameSQL + ", " + parentIdSQL;
+
+            db.update("categories", "_id", currentIdSQL, "category_name", stringNameSQL);
+            db.update("categories", "_id", currentIdSQL, "category_parent_id", parentIdSQL);
 
             // Give feedback
             Toast.makeText(getActivity(), "Changes saved", Toast.LENGTH_LONG).show();
@@ -464,20 +459,72 @@ public class CategoriesFragment extends Fragment  {
     } // editCategorySubmitOnClick
 
 
+    /*- Delete category ----------------------------------------------------------- */
     public void deleteCategory() {
+
+        /* Change layout */
+        int id = R.layout.fragment_categories_delete;
+        setMainView(id);
+
+        /* SubmitButton listener */
+        Button buttonCancel = (Button) getActivity().findViewById(R.id.buttonCancel);
+        buttonCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                deleteCategoryCancelOnClick();
+            }
+        });
+
+        Button buttonConfirm = (Button) getActivity().findViewById(R.id.buttonConfirmDelete);
+        buttonConfirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                deleteCategoryConfirmOnClick();
+            }
+        });
+
 
     }
 
+    public void deleteCategoryCancelOnClick() {
+        // Move user back to correct design
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.main_frame, new CategoriesFragment(), CategoriesFragment.class.getName()).commit();
 
+    }
 
+    public void deleteCategoryConfirmOnClick() {
+        // Delete from SQL
+        /* Database */
+        DBAdapter db = new DBAdapter(getActivity());
+        db.open();
 
-    // TODO: Rename method, update argument and hook method into UI event
+        // Current ID to long
+        long longCurrentID = Long.parseLong(currentId);
+
+        // Ready variables
+        long currentIDSQL = db.quoteSmart(longCurrentID);
+
+        // Delete
+        db.delete("categories", "_id", currentIDSQL);
+
+        // Close db
+        db.close();
+
+        // Give message
+        Toast.makeText(getActivity(), "Category deleted", Toast.LENGTH_LONG).show();
+
+        // Move user back to correct design
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.main_frame, new CategoriesFragment(), CategoriesFragment.class.getName()).commit();
+
+    }
+
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
         }
     }
-
 
     @Override
     public void onAttach(Context context) {
@@ -497,9 +544,7 @@ public class CategoriesFragment extends Fragment  {
 
     }
 
-
     public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
 }

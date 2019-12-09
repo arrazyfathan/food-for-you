@@ -13,7 +13,7 @@ public class DBAdapter {
 
     //* 01 Variables ---------------------------------------- */
     private static final String databaseName = "foodforyou";
-    private static final int databaseVersion = 1;
+    private static final int databaseVersion = 2;
 
     /* 02 Database variables ------------------------------- */
     private final Context context;
@@ -125,28 +125,31 @@ public class DBAdapter {
 
                 db.execSQL("CREATE TABLE IF NOT EXISTS food (" +
                         " _id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                        " food_id INTEGER , " +
-                        " food_name VARCHAR, " +
-                        " food_serving_size DOUBLE, " +
-                        " food_serving_mesurment VARCHAR, " +
-                        " food_serving_name_number DOUBLE, " +
-                        " food_serving_name_word VARCHAR, " +
-                        " food_energy DOUBLE, " +
-                        " food_proteins DOUBLE, " +
-                        " food_carbohydrates DOUBLE, " +
-                        " food_fat DOUBLE, " +
-                        " food_energy_calculated DOUBLE, " +
-                        " food_proteins_calculated DOUBLE, " +
-                        " food_carbohydrates_calculated DOUBLE, " +
-                        " food_fat_calculated DOUBLE, " +
-                        " food_user_id INT, " +
-                        " food_barcode DOUBLE, " +
-                        " food_category_id INT, " +
-                        " food_thumb VARCHAR, " +
-                        " food_image_a VARCHAR, " +
-                        " food_image_b VARCHAR, " +
-                        " food_image_c VARCHAR, " +
-                        " food_notes VARCHAR); ");
+                        " food_id INTEGER, " +
+                        " food_name VARCHAR," +
+                        " food_manufactor_name VARCHAR," +
+                        " food_description VARCHAR," +
+                        " food_serving_size DOUBLE," +
+                        " food_serving_mesurment VARCHAR," +
+                        " food_serving_name_number DOUBLE," +
+                        " food_serving_name_word VARCHAR," +
+                        " food_energy DOUBLE," +
+                        " food_proteins DOUBLE," +
+                        " food_carbohydrates DOUBLE," +
+                        " food_fat DOUBLE," +
+                        " food_energy_calculated DOUBLE," +
+                        " food_proteins_calculated DOUBLE," +
+                        " food_carbohydrates_calculated DOUBLE," +
+                        " food_fat_calculated DOUBLE," +
+                        " food_user_id INT," +
+                        " food_barcode VARCHAR," +
+                        " food_category_id INT," +
+                        " food_thumb VARCHAR," +
+                        " food_image_a VARCHAR," +
+                        " food_image_b VARCHAR," +
+                        " food_image_c VARCHAR," +
+                        " food_last_used DATE," +
+                        " food_notes VARCHAR);");
 
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -211,6 +214,9 @@ public class DBAdapter {
         return value;
     }
     public double quoteSmart(double value) {
+        return value;
+    }
+    public long quoteSmart(long value) {
         return value;
     }
     public int quoteSmart(int value) {
@@ -317,6 +323,10 @@ public class DBAdapter {
         ContentValues args = new ContentValues();
         args.put(field, value);
         return db.update(table, args, primaryKey + "=" + rowId, null) > 0;
+    }
+
+    public int delete(String table, String primaryKey, long rowID) throws SQLException {
+        return db.delete(table, primaryKey + "=" + rowID, null);
     }
 
 }

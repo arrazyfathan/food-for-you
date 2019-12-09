@@ -49,4 +49,6 @@ public class HomeFragment extends Fragment{
     }
 
 
+    public interface OnFragmentInteractionListener {
+    }
 }
