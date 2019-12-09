@@ -4,7 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.RadioButton;
@@ -26,12 +29,24 @@ public class SignUp extends AppCompatActivity {
     private String[] arraySpinnerDOBDay = new String[31];
     private String[] arraySpinnerDOBYear = new String[100];
 
+    boolean doubleBackToExit =false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
+
+        //Hide keyboard
+        findViewById(R.id.relative).setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+                return true;
+            }
+        });
 
         //Fill number day spinner -------------------------------------------------------------------
         int human_counter = 0;
@@ -63,7 +78,7 @@ public class SignUp extends AppCompatActivity {
             getSupportActionBar().setElevation(0);
         }
 
-        Objects.requireNonNull(getSupportActionBar()).setTitle("Sign Up");
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Get Ready");
 
         //Listener
         Button buttonSignUp = (Button) findViewById(R.id.buttonSignUp);
@@ -79,6 +94,24 @@ public class SignUp extends AppCompatActivity {
 
     } // OnCreate
 
+    @Override
+    public void onBackPressed(){
+        if (doubleBackToExit){
+            super.onBackPressed();
+            return;
+        }
+
+        this.doubleBackToExit = true;
+        Toast.makeText(this, "Press again to exit",Toast.LENGTH_SHORT).show();
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                doubleBackToExit=false;
+            }
+        }, 2000);
+    }
+
 
     public void signUpSubmit(){
         //Error
@@ -91,7 +124,7 @@ public class SignUp extends AppCompatActivity {
         String stringEmail = editTextEmail.getText().toString();
         if (stringEmail.isEmpty() | stringEmail.startsWith(" ")){
             errorMessage.setVisibility(View.VISIBLE);
-            TexterrorMessage = "Pelase fill the e-mail address.";
+            TexterrorMessage = "Pelase fill the name.";
         }
 
         //Date of Bird Day

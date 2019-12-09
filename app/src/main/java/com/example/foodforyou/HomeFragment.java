@@ -16,7 +16,7 @@ import android.widget.TextView;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment{
 
 
     public HomeFragment() {
@@ -32,7 +32,6 @@ public class HomeFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_home, container, false);
 
 
-
     }
 
     //OnActivity Created
@@ -41,18 +40,13 @@ public class HomeFragment extends Fragment {
         super.onActivityCreated(saveInstanceState);
 
 
-
     }
-
-
 
     //Change Actionbar tilte based selected navigation bottom bar
     public void onResume(){
         super.onResume();
-
         ((MainActivity) getActivity()).setActionBarTitle("Home");
     }
-
 
 
 }

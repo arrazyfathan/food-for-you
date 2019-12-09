@@ -38,7 +38,7 @@ public class ProfileFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_profile, container, false);
     }
 
-    public void onResume(){
+    public void onResume() {
         super.onResume();
 
         ((MainActivity) getActivity()).setActionBarTitle("Profile");
@@ -46,28 +46,30 @@ public class ProfileFragment extends Fragment {
         getGoal();
     }
 
-//    membuat toolbar
+    //    membuat toolbar
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState){
+    public void onCreate(@Nullable Bundle savedInstanceState) {
         setHasOptionsMenu(true);
         super.onCreate(savedInstanceState);
     }
-@Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater){
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.setting_profile, menu);
         super.onCreateOptionsMenu(menu, inflater);
     }
-@Override
-    public boolean onOptionsItemSelected(MenuItem item){
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if(id == R.id.action_logout){
+        if (id == R.id.action_logout) {
             Toast.makeText(getActivity(), "Logout", Toast.LENGTH_SHORT).show();
         }
         return super.onOptionsItemSelected(item);
     }
 
     // Mengambil data user
-    public void getUser(){
+    public void getUser() {
         /* Database */
         DBAdapter db = new DBAdapter(getActivity());
         db.open();
@@ -84,7 +86,7 @@ public class ProfileFragment extends Fragment {
         String gender = cursorUser.getString(2);
 
         // TextView email
-        TextView textViewEmail = (TextView) getActivity().findViewById(R.id.user_email);
+        TextView textViewEmail = (TextView) getActivity().findViewById(R.id.user_name);
         textViewEmail.setText(email);
 
         //TextView ttl
@@ -104,7 +106,7 @@ public class ProfileFragment extends Fragment {
         db.close();
     }
 
-    public void getGoal(){
+    public void getGoal() {
         /* Database */
         DBAdapter db = new DBAdapter(getActivity());
         db.open();
@@ -131,7 +133,7 @@ public class ProfileFragment extends Fragment {
 
         //TextView bmi
         TextView textViewTarget = (TextView) getActivity().findViewById(R.id.user_target);
-        textViewTarget.setText("Your target weight is " + stringTarget + " kg" );
+        textViewTarget.setText("Your target weight is " + stringTarget + " kg");
 
         db.close();
 

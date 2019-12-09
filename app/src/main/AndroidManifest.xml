@@ -11,7 +11,8 @@
         android:roundIcon="@drawable/ic_ffy"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SecondActivity"></activity>
+        <activity android:name=".CategoriesAdd"></activity>
+        <activity android:name=".CategoriesActivity" />
         <activity android:name=".SetGoal" />
         <activity android:name=".SplashActivity">
             <intent-filter>

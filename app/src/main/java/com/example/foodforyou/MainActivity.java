@@ -5,16 +5,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.stetho.Stetho;
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.util.List;
 
 import okhttp3.OkHttpClient;
 
@@ -27,6 +31,7 @@ public class MainActivity extends AppCompatActivity
     private int[] imageResource;
     private String[] placeGuide;
     private String[] mAuthor;
+    boolean doubleBackToExit =false;
 
     /*
     food for you
@@ -61,7 +66,7 @@ public class MainActivity extends AppCompatActivity
         1. Fitur sistem pendukung dalam pemilihan makanan
         2. Fitur perhitungan index BMI dan BMR
         3. Menghitung jumlah kalori yang dimakan setiap harinya.
-      
+
     */
 
     @Override
@@ -97,6 +102,7 @@ public class MainActivity extends AppCompatActivity
         }
 
 
+
         db.close();
         //close database
 
@@ -111,6 +117,25 @@ public class MainActivity extends AppCompatActivity
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.main_nav);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
+    }
+
+    @Override
+    public void onBackPressed(){
+        if (doubleBackToExit){
+            super.onBackPressed();
+            return;
+        }
+
+        this.doubleBackToExit = true;
+        Toast.makeText(this, "Press again to exit",Toast.LENGTH_SHORT).show();
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                doubleBackToExit=false;
+            }
+        }, 2000);
+
     }
 
     private boolean loadFragment(Fragment fragment){
@@ -156,5 +181,7 @@ public class MainActivity extends AppCompatActivity
     public void onFragmentInteraction(Uri uri) {
 
     }
+
+
 }
 

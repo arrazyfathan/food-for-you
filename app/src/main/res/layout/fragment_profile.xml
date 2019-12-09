@@ -32,10 +32,10 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
+                android:fontFamily="@font/arialmedium"
                 android:text="Dio Agus Nofrizal"
                 android:textColor="@color/colorWhite"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/user_dob"
@@ -43,10 +43,10 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="8dp"
+                android:fontFamily="@font/arialcemedium"
                 android:text="35 Juli 1999"
                 android:textColor="@color/colorWhite"
-                android:textSize="12sp"
-                android:textStyle="bold" />
+                android:textSize="12sp" />
         </LinearLayout>
 
         <androidx.cardview.widget.CardView
@@ -74,7 +74,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Kalori"
+                        android:text="Calorie"
+                        android:fontFamily="@font/arialcemedium"
                         android:textColor="@color/titleColor"
                         android:textSize="14sp" />
 
@@ -86,7 +87,7 @@
                         android:text="1500"
                         android:textColor="@color/orange_color"
                         android:textSize="20sp"
-                        android:textStyle="bold" />
+                        android:fontFamily="@font/arialbold" />
 
                 </LinearLayout>
 
@@ -100,8 +101,9 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Dikomsumsi"
+                        android:text="Consumed"
                         android:textColor="@color/titleColor"
+                        android:fontFamily="@font/arialcemedium"
                         android:textSize="14sp" />
 
                     <TextView
@@ -111,7 +113,7 @@
                         android:text="300"
                         android:textColor="@color/orange_color"
                         android:textSize="20sp"
-                        android:textStyle="bold" />
+                        android:fontFamily="@font/arialbold" />
 
                 </LinearLayout>
 
@@ -125,8 +127,9 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Index BMI"
+                        android:text="BMI"
                         android:textColor="@color/titleColor"
+                        android:fontFamily="@font/arialcemedium"
                         android:textSize="14sp" />
 
                     <TextView
@@ -137,7 +140,7 @@
                         android:text="32"
                         android:textColor="@color/orange_color"
                         android:textSize="20sp"
-                        android:textStyle="bold" />
+                        android:fontFamily="@font/arialbold" />
 
                 </LinearLayout>
             </LinearLayout>
@@ -179,7 +182,7 @@
                     android:text="Email"
                     android:textColor="@color/titleColor"
                     android:textSize="14sp"
-                    android:textStyle="bold" />
+                    android:fontFamily="@font/arialbold"/>
 
                 <TextView
                     android:id="@+id/user_email"
@@ -188,6 +191,7 @@
                     android:paddingLeft="20dp"
                     android:text="dio@gmail.com"
                     android:textColor="@color/titleColor"
+                    android:fontFamily="@font/arialcemedium"
                     android:textSize="12sp" />
             </LinearLayout>
         </LinearLayout>
@@ -221,7 +225,7 @@
                     android:text="Gender"
                     android:textColor="@color/titleColor"
                     android:textSize="14sp"
-                    android:textStyle="bold" />
+                    android:fontFamily="@font/arialbold"/>
 
                 <TextView
                     android:id="@+id/user_gender"
@@ -229,6 +233,7 @@
                     android:layout_height="wrap_content"
                     android:paddingLeft="20dp"
                     android:text="Male"
+                    android:fontFamily="@font/arialcemedium"
                     android:textColor="@color/titleColor"
                     android:textSize="12sp" />
             </LinearLayout>
@@ -262,7 +267,7 @@
                     android:text="Target"
                     android:textColor="@color/titleColor"
                     android:textSize="14sp"
-                    android:textStyle="bold" />
+                    android:fontFamily="@font/arialbold" />
 
                 <TextView
                     android:id="@+id/user_target"
@@ -271,6 +276,7 @@
                     android:paddingLeft="20dp"
                     android:text="Your target weight is 80 kg"
                     android:textColor="@color/titleColor"
+                    android:fontFamily="@font/arialcemedium"
                     android:textSize="12sp" />
             </LinearLayout>
 

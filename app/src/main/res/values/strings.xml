@@ -18,7 +18,7 @@
     <string name="tips_info_placeholder">Here is some news</string>
     <string name="male_radio_label">Male</string>
     <string name="female_radio_label">Female</string>
-    <string name="mail_label">Enter your e-mail address</string>
+    <string name="mail_label">Enter your name</string>
     <string name="level_activity_label">Level Activity :</string>
     <string name="are_you_sure_you_want_to_delete">Are you sure you want to delete?</string>
 
