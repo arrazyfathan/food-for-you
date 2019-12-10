@@ -7,7 +7,7 @@
     android:layout_height="fill_parent"
     android:fitsSystemWindows="true">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
         android:orientation="vertical" android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="18dp"
@@ -143,13 +143,6 @@
                     android:textSize="18sp"
                     android:fontFamily="@font/arialbold"
                     android:textColor="@color/titleColor"/>
-
-                <CheckBox
-                    android:id="@+id/checkBoxGoalToggle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="right|center_vertical"
-                    android:text="@string/advanced" />
             </TableRow>
         </TableLayout>
         <!-- //Numbers -->
@@ -190,29 +183,6 @@
                     android:text="@string/energy"
                     android:fontFamily="@font/arialbold"/>
 
-                <TextView
-                    android:id="@+id/textViewGoalHeadcellProteins"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="6dp"
-                    android:text="@string/proteins"
-                    android:fontFamily="@font/arialbold"/>
-
-                <TextView
-                    android:id="@+id/textViewGoalHeadcellCarbs"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="6dp"
-                    android:text="@string/carbs"
-                    android:fontFamily="@font/arialbold"/>
-
-                <TextView
-                    android:id="@+id/textViewGoalHeadcellFat"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="6dp"
-                    android:text="@string/fat"
-                    android:fontFamily="@font/arialbold"/>
 
             </TableRow>
             <!-- //Headcell -->
@@ -236,26 +206,6 @@
                     android:layout_marginLeft="6dp"
                     android:text="@string/energy" />
 
-                <TextView
-                    android:id="@+id/textViewGoalProteinsDiet"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="6dp"
-                    android:text="@string/proteins" />
-
-                <TextView
-                    android:id="@+id/textViewGoalCarbsDiet"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="6dp"
-                    android:text="@string/carbs" />
-
-                <TextView
-                    android:id="@+id/textViewGoalFatDiet"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="6dp"
-                    android:text="@string/fat" />
 
             </TableRow>
             <!-- //Loose with out activity -->
@@ -279,26 +229,6 @@
                     android:layout_marginLeft="6dp"
                     android:text="@string/energy" />
 
-                <TextView
-                    android:id="@+id/textViewGoalProteinsWithActivityAndDiet"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="6dp"
-                    android:text="@string/proteins" />
-
-                <TextView
-                    android:id="@+id/textViewGoalCarbsWithActivityAndDiet"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="6dp"
-                    android:text="@string/carbs" />
-
-                <TextView
-                    android:id="@+id/textViewGoalFatWithActivityAndDiet"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="6dp"
-                    android:text="@string/fat" />
 
             </TableRow>
             <!-- //With activity -->
@@ -324,7 +254,7 @@
             <TableRow
                 android:id="@+id/textViewGoalMethodRowB"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" >
+                android:layout_height="wrap_content">
 
                 <TextView
                     android:id="@+id/textViewGoalMethodB"
@@ -338,32 +268,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="6dp"
-                    android:text="@string/energy"
-                    android:fontFamily="@font/arialbold"/>
+                    android:fontFamily="@font/arialbold"
+                    android:text="@string/energy" />
 
-                <TextView
-                    android:id="@+id/textViewGoalHeadcellProteinsB"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="6dp"
-                    android:text="@string/proteins"
-                    android:fontFamily="@font/arialbold"/>
-
-                <TextView
-                    android:id="@+id/textViewGoalHeadcellCarbsB"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="6dp"
-                    android:text="@string/carbs"
-                    android:fontFamily="@font/arialbold"/>
-
-                <TextView
-                    android:id="@+id/textViewGoalHeadcellFatB"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="6dp"
-                    android:text="@string/fat"
-                    android:fontFamily="@font/arialbold"/>
 
             </TableRow>
             <!-- //Headcell -->
@@ -387,26 +294,6 @@
                     android:layout_marginRight="6dp"
                     android:text="@string/energy" />
 
-                <TextView
-                    android:id="@+id/textViewGoalProteinsBMR"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="6dp"
-                    android:text="@string/proteins" />
-
-                <TextView
-                    android:id="@+id/textViewGoalCarbsBMR"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="6dp"
-                    android:text="@string/carbs" />
-
-                <TextView
-                    android:id="@+id/textViewGoalFatBMR"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="6dp"
-                    android:text="@string/fat" />
 
             </TableRow>
             <!-- //BMR -->
@@ -432,27 +319,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="6dp"
                     android:text="@string/energy" />
-
-                <TextView
-                    android:id="@+id/textViewGoalProteinsWithActivity"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="6dp"
-                    android:text="@string/proteins" />
-
-                <TextView
-                    android:id="@+id/textViewGoalCarbsWithActivity"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="6dp"
-                    android:text="@string/carbs" />
-
-                <TextView
-                    android:id="@+id/textViewGoalFatWithActivity"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="6dp"
-                    android:text="@string/fat" />
 
             </TableRow>
             <!-- //With activity -->

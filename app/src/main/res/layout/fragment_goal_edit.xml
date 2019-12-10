@@ -52,7 +52,7 @@
                         android:textColorHint="@color/captionColor">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/editTextServingSizeGram"
+                            android:id="@+id/editTextGoalCurrentWeight"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/arialregular"
@@ -411,32 +411,7 @@
                     android:fontFamily="@font/arialbold"
                     android:gravity="center"/>
 
-                <TextView
-                    android:id="@+id/textViewGoalHeadcellProteins"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="6dp"
-                    android:text="@string/proteins"
-                    android:fontFamily="@font/arialbold"
-                    android:gravity="center"/>
 
-                <TextView
-                    android:id="@+id/textViewGoalHeadcellCarbs"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="6dp"
-                    android:text="@string/carbs"
-                    android:fontFamily="@font/arialbold"
-                    android:gravity="center"/>
-
-                <TextView
-                    android:id="@+id/textViewGoalHeadcellFat"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="6dp"
-                    android:text="@string/fat"
-                    android:fontFamily="@font/arialbold"
-                    android:gravity="center"/>
 
             </TableRow>
             <!-- //Headcell -->
@@ -461,29 +436,6 @@
                     android:text="@string/energy"
                     android:gravity="center"/>
 
-                <TextView
-                    android:id="@+id/textViewGoalProteinsDiet"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="6dp"
-                    android:text="@string/proteins"
-                    android:gravity="center"/>
-
-                <TextView
-                    android:id="@+id/textViewGoalCarbsDiet"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="6dp"
-                    android:text="@string/carbs"
-                    android:gravity="center"/>
-
-                <TextView
-                    android:id="@+id/textViewGoalFatDiet"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="6dp"
-                    android:text="@string/fat"
-                    android:gravity="center"/>
 
             </TableRow>
             <!-- //Loose with out activity -->
@@ -508,29 +460,6 @@
                     android:text="@string/energy"
                     android:gravity="center"/>
 
-                <TextView
-                    android:id="@+id/textViewGoalProteinsWithActivityAndDiet"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="6dp"
-                    android:text="@string/proteins"
-                    android:gravity="center"/>
-
-                <TextView
-                    android:id="@+id/textViewGoalCarbsWithActivityAndDiet"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="6dp"
-                    android:text="@string/carbs"
-                    android:gravity="center"/>
-
-                <TextView
-                    android:id="@+id/textViewGoalFatWithActivityAndDiet"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="6dp"
-                    android:text="@string/fat"
-                    android:gravity="center"/>
 
             </TableRow>
             <!-- //With activity -->
@@ -575,32 +504,6 @@
                     android:fontFamily="@font/arialbold"
                     android:gravity="center"/>
 
-                <TextView
-                    android:id="@+id/textViewGoalHeadcellProteinsB"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="6dp"
-                    android:text="@string/proteins"
-                    android:fontFamily="@font/arialbold"
-                    android:gravity="center"/>
-
-                <TextView
-                    android:id="@+id/textViewGoalHeadcellCarbsB"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="6dp"
-                    android:text="@string/carbs"
-                    android:fontFamily="@font/arialbold"
-                    android:gravity="center"/>
-
-                <TextView
-                    android:id="@+id/textViewGoalHeadcellFatB"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="6dp"
-                    android:text="@string/fat"
-                    android:fontFamily="@font/arialbold"
-                    android:gravity="center"/>
 
             </TableRow>
             <!-- //Headcell -->
@@ -624,26 +527,6 @@
                     android:layout_marginRight="6dp"
                     android:text="@string/energy" />
 
-                <TextView
-                    android:id="@+id/textViewGoalProteinsBMR"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="6dp"
-                    android:text="@string/proteins" />
-
-                <TextView
-                    android:id="@+id/textViewGoalCarbsBMR"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="6dp"
-                    android:text="@string/carbs" />
-
-                <TextView
-                    android:id="@+id/textViewGoalFatBMR"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="6dp"
-                    android:text="@string/fat" />
 
             </TableRow>
             <!-- //BMR -->
@@ -671,29 +554,6 @@
                     android:text="@string/energy"
                     android:gravity="center"/>
 
-                <TextView
-                    android:id="@+id/textViewGoalProteinsWithActivity"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="6dp"
-                    android:text="@string/proteins"
-                    android:gravity="center"/>
-
-                <TextView
-                    android:id="@+id/textViewGoalCarbsWithActivity"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="6dp"
-                    android:text="@string/carbs"
-                    android:gravity="center"/>
-
-                <TextView
-                    android:id="@+id/textViewGoalFatWithActivity"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="6dp"
-                    android:text="@string/fat"
-                    android:gravity="center"/>
 
             </TableRow>
             <!-- //With activity -->

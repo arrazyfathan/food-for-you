@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity
         implements BottomNavigationView.OnNavigationItemSelectedListener,
         CategoriesFragment.OnFragmentInteractionListener,
         FoodFragment.OnFragmentInteractionListener,
+        GoalFragment.OnFragmentInteractionListener,
         HomeFragment.OnFragmentInteractionListener,
         ProfileFragment.OnFragmentInteractionListener{
 
@@ -186,5 +187,8 @@ public class MainActivity extends AppCompatActivity
     }
 
 
+    public void toSeeGoal(View view) {
+        loadFragment(new GoalFragment());
+    }
 }
 

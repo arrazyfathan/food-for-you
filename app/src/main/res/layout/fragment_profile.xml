@@ -399,7 +399,8 @@
                     android:orientation="horizontal"
                     android:clickable="true"
                     android:focusable="true"
-                    android:foreground="?android:attr/selectableItemBackground">
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:onClick="toSeeGoal">
 
                     <TextView
                         android:layout_width="wrap_content"
