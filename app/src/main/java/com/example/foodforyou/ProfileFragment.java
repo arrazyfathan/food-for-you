@@ -63,9 +63,14 @@ public class ProfileFragment extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.action_logout) {
-            Toast.makeText(getActivity(), "Logout", Toast.LENGTH_SHORT).show();
+            openDialog();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void openDialog(){
+        DialogViewLogout dialogView = new DialogViewLogout();
+        dialogView.show(getActivity().getSupportFragmentManager(), "Example");
     }
 
     // Mengambil data user
