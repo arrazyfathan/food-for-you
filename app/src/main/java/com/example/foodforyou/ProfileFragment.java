@@ -17,6 +17,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Calendar;
+
 import javax.annotation.Nullable;
 
 
@@ -82,31 +84,69 @@ public class ProfileFragment extends Fragment {
         String fieldsUser[] = new String[]{
                 "user_email",
                 "user_dob",
-                "user_gender"
+                "user_gender",
+                "user_height"
+
         };
         Cursor cursorUser = db.select("users", fieldsUser);
         cursorUser.moveToLast();
         String email = cursorUser.getString(0);
         String date = cursorUser.getString(1);
         String gender = cursorUser.getString(2);
+        String height = cursorUser.getString(3);
 
         // TextView email
-        TextView textViewEmail = (TextView) getActivity().findViewById(R.id.user_name);
+        TextView textViewEmail = getActivity().findViewById(R.id.user_name);
         textViewEmail.setText(email);
 
-        //TextView ttl
-        TextView textViewDate = (TextView) getActivity().findViewById(R.id.user_dob);
+        TextView textViewDate = getActivity().findViewById(R.id.user_date);
         textViewDate.setText(date);
 
         //TextView gender
-        TextView textViewGender = (TextView) getActivity().findViewById(R.id.user_gender);
+        TextView textViewGender = getActivity().findViewById(R.id.user_gender);
         textViewGender.setText(gender);
+
+        //TextView Height
+        TextView textViewHeight = getActivity().findViewById(R.id.user_height);
+        textViewHeight.setText(height + " cm");
 
 //        if (gender == "male") {
 //        ImageView genderImage = (ImageView) getActivity().findViewById(R.id.gender_icon);
 //        // Drawable new_image = getResources().getDrawable(R.drawable.ic_action_email);
 //        genderImage.setImageResource(R.drawable.ic_action_email);
 //        }
+
+        // Get user age
+        String[] items1 = date.split("-");
+        String stringYear = items1[0];
+        String stringMonth = items1[1];
+        String stringDay = items1[2];
+
+        int intYear = 0;
+        try {
+            intYear = Integer.parseInt(stringYear);
+        } catch (NumberFormatException nfe) {
+            System.out.println("Could not parse " + nfe);
+        }
+
+        int intMonth = 0;
+        try {
+            intMonth = Integer.parseInt(stringMonth);
+        } catch (NumberFormatException nfe) {
+            System.out.println("Could not parse " + nfe);
+        }
+        int intDay = 0;
+        try {
+            intDay = Integer.parseInt(stringDay);
+        } catch (NumberFormatException nfe) {
+            System.out.println("Could not parse " + nfe);
+        }
+
+        String stringUserAge = getAge(intYear, intMonth, intDay);
+
+        //TextView ttl
+        TextView textViewAge = getActivity().findViewById(R.id.user_dob);
+        textViewAge.setText(stringUserAge + " Tahun");
 
         db.close();
     }
@@ -120,30 +160,51 @@ public class ProfileFragment extends Fragment {
                 "_id",
                 "goal_energy_with_activity_and_diet",
                 "goal_bmi",
-                "goal_target_weight"
+                "goal_target_weight",
+                "goal_current_weight"
         };
         Cursor cursorGoal = db.select("goal", fieldsGoal);
         cursorGoal.moveToLast();
         String stringGoalEnergyWithActivityAndDiet = cursorGoal.getString(1);
         String stringBmi = cursorGoal.getString(2);
         String stringTarget = cursorGoal.getString(3);
+        String stringCurrent = cursorGoal.getString(4);
 
         // TextView goal
-        TextView textViewBodyGoalWithActivity = (TextView) getActivity().findViewById(R.id.user_kalori);
+        TextView textViewBodyGoalWithActivity = getActivity().findViewById(R.id.user_kalori);
         textViewBodyGoalWithActivity.setText(stringGoalEnergyWithActivityAndDiet);
 
         //TextView bmi
-        TextView textViewBmi = (TextView) getActivity().findViewById(R.id.user_bmi);
+        TextView textViewBmi = getActivity().findViewById(R.id.user_bmi);
         textViewBmi.setText(stringBmi);
 
         //TextView bmi
-        TextView textViewTarget = (TextView) getActivity().findViewById(R.id.user_target);
+        TextView textViewTarget = getActivity().findViewById(R.id.user_target);
         textViewTarget.setText("Your target weight is " + stringTarget + " kg");
+
+        //TextView Current Weight
+        TextView textViewCurrent = getActivity().findViewById(R.id.user_current_weight);
+        textViewCurrent.setText(stringCurrent + " Kg");
 
         db.close();
 
 
     }
+
+    private String getAge(int year, int month, int day) {
+        Calendar dob = Calendar.getInstance();
+        Calendar today = Calendar.getInstance();
+
+        dob.set(year, month, day);
+        int age = today.get(Calendar.YEAR) - dob.get(Calendar.YEAR);
+        if (today.get(Calendar.DAY_OF_YEAR) < dob.get(Calendar.DAY_OF_YEAR)) {
+            age--;
+        }
+        Integer ageInt = new Integer(age);
+        String ageS = ageInt.toString();
+        return ageS;
+    }
+
 
     public interface OnFragmentInteractionListener {
     }

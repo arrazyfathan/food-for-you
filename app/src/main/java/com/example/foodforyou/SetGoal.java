@@ -103,14 +103,14 @@ public class SetGoal extends AppCompatActivity {
                     "user_gender",
                     "user_height",
             };
-            Cursor c = db.select("users",fields,"_id",rowID);
+            Cursor c = db.select("users", fields, "_id", rowID);
             String userDob = c.getString(1);
             String stringUserGender = c.getString(2);
             String stringUserHeight = c.getString(3);
 
             // Get weight actvity level
             rowID = 1;
-            String fieldsGoal[] = new String[] {
+            String fieldsGoal[] = new String[]{
                     "_id",
                     "goal_current_weight",
                     "goal_activity_level"
@@ -121,10 +121,9 @@ public class SetGoal extends AppCompatActivity {
 
             // Get weight
             double doubleUserCurrentWeight = 0;
-            try{
+            try {
                 doubleUserCurrentWeight = Double.parseDouble(stringUserCurrentWeight);
-            }
-            catch(NumberFormatException nfe) {
+            } catch (NumberFormatException nfe) {
                 System.out.println("Could not parse " + nfe);
             }
 
@@ -176,9 +175,9 @@ public class SetGoal extends AppCompatActivity {
 
             // Hitung BMI
             double goalBMI = 0;
-            goalBMI = doubleUserCurrentWeight / ((doubleUserHeight/100) * (doubleUserHeight/100));
+            goalBMI = doubleUserCurrentWeight / ((doubleUserHeight / 100) * (doubleUserHeight / 100));
             goalBMI = Math.round(goalBMI);
-            db.update("goal","_id", goalID, "goal_bmi", goalBMI);
+            db.update("goal", "_id", goalID, "goal_bmi", goalBMI);
 
 
             /*    Hitung BMR    */
@@ -186,10 +185,10 @@ public class SetGoal extends AppCompatActivity {
             double goalEnergyBMR = 0;
             if (stringUserGender.startsWith("m")) {
                 // Male
-                goalEnergyBMR = 88.362 + (13.397  * doubleUserCurrentWeight) + (4.799  * doubleUserHeight) - (5.677  * intAge);
+                goalEnergyBMR = 88.362 + (13.397 * doubleUserCurrentWeight) + (4.799 * doubleUserHeight) - (5.677 * intAge);
             } else {
                 //Female
-                goalEnergyBMR = 447.593  + (9.247  * doubleUserCurrentWeight) + (3.098  * doubleUserHeight) - (4.330  * intAge);
+                goalEnergyBMR = 447.593 + (9.247 * doubleUserCurrentWeight) + (3.098 * doubleUserHeight) - (4.330 * intAge);
 
             }
             // Update database
@@ -201,22 +200,20 @@ public class SetGoal extends AppCompatActivity {
             double doubleWeeklyGoal = 0;
             try {
                 doubleWeeklyGoal = Double.parseDouble(stringWeeklyGoal);
-            }
-            catch(NumberFormatException nfe) {
+            } catch (NumberFormatException nfe) {
                 System.out.println("Could not parse " + nfe);
             }
             // 1 kg fat = 7700 kcal
             double kcal = 0;
             double energyDiet = 0;
-            kcal = 7700*doubleWeeklyGoal;
-            if(intIWantTo == 0){
+            kcal = 7700 * doubleWeeklyGoal;
+            if (intIWantTo == 0) {
                 // Loose weight
-                energyDiet = Math.round((goalEnergyBMR - (kcal/7)) * 1.2);
+                energyDiet = Math.round((goalEnergyBMR - (kcal / 7)) * 1.2);
 
-            }
-            else{
+            } else {
                 // Gain weight
-                energyDiet = Math.round((goalEnergyBMR + (kcal/7)) * 1.2);
+                energyDiet = Math.round((goalEnergyBMR + (kcal / 7)) * 1.2);
             }
             // Update database
             double energyDietSQL = db.quoteSmart(energyDiet);
@@ -247,32 +244,27 @@ public class SetGoal extends AppCompatActivity {
             // 1 kg fat = 7700 kcal
             kcal = 0;
             double energyWithActivityAndDiet = 0;
-            kcal = 7700*doubleWeeklyGoal;
+            kcal = 7700 * doubleWeeklyGoal;
 
-            if(intIWantTo == 0){
+            if (intIWantTo == 0) {
                 // Loose weight
-                energyWithActivityAndDiet = goalEnergyBMR - (kcal/7);
+                energyWithActivityAndDiet = goalEnergyBMR - (kcal / 7);
 
-            }
-            else{
+            } else {
                 // Gain weight
-                energyWithActivityAndDiet = goalEnergyBMR + (kcal/7);
+                energyWithActivityAndDiet = goalEnergyBMR + (kcal / 7);
             }
 
-            if(stringUserActivityLevel.equals("0")) {
-                energyWithActivityAndDiet= energyWithActivityAndDiet* 1.2;
-            }
-            else if(stringUserActivityLevel.equals("1")) {
-                energyWithActivityAndDiet= energyWithActivityAndDiet* 1.375; // slightly_active
-            }
-            else if(stringUserActivityLevel.equals("2")) {
-                energyWithActivityAndDiet= energyWithActivityAndDiet*1.55; // moderately_active
-            }
-            else if(stringUserActivityLevel.equals("3")) {
-                energyWithActivityAndDiet= energyWithActivityAndDiet*1.725; // active_lifestyle
-            }
-            else if(stringUserActivityLevel.equals("4")) {
-                energyWithActivityAndDiet = energyWithActivityAndDiet* 1.9; // very_active
+            if (stringUserActivityLevel.equals("0")) {
+                energyWithActivityAndDiet = energyWithActivityAndDiet * 1.2;
+            } else if (stringUserActivityLevel.equals("1")) {
+                energyWithActivityAndDiet = energyWithActivityAndDiet * 1.375; // slightly_active
+            } else if (stringUserActivityLevel.equals("2")) {
+                energyWithActivityAndDiet = energyWithActivityAndDiet * 1.55; // moderately_active
+            } else if (stringUserActivityLevel.equals("3")) {
+                energyWithActivityAndDiet = energyWithActivityAndDiet * 1.725; // active_lifestyle
+            } else if (stringUserActivityLevel.equals("4")) {
+                energyWithActivityAndDiet = energyWithActivityAndDiet * 1.9; // very_active
             }
             energyWithActivityAndDiet = Math.round(energyWithActivityAndDiet);
 

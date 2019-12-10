@@ -504,8 +504,6 @@ public class FoodFragment extends Fragment {
 
     public void editFoodMainCategoryChanged(String selectedItemCategoryName) {
         if (!(selectedItemCategoryName.equals(selectedMainCategoryName))) {
-            Toast.makeText(getActivity(), "Changed main category to: " + selectedItemCategoryName, Toast.LENGTH_SHORT).show();
-
             DBAdapter db = new DBAdapter(getActivity());
             db.open();
             // Find ID of main category

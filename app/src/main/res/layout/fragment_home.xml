@@ -203,7 +203,8 @@
                         android:focusable="true"
                         android:foreground="?android:attr/selectableItemBackground"
                         android:src="@drawable/drinks_img"
-                        android:scaleType="fitXY"/>
+                        android:scaleType="fitXY"
+                        android:onClick="toCategoryFood"/>
 
                 </LinearLayout>
 
@@ -224,7 +225,8 @@
                         android:focusable="true"
                         android:foreground="?android:attr/selectableItemBackground"
                         android:src="@drawable/fruits_img"
-                        android:scaleType="fitXY"/>
+                        android:scaleType="fitXY"
+                        android:onClick="toCategoryFood"/>
 
                 </LinearLayout>
             </LinearLayout>
