@@ -13,12 +13,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.cardview.widget.CardView;
-import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.bumptech.glide.Glide;
-
-import java.util.ArrayList;
 
 class TipsAdapter extends RecyclerView.Adapter<TipsAdapter.ViewHolder> {
 

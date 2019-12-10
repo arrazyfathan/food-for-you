@@ -13,7 +13,7 @@ public class DBAdapter {
 
     //* 01 Variables ---------------------------------------- */
     private static final String databaseName = "foodforyou";
-    private static final int databaseVersion = 4;
+    private static final int databaseVersion = 6;
 
     /* 02 Database variables ------------------------------- */
     private final Context context;
@@ -261,6 +261,8 @@ public class DBAdapter {
 //        }
 //        return mCursor;
 //    }
+
+
     public Cursor select(String table, String[] fields) throws SQLException
     {
         Cursor mCursor = db.query(table, fields, null, null, null, null, null, null);
@@ -307,23 +309,40 @@ public class DBAdapter {
 
     //Update
     public boolean update(String table, String primaryKey, long rowId, String field, String value) {
+        // Remove first and last value of value
         value = value.substring(1, value.length()-1); // removes ' after running quote smart
+
         ContentValues args = new ContentValues();
         args.put(field, value);
         return db.update(table, args, primaryKey + "=" + rowId, null) > 0;
     }
-
     public boolean update(String table, String primaryKey, long rowId, String field, double value) {
         ContentValues args = new ContentValues();
         args.put(field, value);
         return db.update(table, args, primaryKey + "=" + rowId, null) > 0;
     }
-
     public boolean update(String table, String primaryKey, long rowId, String field, int value) {
         ContentValues args = new ContentValues();
         args.put(field, value);
         return db.update(table, args, primaryKey + "=" + rowId, null) > 0;
     }
+    public boolean update(String table, String primaryKey, long rowID, String fields[], String values[]){
+
+
+        ContentValues args = new ContentValues();
+        int arraySize = fields.length;
+        for(int x=0;x<arraySize;x++){
+            // Remove first and last value of value
+            values[x] = values[x].substring(1, values[x].length()-1); // removes ' after running quote smart
+
+            // Put
+            args.put(fields[x], values[x]);
+        }
+
+        return db.update(table, args, primaryKey + "=" + rowID, null) > 0;
+    }
+
+
 
     public int delete(String table, String primaryKey, long rowID) throws SQLException {
         return db.delete(table, primaryKey + "=" + rowID, null);
