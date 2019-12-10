@@ -19,6 +19,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -172,6 +173,15 @@ public class FoodFragment extends Fragment {
 
         FoodCursorAdapter continentsAdapter = new FoodCursorAdapter(getActivity(), listCursor);
         lvItems.setAdapter(continentsAdapter);
+
+        // OnClick
+        lvItems.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+                listItemClicked(arg2);
+            }
+        });
+
         // Close db
         db.close();
 
@@ -179,6 +189,125 @@ public class FoodFragment extends Fragment {
 
     /*- List item clicked ------------------------------------------------------------ */
     public void listItemClicked(int listItemIDClicked) {
+        /* Change layout */
+        int id = R.layout.fragment_food_view;
+        setMainView(id);
+
+        // Show edt button
+        menuItemEdit.setVisible(true);
+        menuItemDelete.setVisible(true);
+
+        // Move cursor to ID clicked
+        listCursor.moveToPosition(listItemIDClicked);
+
+        // Get ID and name from cursor
+        // Set current name and id
+        currentId = listCursor.getString(0);
+        currentName = listCursor.getString(1);
+
+        // Change title
+        ((MainActivity)getActivity()).getSupportActionBar().setTitle(currentName);
+
+        /*  Get data from database */
+
+        // Database
+        DBAdapter db = new DBAdapter(getActivity());
+        db.open();
+
+        String fields[] = new String[] {
+                "_id",
+                "food_name",
+                "food_manufactor_name",
+                "food_description",
+                "food_serving_size",
+                "food_serving_mesurment",
+                "food_serving_name_number",
+                "food_serving_name_word",
+                "food_energy",
+                "food_proteins",
+                "food_carbohydrates",
+                "food_fat",
+                "food_energy_calculated",
+                "food_proteins_calculated",
+                "food_carbohydrates_calculated",
+                "food_fat_calculated",
+                "food_user_id",
+                "food_barcode",
+                "food_category_id",
+                "food_image_a",
+                "food_image_b",
+                "food_image_c"
+        };
+        String currentIdSQL = db.quoteSmart(currentId);
+        Cursor foodCursor = db.select("food", fields, "_id", currentIdSQL);
+
+        // Convert cursor to strings
+        String stringId = foodCursor.getString(0);
+        String stringName = foodCursor.getString(1);
+        String stringManufactorName = foodCursor.getString(2);
+        String stringDescription = foodCursor.getString(3);
+        String stringServingSize = foodCursor.getString(4);
+        String stringServingMesurment = foodCursor.getString(5);
+        String stringServingNameNumber = foodCursor.getString(6);
+        String stringServingNameWord = foodCursor.getString(7);
+        String stringEnergy = foodCursor.getString(8);
+        String stringProteins = foodCursor.getString(9);
+        String stringCarbohydrates = foodCursor.getString(10);
+        String stringFat = foodCursor.getString(11);
+        String stringEnergyCalculated = foodCursor.getString(12);
+        String stringProteinsCalculated = foodCursor.getString(13);
+        String stringCarbohydratesCalculated = foodCursor.getString(14);
+        String stringFatCalculated = foodCursor.getString(15);
+        String stringUserId = foodCursor.getString(16);
+        String stringBarcode = foodCursor.getString(17);
+        String stringCategoryId = foodCursor.getString(18);
+        String stringImageA = foodCursor.getString(19);
+        String stringImageB = foodCursor.getString(20);
+        String stringImageC = foodCursor.getString(21);
+
+
+        // Headline
+        TextView textViewViewFoodName = (TextView) getView().findViewById(R.id.textViewViewFoodName);
+        textViewViewFoodName.setText(stringName);
+
+        // Sub headline
+        TextView textViewViewFoodManufactorName = (TextView) getView().findViewById(R.id.textViewViewFoodManufactorName);
+        textViewViewFoodManufactorName.setText(stringManufactorName);
+
+        // Image
+
+        // Calculation line
+        TextView textViewViewFoodAbout = (TextView) getView().findViewById(R.id.textViewViewFoodAbout);
+        String foodAbout = stringServingSize + " " + stringServingMesurment + " = " +
+                stringServingNameNumber  + " " + stringServingNameWord + ".";
+        textViewViewFoodAbout.setText(foodAbout);
+
+        // Description
+        TextView textViewViewFoodDescription = (TextView) getView().findViewById(R.id.textViewViewFoodDescription);
+        textViewViewFoodDescription.setText(stringDescription);
+
+        // Calories table
+        TextView textViewViewFoodEnergyPerHundred = (TextView) getView().findViewById(R.id.textViewViewFoodEnergyPerHundred);
+        TextView textViewViewFoodProteinsPerHundred = (TextView) getView().findViewById(R.id.textViewViewFoodProteinsPerHundred);
+        TextView textViewViewFoodCarbsPerHundred = (TextView) getView().findViewById(R.id.textViewViewFoodCarbsPerHundred);
+        TextView textViewViewFoodFatPerHundred = (TextView) getView().findViewById(R.id.textViewViewFoodFatPerHundred);
+
+        TextView textViewViewFoodEnergyPerN = (TextView) getView().findViewById(R.id.textViewViewFoodEnergyPerN);
+        TextView textViewViewFoodProteinsPerN = (TextView) getView().findViewById(R.id.textViewViewFoodProteinsPerN);
+        TextView textViewViewFoodCarbsPerN = (TextView) getView().findViewById(R.id.textViewViewFoodCarbsPerN);
+        TextView textViewViewFoodFatPerN = (TextView) getView().findViewById(R.id.textViewViewFoodFatPerN);
+
+        textViewViewFoodEnergyPerHundred.setText(stringEnergy);
+        textViewViewFoodProteinsPerHundred.setText(stringProteins);
+        textViewViewFoodCarbsPerHundred.setText(stringCarbohydrates);
+        textViewViewFoodFatPerHundred.setText(stringFat);
+
+        textViewViewFoodEnergyPerN.setText(stringEnergyCalculated);
+        textViewViewFoodProteinsPerN.setText(stringProteinsCalculated);
+        textViewViewFoodCarbsPerN.setText(stringCarbohydratesCalculated);
+        textViewViewFoodFatPerN.setText(stringFatCalculated);
+
+        db.close();
 
     }
 
