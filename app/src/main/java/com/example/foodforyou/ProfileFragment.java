@@ -27,8 +27,6 @@ import javax.annotation.Nullable;
  */
 public class ProfileFragment extends Fragment {
     public static ImageView imageView;
-    private String cekGender;
-
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -41,11 +39,7 @@ public class ProfileFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView =inflater.inflate(R.layout.fragment_profile, container, false);
         imageView = rootView.findViewById(R.id.gender_icon);
-        if(cekGender == "male"){
-            ProfileFragment.imageView.setImageResource(R.drawable.ic_male);
-        }else{
-            ProfileFragment.imageView.setImageResource(R.drawable.ic_female);
-        }
+
         return rootView;
 //        return inflater.inflate(R.layout.fragment_profile, container, false);
     }
@@ -105,8 +99,6 @@ public class ProfileFragment extends Fragment {
         String gender = cursorUser.getString(2);
         String height = cursorUser.getString(3);
 
-        cekGender = gender;
-
         // TextView email
         TextView textViewEmail = getActivity().findViewById(R.id.user_name);
         textViewEmail.setText(email);
@@ -117,6 +109,12 @@ public class ProfileFragment extends Fragment {
         //TextView gender
         TextView textViewGender = getActivity().findViewById(R.id.user_gender);
         textViewGender.setText(gender);
+
+        if(gender.equals("male")){
+            ProfileFragment.imageView.setImageResource(R.drawable.ic_male);
+        }else{
+            ProfileFragment.imageView.setImageResource(R.drawable.ic_female);
+        }
 
         //TextView Height
         TextView textViewHeight = getActivity().findViewById(R.id.user_height);
