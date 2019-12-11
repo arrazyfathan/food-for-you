@@ -106,7 +106,7 @@
     <string name="edit_food">Edit Food</string>
     <string name="delete_food">Delete Food</string>
     <string name="blank" />
-    <string name="logout">Logout</string>
+    <string name="logout">Delete Account</string>
     <string name="food_size">Size</string>
     <string name="food_mesurment">mesurment</string>
     <string name="food_number">Number</string>

@@ -24,6 +24,7 @@ import okhttp3.OkHttpClient;
 
 public class MainActivity extends AppCompatActivity
         implements BottomNavigationView.OnNavigationItemSelectedListener,
+        AddFoodToDiaryFragment.OnFragmentInteractionListener,
         CategoriesFragment.OnFragmentInteractionListener,
         FoodFragment.OnFragmentInteractionListener,
         GoalFragment.OnFragmentInteractionListener,

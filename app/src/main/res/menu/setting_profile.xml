@@ -9,10 +9,6 @@
             android:icon="@drawable/ic_logout"
             android:title="@string/edit_profile"/>
 
-        <item android:id="@+id/action_editTarget"
-            android:icon="@drawable/ic_logout"
-            android:title="@string/edit_target"/>
-
         <item android:id="@+id/action_logout"
             android:icon="@drawable/ic_logout"
             android:title="@string/logout"/>
