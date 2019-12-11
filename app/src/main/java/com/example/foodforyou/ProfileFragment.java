@@ -26,6 +26,8 @@ import javax.annotation.Nullable;
  * A simple {@link Fragment} subclass.
  */
 public class ProfileFragment extends Fragment {
+    public static ImageView imageView;
+    private String cekGender;
 
 
     public ProfileFragment() {
@@ -37,7 +39,15 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false);
+        View rootView =inflater.inflate(R.layout.fragment_profile, container, false);
+        imageView = rootView.findViewById(R.id.gender_icon);
+        if(cekGender == "male"){
+            ProfileFragment.imageView.setImageResource(R.drawable.ic_male);
+        }else{
+            ProfileFragment.imageView.setImageResource(R.drawable.ic_female);
+        }
+        return rootView;
+//        return inflater.inflate(R.layout.fragment_profile, container, false);
     }
 
     public void onResume() {
@@ -94,6 +104,8 @@ public class ProfileFragment extends Fragment {
         String date = cursorUser.getString(1);
         String gender = cursorUser.getString(2);
         String height = cursorUser.getString(3);
+
+        cekGender = gender;
 
         // TextView email
         TextView textViewEmail = getActivity().findViewById(R.id.user_name);
