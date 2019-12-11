@@ -117,6 +117,8 @@
     <string name="food_fat">Fat</string>
     <string name="food_size_pcs">size</string>
     <string name="food_portion">Portion size</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="edit_target">Edit Target</string>
 
     <string-array name="array_months">
         <item>January</item>

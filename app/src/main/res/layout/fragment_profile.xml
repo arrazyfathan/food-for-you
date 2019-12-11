@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorBackground"
+    android:background="@color/grey_color"
     android:orientation="vertical"
     tools:context=".ProfileFragment">
 
@@ -381,103 +381,52 @@
                     </LinearLayout>
 
                 </LinearLayout>
-            </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="16dp"
+            </LinearLayout>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/bg_shapesubprofile"
-                android:orientation="vertical">
+                android:text="See Goal"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/button_style"
+                android:onClick="toSeeGoal"
+                android:textColor="@color/colorWhite"/>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:foreground="?android:attr/selectableItemBackground"
-                    android:onClick="toSeeGoal">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp"
-                        android:layout_marginBottom="12dp"
-                        android:layout_marginStart="16dp"
-                        android:layout_gravity="center_vertical"
-                        android:fontFamily="@font/arialregular"
-                        android:text="See Goals"
-                        android:textSize="14sp"
-                        android:textColor="@color/titleColor"/>
-                </LinearLayout>
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_marginStart="16dp"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:layout_marginEnd="16dp"-->
+<!--                android:layout_marginBottom="10dp"-->
+<!--                android:background="@drawable/bg_shapesubprofile"-->
+<!--                android:orientation="vertical">-->
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:foreground="?android:attr/selectableItemBackground">
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="horizontal"-->
+<!--                    android:clickable="true"-->
+<!--                    android:focusable="true"-->
+<!--                    android:foreground="?android:attr/selectableItemBackground"-->
+<!--                    android:onClick="toSeeGoal">-->
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp"
-                        android:layout_marginBottom="12dp"
-                        android:layout_marginStart="16dp"
-                        android:layout_gravity="center_vertical"
-                        android:fontFamily="@font/arialregular"
-                        android:text="Edit Profile"
-                        android:textSize="14sp"
-                        android:textColor="@color/titleColor"/>
-                </LinearLayout>
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="12dp"-->
+<!--                        android:layout_marginBottom="12dp"-->
+<!--                        android:layout_marginStart="16dp"-->
+<!--                        android:layout_gravity="center_vertical"-->
+<!--                        android:fontFamily="@font/arialregular"-->
+<!--                        android:text="See Goals"-->
+<!--                        android:textSize="14sp"-->
+<!--                        android:textColor="@color/titleColor"/>-->
+<!--                </LinearLayout>-->
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:foreground="?android:attr/selectableItemBackground"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:fontFamily="@font/arialregular"
-                        android:layout_marginTop="12dp"
-                        android:layout_marginBottom="12dp"
-                        android:layout_marginStart="16dp"
-                        android:text="Edit Target"
-                        android:textSize="14sp"
-                        android:textColor="@color/titleColor"/>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:foreground="?android:attr/selectableItemBackground">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:fontFamily="@font/arialregular"
-                        android:layout_marginTop="12dp"
-                        android:layout_marginBottom="12dp"
-                        android:layout_marginStart="16dp"
-                        android:text="Logout"
-                        android:textSize="14sp"
-                        android:textColor="@color/titleColor"/>
-                </LinearLayout>
-            </LinearLayout>
+<!--            </LinearLayout>-->
 
             <!--            <LinearLayout-->
             <!--                android:layout_width="match_parent"-->
