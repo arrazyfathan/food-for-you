@@ -293,6 +293,7 @@ public class CategoriesFragment extends Fragment {
             parentID = "0";
         } else {
             // Find we want to find parent ID from the text
+           deleteCategory(); // Find we want to find parent ID from the text
             String stringSpinnerCategoryParentSQL = db.quoteSmart(stringSpinnerCategoryParent);
             String fields[] = new String[]{
                     "_id",

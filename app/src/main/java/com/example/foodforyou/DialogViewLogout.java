@@ -18,7 +18,6 @@ public class DialogViewLogout extends AppCompatDialogFragment {
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-
                     }
                 }).setNegativeButton("No", new DialogInterface.OnClickListener() {
             @Override
@@ -28,4 +27,7 @@ public class DialogViewLogout extends AppCompatDialogFragment {
         });
         return builder.create();
     }
+
+
 }
+
