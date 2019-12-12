@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -22,6 +23,7 @@ import android.widget.Toast;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 
 public class AddFoodToDiaryFragment extends Fragment {
@@ -172,15 +174,15 @@ public class AddFoodToDiaryFragment extends Fragment {
             db.open();
 
             // Get categories
-            String fields[] = new String[]{
+            String fields[] = new String[] {
                     "_id",
                     "food_name",
                     "food_manufactor_name",
                     "food_description",
-                    "food_serving_size",
-                    "food_serving_mesurment",
-                    "food_serving_name_number",
-                    "food_serving_name_word",
+                    "food_serving_size_gram",
+                    "food_serving_size_gram_mesurment",
+                    "food_serving_size_pcs",
+                    "food_serving_size_pcs_mesurment",
                     "food_energy_calculated"
             };
             listCursorFood = db.select("food", fields, "food_category_id", categoryId, "food_name", "ASC");
@@ -218,7 +220,7 @@ public class AddFoodToDiaryFragment extends Fragment {
         listCursorFood.moveToPosition(listItemFoodIndexClicked);
 
         currentFoodId = listCursorFood.getString(0);
-        currentFoodName = listCursorFood.getString(1);
+        currentFoodName = listCursorFood.getString( 1);
 
         // Change title
         ((MainActivity) getActivity()).getSupportActionBar().setTitle("Add " + currentFoodName);
@@ -228,15 +230,15 @@ public class AddFoodToDiaryFragment extends Fragment {
         // Database
         DBAdapter db = new DBAdapter(getActivity());
         db.open();
-        String fields[] = new String[]{
+        String fields[] = new String[] {
                 "_id",
                 "food_name",
                 "food_manufactor_name",
                 "food_description",
-                "food_serving_size",
-                "food_serving_mesurment",
-                "food_serving_name_number",
-                "food_serving_name_word",
+                "food_serving_size_gram",
+                "food_serving_size_gram_mesurment",
+                "food_serving_size_pcs",
+                "food_serving_size_pcs_mesurment",
                 "food_energy",
                 "food_proteins",
                 "food_carbohydrates",
@@ -344,6 +346,7 @@ public class AddFoodToDiaryFragment extends Fragment {
 
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
             }
+
             public void onTextChanged(CharSequence s, int start, int before, int count) {
             }
         });
@@ -351,8 +354,8 @@ public class AddFoodToDiaryFragment extends Fragment {
         editTextPortionSizePcs.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                if(hasFocus){
-                }else {
+                if (hasFocus) {
+                } else {
                     String lock = "portionSizePcs";
                     releaseLock(lock);
                 }
@@ -366,8 +369,10 @@ public class AddFoodToDiaryFragment extends Fragment {
                     editTextPortionSizeGramOnChange();
                 }
             }
+
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
             }
+
             public void onTextChanged(CharSequence s, int start, int before, int count) {
             }
         });
@@ -375,8 +380,8 @@ public class AddFoodToDiaryFragment extends Fragment {
         editTextPortionSizeGram.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
-                if(hasFocus){
-                }else {
+                if (hasFocus) {
+                } else {
                     String lock = "portionSizeGram";
                     releaseLock(lock);
                 }
@@ -397,11 +402,10 @@ public class AddFoodToDiaryFragment extends Fragment {
     }
 
 
-    private void releaseLock(String lock){
-        if(lock.equals("portionSizeGram")){
+    private void releaseLock(String lock) {
+        if (lock.equals("portionSizeGram")) {
             lockPortionSizeByGram = false;
-        }
-        else {
+        } else {
             lockPortionSizeByPcs = false;
         }
     }
@@ -431,7 +435,7 @@ public class AddFoodToDiaryFragment extends Fragment {
             db.open();
 
             String fields[] = new String[]{
-                    "food_serving_size"
+                    "food_serving_size_gram"
             };
             String currentIdSQL = db.quoteSmart(currentFoodId);
             Cursor foodCursor = db.select("food", fields, "_id", currentIdSQL);
@@ -461,6 +465,8 @@ public class AddFoodToDiaryFragment extends Fragment {
 
     public void editTextPortionSizeGramOnChange() {
         if(!(lockPortionSizeByPcs)) {
+
+            // Lock
             lockPortionSizeByGram = true;
 
             // Get value of gram
@@ -472,32 +478,33 @@ public class AddFoodToDiaryFragment extends Fragment {
             } catch (NumberFormatException nfe) {
                 System.out.println("Could not parse " + nfe);
             }
+
             // Database
             DBAdapter db = new DBAdapter(getActivity());
             db.open();
 
             String fields[] = new String[]{
-                    "food_serving_size",
-                    "food_serving_name_number"
+                    "food_serving_size_gram"
             };
             String currentIdSQL = db.quoteSmart(currentFoodId);
             Cursor foodCursor = db.select("food", fields, "_id", currentIdSQL);
 
             // Convert cursor to strings
-            String stringServingSize = foodCursor.getString(0);
-            String stringServingNameNumber = foodCursor.getString(1);
+            String stringServingSizeGram = foodCursor.getString(0);
             db.close();
 
+
             // Convert cursor to double
-            double doubleServingSize = 0;
+            double doubleServingSizeGram = 0;
             try {
-                doubleServingSize = Double.parseDouble(stringServingSize);
+                doubleServingSizeGram = Double.parseDouble(stringServingSizeGram);
             } catch (NumberFormatException nfe) {
                 System.out.println("Could not parse " + nfe);
             }
 
+
             // Calculate pcs
-            double doublePortionSizePcs = Math.round(doublePortionSizeGram / doubleServingSize);
+            double doublePortionSizePcs = Math.round(doublePortionSizeGram / doubleServingSizeGram);
 
 
             // Update
@@ -509,8 +516,177 @@ public class AddFoodToDiaryFragment extends Fragment {
     }
 
     public void addFoodToDiary() {
+        int error = 0;
 
+        // Database
+        DBAdapter db = new DBAdapter(getActivity());
+        db.open();
+
+        String fields[] = new String[] {
+                "_id",
+                "food_name",
+                "food_manufactor_name",
+                "food_description",
+                "food_serving_size_gram",
+                "food_serving_size_gram_mesurment",
+                "food_serving_size_pcs",
+                "food_serving_size_pcs_mesurment",
+                "food_energy",
+                "food_proteins",
+                "food_carbohydrates",
+                "food_fat",
+                "food_energy_calculated",
+                "food_proteins_calculated",
+                "food_carbohydrates_calculated",
+                "food_fat_calculated",
+                "food_user_id",
+                "food_barcode",
+                "food_category_id",
+                "food_image_a",
+                "food_image_b",
+                "food_image_c"
+        };
+        String currentIdSQL = db.quoteSmart(currentFoodId);
+        Cursor foodCursor = db.select("food", fields, "_id", currentIdSQL);
+
+        // Convert cursor to strings
+        String stringId = foodCursor.getString(0);
+        String stringName = foodCursor.getString(1);
+        String stringManufactorName = foodCursor.getString(2);
+        String stringDescription = foodCursor.getString(3);
+        String stringServingSizeGram = foodCursor.getString(4);
+        String stringServingSizeGramMesurment = foodCursor.getString(5);
+        String stringServingSizePcs = foodCursor.getString(6);
+        String stringServingSizePcsMesurment = foodCursor.getString(7);
+        String stringEnergy = foodCursor.getString(8);
+        String stringProteins = foodCursor.getString(9);
+        String stringCarbohydrates = foodCursor.getString(10);
+        String stringFat = foodCursor.getString(11);
+        String stringEnergyCalculated = foodCursor.getString(12);
+        String stringProteinsCalculated = foodCursor.getString(13);
+        String stringCarbohydratesCalculated = foodCursor.getString(14);
+        String stringFatCalculated = foodCursor.getString(15);
+        String stringUserId = foodCursor.getString(16);
+        String stringBarcode = foodCursor.getString(17);
+        String stringCategoryId = foodCursor.getString(18);
+        String stringImageA = foodCursor.getString(19);
+        String stringImageB = foodCursor.getString(20);
+        String stringImageC = foodCursor.getString(21);
+
+        // Get gram
+        TextInputEditText editTextPortionSizeGram = getActivity().findViewById(R.id.editTextPortionSizeGram);
+        String fdServingSizeGram = editTextPortionSizeGram.getText().toString();
+        String fdServingSizeGramSQL = db.quoteSmart(fdServingSizeGram);
+        double doublePortionSizeGram = 0;
+        try{
+            doublePortionSizeGram = Double.parseDouble(fdServingSizeGram);
+        }
+        catch (NumberFormatException nfe){
+            error = 1;
+            Toast.makeText(getActivity(), "Please fill inn a number in gram", Toast.LENGTH_SHORT).show();
+        }
+        if(fdServingSizeGram.equals("")){
+            error = 1;
+            Toast.makeText(getActivity(), "Gram cannot be empty", Toast.LENGTH_SHORT).show();
+        }
+
+        // Date
+        Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        int day = calendar.get(Calendar.DAY_OF_YEAR);
+        String stringFdDate = year + "-" + month + "-" + day;
+        String stringFdDateSQL = db.quoteSmart(stringFdDate);
+
+        // Meal number
+        String stringFdMealNumber = currentMealNumber;
+        String stringFdMealNumberSQL = db.quoteSmart(stringFdMealNumber);
+
+        // Food id
+        String stringFdFoodId = currentFoodId;
+        String StringFdFoodIdSQL = db.quoteSmart(stringFdFoodId);
+
+        // Serving size
+        String fdServingSizeGramMesurmentSQL = db.quoteSmart(stringServingSizeGramMesurment);
+
+        // Serving size pcs
+        double doubleServingSizeGram = 0;
+        try {
+            doubleServingSizeGram = Double.parseDouble(stringServingSizeGram);
+        } catch (NumberFormatException nfe) {
+            System.out.println("Could not parse " + nfe);
+        }
+        double doublePortionSizePcs = Math.round(doublePortionSizeGram / doubleServingSizeGram);
+        String stringFdServingSizePcs = "" + doublePortionSizePcs;
+        String stringFdServingSizePcsSQL = db.quoteSmart(stringFdServingSizePcs);
+
+        // Serving size pcs mesurment
+        String stringFdServingSizePcsMesurmentSQL = db.quoteSmart(stringServingSizePcsMesurment);
+
+        double doubleEnergyPerHundred = Double.parseDouble(stringEnergy);
+
+        double doubleFdEnergyCalculated = Math.round((doublePortionSizeGram*doubleEnergyPerHundred)/100);
+        String stringFdEnergyCalcualted = "" + doubleFdEnergyCalculated;
+        String stringFdEnergyCalcualtedSQL = db.quoteSmart(stringFdEnergyCalcualted);
+
+        // Proteins calcualted
+        double doubleProteinsPerHundred = Double.parseDouble(stringProteins);
+
+        double doubleFdProteinsCalculated = Math.round((doublePortionSizeGram*doubleProteinsPerHundred)/100);
+        String stringFdProteinsCalcualted = "" + doubleFdProteinsCalculated;
+        String stringFdProteinsCalcualtedSQL = db.quoteSmart(stringFdProteinsCalcualted);
+
+
+        // Carbohydrates calcualted
+        double doubleCarbohydratesPerHundred = Double.parseDouble(stringCarbohydrates);
+
+        double doubleFdCarbohydratesCalculated = Math.round((doublePortionSizeGram*doubleCarbohydratesPerHundred)/100);
+        String stringFdCarbohydratesCalcualted = "" + doubleFdCarbohydratesCalculated;
+        String stringFdCarbohydratesCalcualtedSQL = db.quoteSmart(stringFdCarbohydratesCalcualted);
+
+        // Fat calcualted
+        double doubleFatPerHundred = Double.parseDouble(stringFat);
+
+        double doubleFdFatCalculated = Math.round((doublePortionSizeGram*doubleFatPerHundred)/100);
+        String stringFdFatCalcualted = "" + doubleFdFatCalculated;
+        String stringFdFatCalcualtedSQL = db.quoteSmart(stringFdFatCalcualted);
+
+        // Insert to SQL
+        if(error == 0){
+            String inpFields = "_id, fd_date, fd_meal_number, fd_food_id," +
+                    "fd_serving_size_gram, fd_serving_size_gram_mesurment," +
+                    " fd_serving_size_pcs, fd_serving_size_pcs_mesurment," +
+                    " fd_energy_calculated, fd_protein_calculated," +
+                    " fd_carbohydrates_calculated, fd_fat_calculated";
+
+            String inpValues = "NULL, " + stringFdDateSQL + ", " + stringFdMealNumberSQL + ", " + StringFdFoodIdSQL + ", " +
+                    fdServingSizeGramSQL + ", " + fdServingSizeGramMesurmentSQL + ", " +
+                    stringFdServingSizePcsSQL + ", " + stringFdServingSizePcsMesurmentSQL + ", " +
+                    stringFdEnergyCalcualtedSQL + ", " + stringFdProteinsCalcualtedSQL + ", " +
+                    stringFdCarbohydratesCalcualtedSQL + ", " + stringFdFatCalcualtedSQL;
+
+            db.insert("food_diary", inpFields, inpValues);
+
+            Toast.makeText(getActivity(), "Food diary updated", Toast.LENGTH_SHORT).show();
+
+
+            // Change fragment to HomeFragment
+            Fragment fragment = null;
+            Class fragmentClass = null;
+            fragmentClass = HomeFragment.class;
+            try {
+                fragment = (Fragment) fragmentClass.newInstance();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.main_frame, fragment).commit();
+        }
+        // Close db
+        db.close();
     }
+
 
 
     @Override
@@ -552,3 +728,4 @@ public class AddFoodToDiaryFragment extends Fragment {
         void onFragmentInteraction(Uri uri);
     }
 }
+

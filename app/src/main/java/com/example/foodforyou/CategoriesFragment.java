@@ -43,16 +43,13 @@ public class CategoriesFragment extends Fragment {
     private OnFragmentInteractionListener mListener;
 
     private View mainView;
-    Cursor categoriesCursor;
+    private Cursor listCursor;
 
     private MenuItem menuItemEdit;
     private MenuItem menuItemDelete;
 
     private String currentId;
     private String currenName;
-
-    private String currentCategoryId;
-    private String currentCategoryName;
 
 
     public CategoriesFragment() {
@@ -150,18 +147,18 @@ public class CategoriesFragment extends Fragment {
                 "category_name",
                 "category_parent_id"
         };
-        categoriesCursor = db.select("categories", fields, "category_parent_id", parentID);
+        listCursor = db.select("categories", fields, "category_parent_id", parentID, "category_name","ASC");
 
         // Createa a array
         ArrayList<String> values = new ArrayList<String>();
 
         // Convert categories to string
-        int categoriesCount = categoriesCursor.getCount();
+        int categoriesCount = listCursor.getCount();
         for (int x = 0; x < categoriesCount; x++) {
-            values.add(categoriesCursor.getString(categoriesCursor.getColumnIndex("category_name")));
+            values.add(listCursor.getString(listCursor.getColumnIndex("category_name")));
 
 
-            categoriesCursor.moveToNext();
+            listCursor.moveToNext();
         }
 
 
@@ -170,7 +167,7 @@ public class CategoriesFragment extends Fragment {
                 android.R.layout.simple_list_item_1, values);
 
         // Set Adapter
-        ListView lv = (ListView) getActivity().findViewById(R.id.listViewCategories);
+        ListView lv = getActivity().findViewById(R.id.listViewCategories);
         lv.setAdapter(adapter);
 
         // OnClick
@@ -199,21 +196,19 @@ public class CategoriesFragment extends Fragment {
     public void listItemClicked(int listItemIDClicked) {
 
         // Move cursor to ID clicked
-        categoriesCursor.moveToPosition(listItemIDClicked);
+        listCursor.moveToPosition(listItemIDClicked);
 
         // Get ID and name from cursor
-        String id = categoriesCursor.getString(0);
-        String name = categoriesCursor.getString(1);
-        String parentID = categoriesCursor.getString(2);
+        currentId = listCursor.getString(0);
+        currenName = listCursor.getString(1);
+        String parentID = listCursor.getString(2);
 
         // Change title
-        ((MainActivity) getActivity()).getSupportActionBar().setTitle(name);
+        ((MainActivity) getActivity()).getSupportActionBar().setTitle(currenName);
 
         // Move to sub class
-        populateList(id, name);
-
-        currenName = name;
-        currentId = id;
+        populateList(currentId, currenName);
+        showFoodInCategory(currentId, currenName, parentID);
     } // listItemClicked
 
 
@@ -248,7 +243,7 @@ public class CategoriesFragment extends Fragment {
         }
 
         // Populate spinner
-        Spinner spinnerParent = (Spinner) getActivity().findViewById(R.id.spinnerCategoryParent);
+        Spinner spinnerParent = getActivity().findViewById(R.id.spinnerCategoryParent);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
                 android.R.layout.simple_spinner_item, arraySpinnerCategories);
         spinnerParent.setAdapter(adapter);
@@ -256,7 +251,7 @@ public class CategoriesFragment extends Fragment {
 
 
         /* SubmitButton listener */
-        Button buttonHome = (Button) getActivity().findViewById(R.id.buttonCategoriesSubmit);
+        Button buttonHome = getActivity().findViewById(R.id.buttonCategoriesSubmit);
         buttonHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -277,7 +272,7 @@ public class CategoriesFragment extends Fragment {
         int error = 0;
 
         // Name
-        TextInputEditText editTextName = (TextInputEditText) getActivity().findViewById(R.id.editTextName);
+        TextInputEditText editTextName = getActivity().findViewById(R.id.editTextName);
         String stringName = editTextName.getText().toString();
         if (stringName.equals("")) {
             Toast.makeText(getActivity(), "Please fill in a name.", Toast.LENGTH_SHORT).show();
@@ -286,7 +281,7 @@ public class CategoriesFragment extends Fragment {
 
 
         // Parent
-        Spinner spinner = (Spinner) getActivity().findViewById(R.id.spinnerCategoryParent);
+        Spinner spinner = getActivity().findViewById(R.id.spinnerCategoryParent);
         String stringSpinnerCategoryParent = spinner.getSelectedItem().toString();
         String parentID;
         if (stringSpinnerCategoryParent.equals("-")) {
@@ -375,7 +370,7 @@ public class CategoriesFragment extends Fragment {
             dbCursor.moveToNext();
         }
 
-        Spinner spinnerParent = (Spinner) getActivity().findViewById(R.id.spinnerCategoryParent);
+        Spinner spinnerParent = getActivity().findViewById(R.id.spinnerCategoryParent);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, arraySpinnerCategories);
         spinnerParent.setAdapter(adapter);
 
@@ -386,7 +381,7 @@ public class CategoriesFragment extends Fragment {
 
 
         /* SubmitButton listener */
-        Button buttonHome = (Button) getActivity().findViewById(R.id.buttonCategoriesSubmit);
+        Button buttonHome = getActivity().findViewById(R.id.buttonCategoriesSubmit);
         buttonHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -520,6 +515,69 @@ public class CategoriesFragment extends Fragment {
         fragmentManager.beginTransaction().replace(R.id.main_frame, new CategoriesFragment(), CategoriesFragment.class.getName()).commit();
 
     }
+
+    public void showFoodInCategory(String categoryId, String categoryName, String categoryParentID){
+        if(!(categoryParentID.equals("0"))) {
+
+            /* Change layout */
+            int id = R.layout.fragment_food;
+            setMainView(id);
+
+            /* Database */
+            DBAdapter db = new DBAdapter(getActivity());
+            db.open();
+
+            // Get categories
+            String fields[] = new String[] {
+                    "_id",
+                    "food_name",
+                    "food_manufactor_name",
+                    "food_description",
+                    "food_serving_size_gram",
+                    "food_serving_size_gram_mesurment",
+                    "food_serving_size_pcs",
+                    "food_serving_size_pcs_mesurment",
+                    "food_energy_calculated"
+            };
+            listCursor = db.select("food", fields, "food_category_id", categoryId, "food_name", "ASC");
+
+            // Try cursor
+            int size = listCursor.getCount();
+            for(int x=0;x<size;x++){
+                Toast.makeText(getActivity(), "Test: " + listCursor.getString(0), Toast.LENGTH_SHORT).show();
+                listCursor.moveToNext();
+            }
+
+            // Find ListView to populate
+            ListView lvItems = getActivity().findViewById(R.id.listViewFood);
+
+            // Setup cursor adapter using cursor from last step
+            FoodCursorAdapter continentsAdapter = new FoodCursorAdapter(getActivity(), listCursor);
+
+            // Attach cursor adapter to the ListView
+            lvItems.setAdapter(continentsAdapter); // uses ContinensCursorAdapter
+
+
+            // OnClick
+            lvItems.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+                    foodListItemClicked(arg2);
+                }
+            });
+
+
+            // Close db
+            db.close();
+
+        } //categoryParentID.equals
+    } // showFoodInCategory
+
+    /*- Food list item clicked ------------------------------------------------------------ */
+    private void foodListItemClicked(int intFoodListItemIndex){
+
+    }
+
 
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {

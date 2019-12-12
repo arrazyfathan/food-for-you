@@ -13,7 +13,7 @@ public class DBAdapter {
 
     //* 01 Variables ---------------------------------------- */
     private static final String databaseName = "foodforyou";
-    private static final int databaseVersion = 8;
+    private static final int databaseVersion = 9;
 
     /* 02 Database variables ------------------------------- */
     private final Context context;
@@ -89,18 +89,20 @@ public class DBAdapter {
 
 
             try {
-                db.execSQL("CREATE TABLE IF NOT EXISTS food_diary( " +
-                        " _id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                        " fd_id INTEGER , " +
-                        " fd_date DATE, " +
-                        " fs_meal_number INT, " +
-                        " fd_food_id INT, " +
-                        " fd_serving_size DOUBLE," +
-                        " fd_serving_mesurment VARCHAR, " +
+                db.execSQL("CREATE TABLE IF NOT EXISTS food_diary (" +
+                        " _id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                        " fd_id INTEGER," +
+                        " fd_date DATE," +
+                        " fd_meal_number INT," +
+                        " fd_food_id INT," +
+                        " fd_serving_size_gram DOUBLE," +
+                        " fd_serving_size_gram_mesurment VARCHAR," +
+                        " fd_serving_size_pcs DOUBLE," +
+                        " fd_serving_size_pcs_mesurment VARCHAR," +
                         " fd_energy_calculated DOUBLE," +
-                        " fd_protein_caculated DOUBLE," +
-                        " fd_carbohydrates_calculated DOUBLE, " +
-                        " fd_fat_calculated INT, " +
+                        " fd_protein_calculated DOUBLE," +
+                        " fd_carbohydrates_calculated DOUBLE," +
+                        " fd_fat_calculated DOUBLE," +
                         " fd_fat_meal_id INT);");
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -128,11 +130,12 @@ public class DBAdapter {
                         " food_id INTEGER, " +
                         " food_name VARCHAR," +
                         " food_manufactor_name VARCHAR," +
+                        " food_store VARCHAR," +
                         " food_description VARCHAR," +
-                        " food_serving_size DOUBLE," +
-                        " food_serving_mesurment VARCHAR," +
-                        " food_serving_name_number DOUBLE," +
-                        " food_serving_name_word VARCHAR," +
+                        " food_serving_size_gram DOUBLE," +
+                        " food_serving_size_gram_mesurment VARCHAR," +
+                        " food_serving_size_pcs DOUBLE," +
+                        " food_serving_size_pcs_mesurment VARCHAR," +
                         " food_energy DOUBLE," +
                         " food_proteins DOUBLE," +
                         " food_carbohydrates DOUBLE," +
@@ -149,6 +152,7 @@ public class DBAdapter {
                         " food_image_b VARCHAR," +
                         " food_image_c VARCHAR," +
                         " food_last_used DATE," +
+                        " food_language VARCHAR," +
                         " food_notes VARCHAR);");
 
             } catch (SQLException e) {

@@ -126,15 +126,15 @@ public class FoodFragment extends Fragment {
         db.open();
 
         //Get categories
-        String fields[] = new String[]{
+        String fields[] = new String[] {
                 "_id",
                 "food_name",
                 "food_manufactor_name",
                 "food_description",
-                "food_serving_size",
-                "food_serving_mesurment",
-                "food_serving_name_number",
-                "food_serving_name_word",
+                "food_serving_size_gram",
+                "food_serving_size_gram_mesurment",
+                "food_serving_size_pcs",
+                "food_serving_size_pcs_mesurment",
                 "food_energy_calculated"
         };
         listCursor = db.select("food", fields, "", "", "food_name", "ASC");
@@ -175,15 +175,15 @@ public class FoodFragment extends Fragment {
         DBAdapter db = new DBAdapter(getActivity());
         db.open();
 
-        String fields[] = new String[]{
+        String fields[] = new String[] {
                 "_id",
                 "food_name",
                 "food_manufactor_name",
                 "food_description",
-                "food_serving_size",
-                "food_serving_mesurment",
-                "food_serving_name_number",
-                "food_serving_name_word",
+                "food_serving_size_gram",
+                "food_serving_size_gram_mesurment",
+                "food_serving_size_pcs",
+                "food_serving_size_pcs_mesurment",
                 "food_energy",
                 "food_proteins",
                 "food_carbohydrates",
@@ -291,15 +291,15 @@ public class FoodFragment extends Fragment {
         db.open();
 
 
-        String fields[] = new String[]{
+        String fields[] = new String[] {
                 "_id",
                 "food_name",
                 "food_manufactor_name",
                 "food_description",
-                "food_serving_size",
-                "food_serving_mesurment",
-                "food_serving_name_number",
-                "food_serving_name_word",
+                "food_serving_size_gram",
+                "food_serving_size_gram_mesurment",
+                "food_serving_size_pcs",
+                "food_serving_size_pcs_mesurment",
                 "food_energy",
                 "food_proteins",
                 "food_carbohydrates",
@@ -735,14 +735,14 @@ public class FoodFragment extends Fragment {
             String stringfatCalculatedSQL = db.quoteSmart(stringfatCalculated);
 
 
-            String fields[] = new String[]{
+            String fields[] = new String[] {
                     "food_name",
                     "food_manufactor_name",
                     "food_description",
-                    "food_serving_size",
-                    "food_serving_mesurment",
-                    "food_serving_name_number",
-                    "food_serving_name_word",
+                    "food_serving_size_gram",
+                    "food_serving_size_gram_mesurment",
+                    "food_serving_size_pcs",
+                    "food_serving_size_pcs_mesurment",
                     "food_energy",
                     "food_proteins",
                     "food_carbohydrates",
@@ -1084,10 +1084,10 @@ public class FoodFragment extends Fragment {
                             "food_name, " +
                             "food_manufactor_name, " +
                             "food_description, " +
-                            "food_serving_size, " +
-                            "food_serving_mesurment, " +
-                            "food_serving_name_number, " +
-                            "food_serving_name_word, " +
+                            "food_serving_size_gram, " +
+                            "food_serving_size_gram_mesurment, " +
+                            "food_serving_size_pcs, " +
+                            "food_serving_size_pcs_mesurment, " +
                             "food_energy, " +
                             "food_proteins, " +
                             "food_carbohydrates, " +
