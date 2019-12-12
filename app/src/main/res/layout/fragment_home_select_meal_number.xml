@@ -62,33 +62,11 @@
             android:background="#cccccc"/>
 
         <TextView
-            android:id="@+id/textViewBeforeTraining"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:fontFamily="@font/arialregular"
-            android:textSize="18sp"
-            android:text="@string/before_training" />
-
-        <TextView
             android:id="@+id/textView3"
             android:layout_width="fill_parent"
             android:layout_height="1px"
             android:text=" "
             android:background="#cccccc"/>
-
-        <TextView
-            android:id="@+id/textViewAfterTraining"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:fontFamily="@font/arialregular"
-            android:textSize="18sp"
-            android:text="@string/after_training" />
 
         <TextView
             android:id="@+id/textView4"
@@ -133,14 +111,14 @@
             android:background="#cccccc"/>
 
         <TextView
-            android:id="@+id/textViewSupper"
+            android:id="@+id/textViewExercise"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_marginTop="8dp"
             android:fontFamily="@font/arialregular"
             android:textSize="18sp"
-            android:text="@string/supper" />
+            android:text="Excercise" />
 
     </LinearLayout>
 </ScrollView>
