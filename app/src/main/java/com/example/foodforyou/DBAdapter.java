@@ -8,12 +8,13 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+import android.widget.Toast;
 
 public class DBAdapter {
 
     //* 01 Variables ---------------------------------------- */
     private static final String databaseName = "foodforyou";
-    private static final int databaseVersion = 12;
+    private static final int databaseVersion = 13;
 
     /* 02 Database variables ------------------------------- */
     private final Context context;
@@ -178,6 +179,8 @@ public class DBAdapter {
 
         @Override
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+            // ! All tables that are going to be dropped need to be listed here
+
             db.execSQL("DROP TABLE IF EXISTS goal");
             db.execSQL("DROP TABLE IF EXISTS users");
             db.execSQL("DROP TABLE IF EXISTS food_diary_cal_eaten");
@@ -187,8 +190,9 @@ public class DBAdapter {
             db.execSQL("DROP TABLE IF EXISTS food");
             onCreate(db);
 
-            String TAG = "tag";
-            Log.w(TAG, "Upgrading database from version " + oldVersion + " to " + newVersion + ", which will destroy all old data");
+            String TAG = "Tag";
+            Log.w(TAG, "Upgrading database from version " + oldVersion + " to "
+                    + newVersion + ", which will destroy all old data");
         }
     }
 
@@ -232,17 +236,11 @@ public class DBAdapter {
 
         return value;
     }
-    public double quoteSmart(double value) {
-        return value;
-    }
-    public long quoteSmart(long value) {
-        return value;
-    }
-    public int quoteSmart(int value) {
-        return value;
-    }
+    public double quoteSmart(double value) { return value; }
+    public int quoteSmart(int value) { return value; }
+    public long quoteSmart(long value) { return value; }
 
-    //Insert Data
+    /* 08 Insert data ------------------------------------------------------------ */
     public void insert(String table, String fields, String values){
 
         try {
@@ -250,10 +248,11 @@ public class DBAdapter {
         }
         catch(SQLiteException e){
             System.out.println("Insert error: " + e.toString());
+            Toast.makeText(context, "Error: " +  e.toString(), Toast.LENGTH_LONG).show();
         }
     }
 
-    //Count data in table
+    /* 09 Count ------------------------------------------------------------------ */
     public int count(String table)
     {
         try {
@@ -292,6 +291,7 @@ public class DBAdapter {
     // Select All where (String)
     public Cursor select(String table, String[] fields, String[] whereClause, String[] whereCondition, String[] whereAndOr) throws SQLException
     {
+
         String where = "";
         int arraySize = whereClause.length;
         for(int x=0;x<arraySize;x++) {
@@ -302,7 +302,6 @@ public class DBAdapter {
                 where = where + " " + whereAndOr[x-1] + " " + whereClause[x] + "=" + whereCondition[x];
             }
         }
-        //Toast.makeText(context, where, Toast.LENGTH_SHORT).show();
 
         Cursor mCursor = db.query(table, fields, where, null, null, null, null, null);
         if (mCursor != null) {
@@ -336,8 +335,9 @@ public class DBAdapter {
         return mCursor;
     }
 
+
     public boolean update(String table, String primaryKey, long rowId, String field, String value) throws SQLException {
-        // Toast.makeText(context, "UPDATE " + table + " SET " + field + "=" + value + " WHERE " + primaryKey + "=" + rowId, Toast.LENGTH_SHORT).show();
+
 
         // Remove first and last value of value
         value = value.substring(1, value.length()-1); // removes apostrophe after running quote smart
@@ -368,7 +368,6 @@ public class DBAdapter {
             // Put
             args.put(fields[x], values[x]);
 
-            // Toast.makeText(context, fields[x].toString() + "=" + values[x].toString(), Toast.LENGTH_SHORT).show();
         }
 
         return db.update(table, args, primaryKey + "=" + rowID, null) > 0;

@@ -3,10 +3,12 @@ package com.example.foodforyou;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -37,8 +39,8 @@ public class HomeFragment extends Fragment {
     private View mainView;
     private Cursor listCursor;
 
-    private String currentId;
-    private String currentName;
+    //private String currentId;
+    //private String currentName;
 
     private MenuItem menuItemAddFood;
 
@@ -170,7 +172,6 @@ public class HomeFragment extends Fragment {
                 addFood(0); // 0 == Breakfast
             }
         });
-
         ImageView imageViewAddLunch = (ImageView)getActivity().findViewById(R.id.imageViewAddLunch);
         imageViewAddLunch.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -353,14 +354,27 @@ public class HomeFragment extends Fragment {
             // Table row: TextView Name
             TextView textViewName = new TextView(getActivity()); // Add textview
             textViewName.setText(foodName);
-            tr1.addView(textViewName);
+            textViewName.setTextSize(18);
+            textViewName.setTextColor(Color.DKGRAY);
+            textViewName.setGravity(Gravity.CENTER_VERTICAL);
+            TableRow.LayoutParams paramsName = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT, 1f);
+            paramsName.setMargins(4, 8, 0, 0); // Left, top, right, bottom
+            tr1.addView(textViewName, paramsName);
 
             // Table row: TextView Energy
             TextView textViewEnergy = new TextView(getActivity()); // Add textview
             textViewEnergy.setText(fdEnergyCalculated);
-            tr1.addView(textViewEnergy);
+            textViewEnergy.setTextSize(18);
+            textViewEnergy.setTextColor(Color.DKGRAY);
+            textViewEnergy.setGravity(Gravity.CENTER_VERTICAL);
+            TableRow.LayoutParams paramsEnergy = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT);
+            paramsEnergy.setMargins(0, 8, 10, 0); // Left, top, right, bottom
+            tr1.addView(textViewEnergy, paramsEnergy);
 
             // Table row: TextView subLine
+            TableRow.LayoutParams paramsSubLine = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT, 1f);
+            paramsSubLine.setMargins(4, 0, 0, 12); // Left, top, right, bottom
+
             TextView textViewSubLine = new TextView(getActivity()); // Add textview
             textViewSubLine.setText(subLine);
             tr2.addView(textViewSubLine);
@@ -507,9 +521,12 @@ public class HomeFragment extends Fragment {
             e.printStackTrace();
         }
 
+
         // Send variable
         Bundle bundle = new Bundle();
-        bundle.putString("mealNumber", "" + mealNumber); // Put anything what you want
+        bundle.putString("mealNumber", ""+mealNumber); // Put anything what you want
+        bundle.putString("currentFoodId", ""); // Put anything what you want
+        bundle.putString("action", ""); // Put anything what you want
         fragment.setArguments(bundle);
 
         //
@@ -527,6 +544,9 @@ public class HomeFragment extends Fragment {
         /* Change layout */
         int newViewID = R.layout.fragment_home_edit_or_delete;
         setMainView(newViewID);
+
+        ((FragmentActivity) getActivity()).setActionBarTitle("Edit Plan");
+
 
         /* Find information */
         // Select
@@ -1056,15 +1076,20 @@ public class HomeFragment extends Fragment {
         // Get goal
         String fieldsGoal[] = new String[]{
                 "_id",
-                "goal_energy_with_activity_and_diet"
+                "goal_energy_with_activity_and_diet",
+                "goal_bmi"
         };
         Cursor cursorGoal = db.select("goal", fieldsGoal);
         cursorGoal.moveToLast();
         String stringGoalEnergyWithActivityAndDiet = cursorGoal.getString(1);
+        String stringGoalBMI = cursorGoal.getString(2);
 
         // TextView goal
         TextView textViewBodyGoalWithActivity = getActivity().findViewById(R.id.jumlah_kalori);
         textViewBodyGoalWithActivity.setText(stringGoalEnergyWithActivityAndDiet);
+
+        TextView textViewBMI = getActivity().findViewById(R.id.bmi);
+        textViewBMI.setText(stringGoalBMI);
 
         // TextView Food
         TextView textViewBodyFood = getActivity().findViewById(R.id.dikonsumsi);

@@ -24,13 +24,6 @@ import okhttp3.OkHttpClient;
 
 public class MainActivity extends AppCompatActivity {
 
-    private String[] mTitleText;
-    private String[] mInfoText;
-    private int[] imageResource;
-    private String[] placeGuide;
-    private String[] mAuthor;
-    boolean doubleBackToExit =false;
-
     /*
     food for you
     Topik atau masalah yang ingin diselesaikankan pada aplikasi ini adalah permasalahan berat badan.

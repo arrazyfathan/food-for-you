@@ -3,6 +3,7 @@ package com.example.foodforyou;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.database.SQLException;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -30,15 +32,14 @@ import com.google.android.material.textfield.TextInputEditText;
  */
 public class FoodFragment extends Fragment {
 
+    /*- 01 Class Variables -------------------------------------------------------------- */
     private View mainView;
     private Cursor listCursor;
-
 
     private MenuItem menuItemEdit;
     private MenuItem menuItemDelete;
 
-
-    private String currentId;
+    private String currentId = "";
     private String currentName;
 
 
@@ -71,9 +72,24 @@ public class FoodFragment extends Fragment {
 
         ((FragmentActivity) getActivity()).getSupportActionBar().setTitle("Food List");
 
-        populateListFood();
+        //populateListFood();
 
         setHasOptionsMenu(true);
+
+        /* Get data from fragment */
+        Bundle bundle = this.getArguments();
+        if(bundle != null){
+            currentId = bundle.getString("currentFoodId");
+
+            // Need to run to get edit and delete buttons: onCreateOptionsMenu();
+        }
+        if(currentId.equals("")) {
+            // Populate the list of categories
+            populateListFood();
+        }
+        else{
+            preListItemClickedReadyCursor();
+        }
     } // onActivityCreated
 
     @Override
@@ -108,27 +124,26 @@ public class FoodFragment extends Fragment {
         int id = menuItem.getItemId();
         if (id == R.id.menu_action_food_add) {
             addFood();
-            setHasOptionsMenu(false);
         }
         if (id == R.id.menu_action_food_edit) {
             editFood();
-            setHasOptionsMenu(false);
 
         }
         if (id == R.id.menu_action_food_delete) {
             deleteFood();
-            setHasOptionsMenu(false);
         }
         return super.onOptionsItemSelected(menuItem);
     }
 
-    public void populateListFood() {
+
+    /*- populate List -------------------------------------------------------------- */
+    public void populateListFood(){
 
         /* Database */
         DBAdapter db = new DBAdapter(getActivity());
         db.open();
 
-        //Get categories
+        // Get categories
         String fields[] = new String[] {
                 "_id",
                 "food_name",
@@ -140,13 +155,29 @@ public class FoodFragment extends Fragment {
                 "food_serving_size_pcs_mesurment",
                 "food_energy_calculated"
         };
-        listCursor = db.select("food", fields, "", "", "food_name", "ASC");
+        try{
+            listCursor = db.select("food", fields, "", "", "food_name", "ASC");
+        }
+        catch (SQLException sqle){
+            Toast.makeText(getActivity(), sqle.toString(), Toast.LENGTH_LONG).show();
+        }
 
-        ListView lvItems = (ListView) getActivity().findViewById(R.id.listViewFood);
+
+        // Find ListView to populate
+        ListView lvItems = (ListView)getActivity().findViewById(R.id.listViewFood);
 
 
+        // Setup cursor adapter using cursor from last step
         FoodCursorAdapter continentsAdapter = new FoodCursorAdapter(getActivity(), listCursor);
-        lvItems.setAdapter(continentsAdapter);
+
+        // Attach cursor adapter to the ListView
+        try{
+            lvItems.setAdapter(continentsAdapter); // uses ContinensCursorAdapter
+        }
+        catch (Exception e){
+            Toast.makeText(getActivity(), e.toString(), Toast.LENGTH_LONG).show();
+        }
+
 
         // OnClick
         lvItems.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -158,14 +189,59 @@ public class FoodFragment extends Fragment {
 
         // Close db
         db.close();
+
+    }
+
+    public void preListItemClickedReadyCursor(){
+
+        /* Database */
+        DBAdapter db = new DBAdapter(getActivity());
+        db.open();
+
+        // Get categories
+        String fields[] = new String[] {
+                "_id",
+                "food_name",
+                "food_manufactor_name",
+                "food_description",
+                "food_serving_size_gram",
+                "food_serving_size_gram_mesurment",
+                "food_serving_size_pcs",
+                "food_serving_size_pcs_mesurment",
+                "food_energy_calculated"
+        };
+
+        String currentIdSQL = db.quoteSmart(currentId);
+
+        try{
+            listCursor = db.select("food", fields, "_id", currentIdSQL, "food_name", "ASC");
+        }
+        catch (SQLException sqle){
+            Toast.makeText(getActivity(), sqle.toString(), Toast.LENGTH_LONG).show();
+        }
+
+
+        int simulateIndex = 0;
+        listItemClicked(simulateIndex);
+
+        // Close db
+        db.close();
     }
 
     public void listItemClicked(int listItemIDClicked) {
+
+        /* Change layout */
         int id = R.layout.fragment_food_view;
         setMainView(id);
 
-        menuItemEdit.setVisible(true);
-        menuItemDelete.setVisible(true);
+        // Show edt button
+        try {
+            menuItemEdit.setVisible(true);
+            menuItemDelete.setVisible(true);
+        }
+        catch (Exception e){
+
+        }
 
         listCursor.moveToPosition(listItemIDClicked);
 
@@ -238,8 +314,6 @@ public class FoodFragment extends Fragment {
         TextView textViewViewFoodManufactorName = getView().findViewById(R.id.textViewViewFoodManufactorName);
         textViewViewFoodManufactorName.setText(stringManufactorName);
 
-        // Image
-
         // Calculation line
         TextView textViewViewFoodAbout = getView().findViewById(R.id.textViewViewFoodAbout);
         String foodAbout = stringServingSize + " " + stringServingMesurment + " = " +
@@ -273,14 +347,26 @@ public class FoodFragment extends Fragment {
 
         db.close();
 
+        // Listener for add food to diary
+        ImageView imageViewAddToDiary = (ImageView)getActivity().findViewById(R.id.imageViewAddToDiary);
+        imageViewAddToDiary.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // My code here
+                addFoodToDiarySelectMealNumber();
+            }
+        });
+
     }
 
     // Edit food
     String selectedMainCategoryName = "";
-
     public void editFood() {
+
+        /* Change layout */
         int id = R.layout.fragment_food_edit;
         setMainView(id);
+
 
         currentId = listCursor.getString(0);
         currentName = listCursor.getString(1);
@@ -481,12 +567,13 @@ public class FoodFragment extends Fragment {
 
         /* Main Category listener */
         spinnerCatMain.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String selectedItem = parent.getItemAtPosition(position).toString(); //this is your selected item
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
+            {
+                String selectedItem = parent.getItemAtPosition(position).toString();
                 editFoodMainCategoryChanged(selectedItem);
             }
-
-            public void onNothingSelected(AdapterView<?> parent) {
+            public void onNothingSelected(AdapterView<?> parent)
+            {
 
             }
         });
@@ -505,13 +592,17 @@ public class FoodFragment extends Fragment {
     }
 
 
-    public void editFoodMainCategoryChanged(String selectedItemCategoryName) {
-        if (!(selectedItemCategoryName.equals(selectedMainCategoryName))) {
+    public void editFoodMainCategoryChanged(String selectedItemCategoryName){
+        if(!(selectedItemCategoryName.equals(selectedMainCategoryName))){
+
+
+            /* Database */
             DBAdapter db = new DBAdapter(getActivity());
             db.open();
+
             // Find ID of main category
             String selectedItemCategoryNameSQL = db.quoteSmart(selectedItemCategoryName);
-            String spinnerFields[] = new String[]{
+            String spinnerFields[] = new String[] {
                     "_id",
                     "category_name",
                     "category_parent_id"
@@ -519,8 +610,11 @@ public class FoodFragment extends Fragment {
             Cursor findMainCategoryID = db.select("categories", spinnerFields, "category_name", selectedItemCategoryNameSQL);
             String stringMainCategoryID = findMainCategoryID.getString(0).toString();
             String stringMainCategoryIDSQL = db.quoteSmart(stringMainCategoryID);
+
+
             /* Sub categories */
             Cursor dbCursorSub = db.select("categories", spinnerFields, "category_parent_id", stringMainCategoryIDSQL, "category_name", "ASC");
+
             // Creating array
             int dbCursorCount = dbCursorSub.getCount();
             String[] arraySpinnerCategoriesSub = new String[dbCursorCount];
@@ -530,6 +624,7 @@ public class FoodFragment extends Fragment {
                 arraySpinnerCategoriesSub[x] = dbCursorSub.getString(1).toString();
                 dbCursorSub.moveToNext();
             }
+
             // Populate spinner
             Spinner spinnerSubCat = (Spinner) getActivity().findViewById(R.id.spinnerEditFoodCategorySub);
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
@@ -794,11 +889,15 @@ public class FoodFragment extends Fragment {
         db.close();
     }
 
-    public void deleteFood() {
+    /*- Delete food -------------------------------------------------------------------- */
+    public void deleteFood(){
+
+        /* Change layout */
         int id = R.layout.fragment_food_delete;
         setMainView(id);
 
-        Button buttonCancel = getActivity().findViewById(R.id.buttonCancel);
+
+        Button buttonCancel = (Button)getActivity().findViewById(R.id.buttonCancel);
         buttonCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -806,34 +905,51 @@ public class FoodFragment extends Fragment {
             }
         });
 
-        Button buttonConfirmDelete = getActivity().findViewById(R.id.buttonConfirmDelete);
+
+
+        Button buttonConfirmDelete = (Button)getActivity().findViewById(R.id.buttonConfirmDelete);
         buttonConfirmDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 deleteFoodConfirmDelete();
             }
         });
-    }
 
-    public void deleteFoodCancel() {
+    } // deleteFood
+
+
+    /*- Delete food cancel ----------------------------------------------------------------- */
+    public void deleteFoodCancel(){
+        // Move user back to correct design
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.main_frame, new FoodFragment(), FoodFragment.class.getName()).commit();
+
+
     }
 
-    public void deleteFoodConfirmDelete() {
+    /*- Delete food confirm delete ---------------------------------------------------------- */
+    public void deleteFoodConfirmDelete(){
+
+        /* Database */
         DBAdapter db = new DBAdapter(getActivity());
         db.open();
 
+        // Current ID to long
         long longCurrentID = Long.parseLong(currentId);
 
+        // Ready variables
         long currentIDSQL = db.quoteSmart(longCurrentID);
 
+        // Delete
         db.delete("food", "_id", currentIDSQL);
 
+        // Close db
         db.close();
 
+        // Give message
         Toast.makeText(getActivity(), "Food deleted", Toast.LENGTH_LONG).show();
 
+        // Move user back to correct design
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.main_frame, new FoodFragment(), FoodFragment.class.getName()).commit();
 
@@ -841,15 +957,18 @@ public class FoodFragment extends Fragment {
     }
 
     public void addFood() {
+        /* Database */
         DBAdapter db = new DBAdapter(getActivity());
         db.open();
 
+        /* Change layout */
         int id = R.layout.fragment_food_edit;
         setMainView(id);
 
         ((FragmentActivity) getActivity()).getSupportActionBar().setTitle("Add food");
 
-        String spinnerFields[] = new String[]{
+        /* Main category */
+        String spinnerFields[] = new String[] {
                 "_id",
                 "category_name",
                 "category_parent_id"
@@ -1137,6 +1256,79 @@ public class FoodFragment extends Fragment {
 
         db.close();
     } // buttonAddFoodSubmitOnClick
+
+    public void addFoodToDiarySelectMealNumber(){
+        /* Change layout */
+        int newViewID = R.layout.fragment_home_select_meal_number;
+        setMainView(newViewID);
+
+        TextView textViewBreakfast = getActivity().findViewById(R.id.textViewBreakfast);
+        textViewBreakfast.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addFoodToDiarySelectedMealNumberMoveToAdd(0);
+            }
+        });
+
+        TextView textViewLunch = (TextView)getActivity().findViewById(R.id.textViewLunch);
+        textViewLunch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addFoodToDiarySelectedMealNumberMoveToAdd(1);
+            }
+        });
+
+
+        TextView textViewDinner = (TextView)getActivity().findViewById(R.id.textViewDinner);
+        textViewDinner.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addFoodToDiarySelectedMealNumberMoveToAdd(2);
+            }
+        });
+
+        TextView textViewSnacks = (TextView)getActivity().findViewById(R.id.textViewSnacks);
+        textViewSnacks.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addFoodToDiarySelectedMealNumberMoveToAdd(3);
+            }
+        });
+
+        TextView textViewExercise = (TextView)getActivity().findViewById(R.id.textViewExercise);
+        textViewExercise.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addFoodToDiarySelectedMealNumberMoveToAdd(4);
+            }
+        });
+
+    } // addFoodToDiarySelectMealNumber
+
+    public void addFoodToDiarySelectedMealNumberMoveToAdd(int mealNumber){
+
+        /* Inialize fragmet */
+        Fragment fragment = null;
+        Class fragmentClass = null;
+        fragmentClass = AddFoodToDiaryFragment.class;
+        try {
+            fragment = (Fragment) fragmentClass.newInstance();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        // Send variable
+        Bundle bundle = new Bundle();
+        bundle.putString("mealNumber", ""+mealNumber); // Put anything what you want
+        bundle.putString("currentFoodId", ""+mealNumber); // Put anything what you want
+        bundle.putString("action", "foodInCategoryListItemClicked"); // Put anything what you want
+        fragment.setArguments(bundle);
+
+        // Need to pass meal number
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.main_frame, fragment).commit();
+
+    }
 
 
     /*- Fragment  methods -*/
