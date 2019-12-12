@@ -68,7 +68,7 @@ public class GoalFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
 
-        ((MainActivity)getActivity()).getSupportActionBar().setTitle("Goal");
+        ((FragmentActivity)getActivity()).getSupportActionBar().setTitle("Goal");
 
         initalizeGetDataFromDbAndDisplay();
 
@@ -91,7 +91,7 @@ public class GoalFragment extends Fragment {
 
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 
-        MenuInflater menuInflater = ((MainActivity)getActivity()).getMenuInflater();
+        MenuInflater menuInflater = ((FragmentActivity)getActivity()).getMenuInflater();
         inflater.inflate(R.menu.menu_goal, menu);
 
 

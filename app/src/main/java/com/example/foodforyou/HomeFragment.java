@@ -79,7 +79,7 @@ public class HomeFragment extends Fragment {
     @Override
     public void onActivityCreated(Bundle saveInstanceState) {
         super.onActivityCreated(saveInstanceState);
-        ((MainActivity) getActivity()).setActionBarTitle("Home");
+        ((FragmentActivity) getActivity()).setActionBarTitle("Home");
         initalizeHome();
 
         setHasOptionsMenu(true);
@@ -159,6 +159,8 @@ public class HomeFragment extends Fragment {
         updateTableItems(stringFdDate, "3");
         updateTableItems(stringFdDate, "4");
 
+        /* Calcualte number of calories today */
+        calcualteNumberOfCalEatenToday(stringFdDate);
 
         /* Breakfast listener */
         ImageView imageViewAddBreakfast = getActivity().findViewById(R.id.imageViewAddBreakfast);
@@ -166,6 +168,35 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 addFood(0); // 0 == Breakfast
+            }
+        });
+
+        ImageView imageViewAddLunch = (ImageView)getActivity().findViewById(R.id.imageViewAddLunch);
+        imageViewAddLunch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addFood(1); // 1 == Lunch
+            }
+        });
+        ImageView imageViewAddDinner = (ImageView)getActivity().findViewById(R.id.imageViewAddDinner);
+        imageViewAddDinner.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addFood(2); // 2 == Before training
+            }
+        });
+        ImageView imageViewAddSnacks = (ImageView)getActivity().findViewById(R.id.imageViewAddSnack);
+        imageViewAddSnacks.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addFood(3); // 3 == After training
+            }
+        });
+        ImageView imageViewAddExcercise = (ImageView)getActivity().findViewById(R.id.imageViewAddExercise);
+        imageViewAddExcercise.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //addFood(4); // 4 == Dinnar
             }
         });
 
@@ -738,8 +769,8 @@ public class HomeFragment extends Fragment {
     } // editTextPortionSizePcs
 
     /*- editTextPortionSizeGramOnChange ---------------------------------------------------- */
-    public void editTextPortionSizeGramOnChange(){
-        if(!(lockPortionSizeByPcs)) {
+    public void editTextPortionSizeGramOnChange() {
+        if (!(lockPortionSizeByPcs)) {
 
             // Lock
             lockPortionSizeByGram = true;
@@ -788,7 +819,7 @@ public class HomeFragment extends Fragment {
     } // editTextPortionSizeGramOnChange
 
     /*- Edit fd line submit ---------------------------------------------------------------- */
-    public void OnClickEditFdLineSubmit(){
+    public void OnClickEditFdLineSubmit() {
         int error = 0;
 
         // Database
@@ -797,16 +828,15 @@ public class HomeFragment extends Fragment {
 
         // FdID
         long longFdID = 0;
-        try{
+        try {
             longFdID = Long.parseLong(currentFdId);
-        }
-        catch(NumberFormatException nfe) {
+        } catch (NumberFormatException nfe) {
             System.out.println("Could not parse " + nfe);
         }
 
 
         // Get food info
-        String fields[] = new String[] {
+        String fields[] = new String[]{
                 "food_serving_size_gram",
                 "food_energy",
                 "food_proteins",
@@ -847,25 +877,25 @@ public class HomeFragment extends Fragment {
         db.update("food_diary", "_id", longFdID, "fd_serving_size_pcs", stringFdServingSizePcsSQL);
 
         // Update fd energy calculated
-        double doubleFdEnergyCalculated = Math.round((doubleFdServingSizeGram*doubleGetFromSQLFoodEnergy)/100);
+        double doubleFdEnergyCalculated = Math.round((doubleFdServingSizeGram * doubleGetFromSQLFoodEnergy) / 100);
         String stringFdEnergyCalcualted = "" + doubleFdEnergyCalculated;
         String stringFdEnergyCalcualtedSQL = db.quoteSmart(stringFdEnergyCalcualted);
         db.update("food_diary", "_id", longFdID, "fd_energy_calculated", stringFdEnergyCalcualtedSQL);
 
         // Proteins calcualted
-        double doubleFdProteinsCalculated = Math.round((doubleFdServingSizeGram*doubleGetFromSQLFoodProteins)/100);
+        double doubleFdProteinsCalculated = Math.round((doubleFdServingSizeGram * doubleGetFromSQLFoodProteins) / 100);
         String stringFdProteinsCalcualted = "" + doubleFdProteinsCalculated;
         String stringFdProteinsCalcualtedSQL = db.quoteSmart(stringFdProteinsCalcualted);
         db.update("food_diary", "_id", longFdID, "fd_protein_calculated", stringFdProteinsCalcualtedSQL);
 
         // Carbohydrates calcualted
-        double doubleFdCarbohydratesCalculated = Math.round((doubleFdServingSizeGram*doubleGetFromSQLFoodCarbohydrates)/100);
+        double doubleFdCarbohydratesCalculated = Math.round((doubleFdServingSizeGram * doubleGetFromSQLFoodCarbohydrates) / 100);
         String stringFdCarbohydratesCalcualted = "" + doubleFdCarbohydratesCalculated;
         String stringFdCarbohydratesCalcualtedSQL = db.quoteSmart(stringFdCarbohydratesCalcualted);
         db.update("food_diary", "_id", longFdID, "fd_carbohydrates_calculated", stringFdCarbohydratesCalcualtedSQL);
 
         // Fat calcualted
-        double doubleFdFatCalculated = Math.round((doubleFdServingSizeGram*doubleGetFromSQLFoodFat)/100);
+        double doubleFdFatCalculated = Math.round((doubleFdServingSizeGram * doubleGetFromSQLFoodFat) / 100);
         String stringFdFatCalcualted = "" + doubleFdFatCalculated;
         String stringFdFatCalcualtedSQL = db.quoteSmart(stringFdFatCalcualted);
         db.update("food_diary", "_id", longFdID, "fd_fat_calculated", stringFdFatCalcualtedSQL);
@@ -882,17 +912,16 @@ public class HomeFragment extends Fragment {
     }
 
     /*- Delete fd line submit ---------------------------------------------------------------- */
-    public void OnClickDeleteFdLineSubmit(){
+    public void OnClickDeleteFdLineSubmit() {
         Toast.makeText(getActivity(), "Deleted " + currentFoodName, Toast.LENGTH_SHORT).show();
 
         DBAdapter db = new DBAdapter(getActivity());
         db.open();
 
         long longPrimaryKey = 0;
-        try{
+        try {
             longPrimaryKey = Long.parseLong(currentFdId);
-        }
-        catch(NumberFormatException nfe) {
+        } catch (NumberFormatException nfe) {
             System.out.println("Could not parse " + nfe);
         }
 
@@ -904,6 +933,161 @@ public class HomeFragment extends Fragment {
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.main_frame, new HomeFragment(), HomeFragment.class.getName()).commit();
     }
+
+    /*- calcualteNumberOfCalEatenToday ------------------------------------------ */
+    public void calcualteNumberOfCalEatenToday(String stringDate) {
+        DBAdapter db = new DBAdapter(getActivity());
+        db.open();
+
+        // Date SQL
+        String stringDateSQL = db.quoteSmart(stringDate);
+
+        // Food diary sum
+        String fieldsFoodDiarySum[] = new String[]{
+                "_id",
+                "food_diary_sum_date",
+                "food_diary_sum_energy",
+                "food_diary_sum_proteins",
+                "food_diary_sum_carbs",
+                "food_diary_sum_fat"
+        };
+        Cursor cursorFoodDiarySum = db.select("food_diary_sum", fieldsFoodDiarySum, "food_diary_sum_date", stringDateSQL);
+        int cursorFoodDiarySumCount = cursorFoodDiarySum.getCount();
+
+
+        // Select for food_diary_cal_eaten
+        String fieldsFdce[] = new String[]{
+                "_id",
+                "fdce_id",
+                "fdce_date",
+                "fdce_meal_no",
+                "fdce_eaten_energy",
+                "fdce_eaten_proteins",
+                "fdce_eaten_carbs",
+                "fdce_eaten_fat"
+        };
+        Cursor cursorFdce = db.select("food_diary_cal_eaten", fieldsFdce, "fdce_date", stringDateSQL);
+        int cursorFdceCount = cursorFdce.getCount();
+
+        // Ready variables
+        int intFdcetEatenEnergy = 0;
+        int intFdcetEatenProteins = 0;
+        int intFdcetEatenCarbs = 0;
+        int intFdcetEatenFat = 0;
+
+        String stringGetFdceMealNo = "";
+        String stringGetFdceEatenEnergy = "";
+        String stringGetFdceEatenProteins = "";
+        String stringGetFdceEatenCarbs = "";
+        String stringGetFdceEatenFat = "";
+        int intFdceEatenEnergy = 0;
+        int intFdceEatenProteins = 0;
+        int intFdceEatenCarbs = 0;
+        int intFdceEatenFat = 0;
+
+        for (int x = 0; x < cursorFdceCount; x++) {
+            // Get variables from cursor
+            stringGetFdceMealNo = cursorFdce.getString(3);
+            stringGetFdceEatenEnergy = cursorFdce.getString(4);
+            stringGetFdceEatenProteins = cursorFdce.getString(5);
+            stringGetFdceEatenCarbs = cursorFdce.getString(6);
+            stringGetFdceEatenFat = cursorFdce.getString(7);
+
+
+            try {
+                intFdceEatenEnergy = Integer.parseInt(stringGetFdceEatenEnergy);
+            } catch (NumberFormatException nfe) {
+                System.out.println("Could not parse " + nfe);
+            }
+
+            try {
+                intFdceEatenProteins = Integer.parseInt(stringGetFdceEatenProteins);
+            } catch (NumberFormatException nfe) {
+                System.out.println("Could not parse " + nfe);
+            }
+
+            try {
+                intFdceEatenCarbs = Integer.parseInt(stringGetFdceEatenCarbs);
+            } catch (NumberFormatException nfe) {
+                System.out.println("Could not parse " + nfe);
+            }
+
+            try {
+                intFdceEatenFat = Integer.parseInt(stringGetFdceEatenFat);
+            } catch (NumberFormatException nfe) {
+                System.out.println("Could not parse " + nfe);
+            }
+
+
+            intFdcetEatenEnergy = intFdcetEatenEnergy + intFdceEatenEnergy;
+            intFdcetEatenProteins = intFdcetEatenProteins + intFdceEatenProteins;
+            intFdcetEatenCarbs = intFdcetEatenCarbs + intFdceEatenCarbs;
+            intFdcetEatenFat = intFdcetEatenFat + intFdceEatenFat;
+
+            // Move to next
+            cursorFdce.moveToNext();
+        }
+
+
+        if (cursorFoodDiarySumCount == 0) {
+            // Insert database
+            String insFields = "_id, food_diary_sum_date, food_diary_sum_energy, food_diary_sum_proteins, food_diary_sum_carbs, food_diary_sum_fat";
+            String insValues = "NULL, " + stringDateSQL + ", '" + intFdcetEatenEnergy + "', '" +
+                    intFdcetEatenProteins + "', '" + intFdcetEatenCarbs + "', '" + intFdcetEatenFat + "'";
+            db.insert("food_diary_sum", insFields, insValues);
+        } else {
+            // Update
+            String updateFields[] = new String[]{
+                    "food_diary_sum_energy", "food_diary_sum_proteins", "food_diary_sum_carbs", "food_diary_sum_fat"
+            };
+            String updateValues[] = new String[]{
+                    "'" + intFdcetEatenEnergy + "'",
+                    "'" + intFdcetEatenProteins + "'",
+                    "'" + intFdcetEatenCarbs + "'",
+                    "'" + intFdcetEatenFat + "'"
+            };
+
+            long longFoodDiaryId = Long.parseLong(cursorFoodDiarySum.getString(0));
+
+            db.update("food_diary_sum", "_id", longFoodDiaryId, updateFields, updateValues);
+        }
+
+
+        // Get goal
+        String fieldsGoal[] = new String[]{
+                "_id",
+                "goal_energy_with_activity_and_diet"
+        };
+        Cursor cursorGoal = db.select("goal", fieldsGoal);
+        cursorGoal.moveToLast();
+        String stringGoalEnergyWithActivityAndDiet = cursorGoal.getString(1);
+
+        // TextView goal
+        TextView textViewBodyGoalWithActivity = getActivity().findViewById(R.id.jumlah_kalori);
+        textViewBodyGoalWithActivity.setText(stringGoalEnergyWithActivityAndDiet);
+
+        // TextView Food
+        TextView textViewBodyFood = getActivity().findViewById(R.id.dikonsumsi);
+        textViewBodyFood.setText("" + intFdcetEatenEnergy);
+
+        // TextView Sum
+        int intGoalEnergyWithActivityAndDiet = 0;
+        try {
+            intGoalEnergyWithActivityAndDiet = Integer.parseInt(stringGoalEnergyWithActivityAndDiet);
+        } catch (NumberFormatException nfe) {
+            System.out.println("Could not parse " + nfe);
+        }
+
+        //int textViewBodyResult = intGoalEnergyWithActivityAndDiet - intFdcetEatenEnergy;
+
+
+        //Sum
+        //TextView textViewBodyRemaining = (TextView) getActivity().findViewById(R.id.textViewBodyRemaining);
+        //textViewBodyRemaining.setText("" + textViewBodyResult);
+
+
+        db.close();
+    } // calcualteNumberOfCalEatenToday
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

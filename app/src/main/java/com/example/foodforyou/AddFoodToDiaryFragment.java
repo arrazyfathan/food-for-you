@@ -75,7 +75,7 @@ public class AddFoodToDiaryFragment extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        ((MainActivity) getActivity()).getSupportActionBar().setTitle("Add food to diary");
+        ((FragmentActivity) getActivity()).getSupportActionBar().setTitle("Add food to diary");
 
         Bundle bundle = this.getArguments();
         if (bundle != null) {
@@ -156,7 +156,7 @@ public class AddFoodToDiaryFragment extends Fragment {
         currentCategoryName = listCursorCategory.getString(1);
         String parentCategoryID = listCursorCategory.getString(2);
 
-        ((MainActivity) getActivity()).getSupportActionBar().setTitle("Add food from " + currentCategoryName + " to diary");
+        ((FragmentActivity) getActivity()).getSupportActionBar().setTitle("Add food from " + currentCategoryName + " to diary");
 
 
         populateListWithCategories(currentCategoryId, currentCategoryName);
@@ -223,7 +223,7 @@ public class AddFoodToDiaryFragment extends Fragment {
         currentFoodName = listCursorFood.getString( 1);
 
         // Change title
-        ((MainActivity) getActivity()).getSupportActionBar().setTitle("Add " + currentFoodName);
+        ((FragmentActivity) getActivity()).getSupportActionBar().setTitle("Add " + currentFoodName);
 
         /*  Get data from database */
 
