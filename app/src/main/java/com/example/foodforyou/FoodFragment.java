@@ -108,13 +108,16 @@ public class FoodFragment extends Fragment {
         int id = menuItem.getItemId();
         if (id == R.id.menu_action_food_add) {
             addFood();
+            setHasOptionsMenu(false);
         }
         if (id == R.id.menu_action_food_edit) {
             editFood();
+            setHasOptionsMenu(false);
 
         }
         if (id == R.id.menu_action_food_delete) {
             deleteFood();
+            setHasOptionsMenu(false);
         }
         return super.onOptionsItemSelected(menuItem);
     }

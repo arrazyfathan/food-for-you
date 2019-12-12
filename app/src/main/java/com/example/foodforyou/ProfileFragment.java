@@ -97,6 +97,7 @@ public class ProfileFragment extends Fragment {
 
         if (id == R.id.action_editProfile) {
             editProfile();
+            setHasOptionsMenu(false);
         }
         return super.onOptionsItemSelected(item);
     }
