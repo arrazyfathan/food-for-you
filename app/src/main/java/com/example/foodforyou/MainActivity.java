@@ -60,6 +60,8 @@ public class MainActivity extends AppCompatActivity {
 
     */
 
+    boolean doubleBackToExit =false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -104,6 +106,24 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
+    }
+
+    @Override
+    public void onBackPressed(){
+        if (doubleBackToExit){
+            super.onBackPressed();
+            return;
+        }
+
+        this.doubleBackToExit = true;
+        Toast.makeText(this, "Press again to exit",Toast.LENGTH_SHORT).show();
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                doubleBackToExit=false;
+            }
+        }, 2000);
     }
 
 

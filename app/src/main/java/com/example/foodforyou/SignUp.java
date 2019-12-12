@@ -37,17 +37,6 @@ public class SignUp extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
-
-        //Hide keyboard
-        findViewById(R.id.relative).setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
-                imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
-                return true;
-            }
-        });
-
         //Fill number day spinner -------------------------------------------------------------------
         int human_counter = 0;
         for (int x=0;x<31;x++){
@@ -95,22 +84,30 @@ public class SignUp extends AppCompatActivity {
     } // OnCreate
 
     @Override
-    public void onBackPressed(){
-        if (doubleBackToExit){
-            super.onBackPressed();
-            return;
-        }
-
-        this.doubleBackToExit = true;
-        Toast.makeText(this, "Press again to exit",Toast.LENGTH_SHORT).show();
-
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                doubleBackToExit=false;
-            }
-        }, 2000);
+    public void onBackPressed() {
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
+
+//    @Override
+//    public void onBackPressed(){
+//        if (doubleBackToExit){
+//            super.onBackPressed();
+//            return;
+//        }
+//
+//        this.doubleBackToExit = true;
+//        Toast.makeText(this, "Press again to exit",Toast.LENGTH_SHORT).show();
+//
+//        new Handler().postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                doubleBackToExit=false;
+//            }
+//        }, 2000);
+//    }
 
 
     public void signUpSubmit(){

@@ -354,7 +354,7 @@ public class HomeFragment extends Fragment {
             // Table row: TextView Name
             TextView textViewName = new TextView(getActivity()); // Add textview
             textViewName.setText(foodName);
-            textViewName.setTextSize(18);
+            textViewName.setTextSize(15);
             textViewName.setTextColor(Color.DKGRAY);
             textViewName.setGravity(Gravity.CENTER_VERTICAL);
             TableRow.LayoutParams paramsName = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT, 1f);
@@ -364,7 +364,7 @@ public class HomeFragment extends Fragment {
             // Table row: TextView Energy
             TextView textViewEnergy = new TextView(getActivity()); // Add textview
             textViewEnergy.setText(fdEnergyCalculated);
-            textViewEnergy.setTextSize(18);
+            textViewEnergy.setTextSize(15);
             textViewEnergy.setTextColor(Color.DKGRAY);
             textViewEnergy.setGravity(Gravity.CENTER_VERTICAL);
             TableRow.LayoutParams paramsEnergy = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT);
@@ -377,6 +377,7 @@ public class HomeFragment extends Fragment {
 
             TextView textViewSubLine = new TextView(getActivity()); // Add textview
             textViewSubLine.setText(subLine);
+            textViewSubLine.setTextSize(12);
             tr2.addView(textViewSubLine);
 
             // Add row to table
