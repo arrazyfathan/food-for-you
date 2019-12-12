@@ -594,8 +594,28 @@ public class AddFoodToDiaryFragment extends Fragment {
         Calendar calendar = Calendar.getInstance();
         int year = calendar.get(Calendar.YEAR);
         int month = calendar.get(Calendar.MONTH);
-        int day = calendar.get(Calendar.DAY_OF_YEAR);
-        String stringFdDate = year + "-" + month + "-" + day;
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+        // Month
+        month = month+1; // Month starts with 0
+        String stringMonth = "";
+        if(month < 10){
+            stringMonth = "0" + month;
+        }
+        else{
+            stringMonth = "" + month;
+        }
+        // Day
+        String stringDay = "";
+        if(day < 10){
+            stringDay = "0" + day;
+        }
+        else{
+            stringDay = "" + day;
+        }
+
+
+        String stringFdDate = year + "-" + stringMonth + "-" + stringDay;
         String stringFdDateSQL = db.quoteSmart(stringFdDate);
 
         // Meal number
