@@ -22,32 +22,29 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/status"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:textColor="@color/titleColor"
+            android:fontFamily="@font/arialbold"/>
 
         <TableLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <!-- Current weight -->
-            <LinearLayout
+            <TableLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="10dp"
-                android:orientation="vertical">
+                android:layout_height="wrap_content">
 
-                <RelativeLayout
+                <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
-
-
 
                     <com.google.android.material.textfield.TextInputLayout
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:id="@+id/textViewGoalCurrentWeight"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="5dp"
                         android:hint="@string/weight"
                         android:textColorHint="@color/captionColor">
 
@@ -57,71 +54,30 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/arialregular"
                             android:textSize="14sp"
-                            android:ems="3"
+                            android:ems="6"
                             android:inputType="numberDecimal"/>
 
                     </com.google.android.material.textfield.TextInputLayout>
 
+
                     <TextView
                         android:id="@+id/textViewServingSizeGramMesurment"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:fontFamily="@font/arialregular"
-                        android:layout_alignParentRight="true"
-                        android:layout_marginTop="10dp"
-                        android:layout_centerVertical="true"
-                        android:text="@string/kg"
-                        android:gravity="center"
-                        android:textSize="14sp"
-                        />
-                </RelativeLayout>
-            </LinearLayout>
-
-            <!--<TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <TextView
-                    android:id="@+id/textViewGoalCurrentWeight"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:text="@string/weight" />
-
-                <TableLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp">
-
-                    <TableRow
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" >
-                        <EditText
-                            android:id="@+id/editTextGoalCurrentWeight"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:ems="3"
-                            android:inputType="number" />
-
-                        <TextView
-                            android:id="@+id/textViewGoalCurrentWeightType"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/kg" />
-                    </TableRow>
-                </TableLayout>
-            </TableRow>-->
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginTop="36dp"
+                        android:text="@string/kg" />
+                </TableRow>
+            </TableLayout>
             <!-- //Current weight -->
 
 
             <!-- Target weight -->
-            <LinearLayout
+            <TableLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="10dp"
-                android:orientation="vertical">
+                android:layout_height="wrap_content">
 
-                <RelativeLayout
+                <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
@@ -130,7 +86,7 @@
                         android:id="@+id/textViewGoalTargetWeight"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="5dp"
                         android:hint="@string/target_weight"
                         android:textColorHint="@color/captionColor">
 
@@ -140,26 +96,21 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/arialregular"
                             android:textSize="14sp"
-                            android:ems="3"
+                            android:ems="6"
                             android:inputType="numberDecimal"/>
 
                     </com.google.android.material.textfield.TextInputLayout>
 
+
                     <TextView
                         android:id="@+id/textViewTargetWeightType"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:fontFamily="@font/arialregular"
-                        android:layout_alignParentRight="true"
-                        android:layout_marginTop="10dp"
-                        android:layout_centerVertical="true"
-                        android:text="@string/kg"
-                        android:gravity="center"
-                        android:textSize="14sp"
-                        />
-                </RelativeLayout>
-            </LinearLayout>
-
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginTop="36dp"
+                        android:text="@string/kg" />
+                </TableRow>
+            </TableLayout>
 
             <!-- //Target weight -->
 
