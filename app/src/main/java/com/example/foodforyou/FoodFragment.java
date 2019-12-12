@@ -69,7 +69,7 @@ public class FoodFragment extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        ((MainActivity) getActivity()).getSupportActionBar().setTitle("Food List");
+        ((FragmentActivity) getActivity()).getSupportActionBar().setTitle("Food List");
 
         populateListFood();
 
@@ -172,7 +172,7 @@ public class FoodFragment extends Fragment {
         currentId = listCursor.getString(0);
         currentName = listCursor.getString(1);
 
-        ((MainActivity) getActivity()).getSupportActionBar().setTitle(currentName);
+        ((FragmentActivity) getActivity()).getSupportActionBar().setTitle(currentName);
 
         // Database
         DBAdapter db = new DBAdapter(getActivity());
@@ -285,7 +285,7 @@ public class FoodFragment extends Fragment {
         currentId = listCursor.getString(0);
         currentName = listCursor.getString(1);
 
-        ((MainActivity) getActivity()).getSupportActionBar().setTitle("Edit " + currentName);
+        ((FragmentActivity) getActivity()).getSupportActionBar().setTitle("Edit " + currentName);
 
         /*  Get data from database */
 
@@ -847,7 +847,7 @@ public class FoodFragment extends Fragment {
         int id = R.layout.fragment_food_edit;
         setMainView(id);
 
-        ((MainActivity) getActivity()).getSupportActionBar().setTitle("Add food");
+        ((FragmentActivity) getActivity()).getSupportActionBar().setTitle("Add food");
 
         String spinnerFields[] = new String[]{
                 "_id",

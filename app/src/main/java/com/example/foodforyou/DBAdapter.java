@@ -13,7 +13,7 @@ public class DBAdapter {
 
     //* 01 Variables ---------------------------------------- */
     private static final String databaseName = "foodforyou";
-    private static final int databaseVersion = 11;
+    private static final int databaseVersion = 12;
 
     /* 02 Database variables ------------------------------- */
     private final Context context;
@@ -108,6 +108,20 @@ public class DBAdapter {
                 e.printStackTrace();
             }
 
+            try{
+                db.execSQL("CREATE TABLE IF NOT EXISTS food_diary_sum (" +
+                        " _id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                        " food_diary_sum_id INTEGER, " +
+                        " food_diary_sum_date DATE, " +
+                        " food_diary_sum_energy INT, " +
+                        " food_diary_sum_proteins INT, " +
+                        " food_diary_sum_carbs INT, " +
+                        " food_diary_sum_fat INT);");
+            }
+            catch (SQLException e) {
+                e.printStackTrace();
+            }
+
 
             try {
                 db.execSQL("CREATE TABLE IF NOT EXISTS categories (" +
@@ -167,6 +181,7 @@ public class DBAdapter {
             db.execSQL("DROP TABLE IF EXISTS goal");
             db.execSQL("DROP TABLE IF EXISTS users");
             db.execSQL("DROP TABLE IF EXISTS food_diary_cal_eaten");
+            db.execSQL("DROP TABLE IF EXISTS food_diary_sum");
             db.execSQL("DROP TABLE IF EXISTS food_diary");
             db.execSQL("DROP TABLE IF EXISTS categories");
             db.execSQL("DROP TABLE IF EXISTS food");

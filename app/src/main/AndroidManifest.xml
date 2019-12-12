@@ -11,6 +11,7 @@
         android:roundIcon="@drawable/ic_ffy"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".FragmentActivity"></activity>
         <activity android:name=".SetGoal" />
         <activity android:name=".SplashActivity">
             <intent-filter>

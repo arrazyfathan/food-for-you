@@ -100,7 +100,7 @@ public class CategoriesFragment extends Fragment {
         });
         setHasOptionsMenu(true);
         /* Set title */
-        ((MainActivity) getActivity()).setActionBarTitle("Categories");
+        ((FragmentActivity) getActivity()).setActionBarTitle("Categories");
 
     } // onActivityCreated
 
@@ -204,7 +204,7 @@ public class CategoriesFragment extends Fragment {
         String parentID = listCursor.getString(2);
 
         // Change title
-        ((MainActivity) getActivity()).getSupportActionBar().setTitle(currenName);
+        ((FragmentActivity) getActivity()).getSupportActionBar().setTitle(currenName);
 
         // Move to sub class
         populateList(currentId, currenName);

@@ -107,7 +107,7 @@ public class TipsFragment extends Fragment {
     public void onResume(){
         super.onResume();
 
-        ((MainActivity) getActivity()).setActionBarTitle("Tips");
+        ((FragmentActivity) getActivity()).setActionBarTitle("Tips");
     }
 
 
