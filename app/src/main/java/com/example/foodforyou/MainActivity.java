@@ -103,6 +103,7 @@ public class MainActivity extends AppCompatActivity {
         else{
             Intent i = new Intent(MainActivity.this, FragmentActivity.class);
             startActivity(i);
+            finish();
 
         }
 

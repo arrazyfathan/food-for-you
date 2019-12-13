@@ -373,7 +373,7 @@ public class HomeFragment extends Fragment {
 
             // Table row: TextView subLine
             TableRow.LayoutParams paramsSubLine = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT, 1f);
-            paramsSubLine.setMargins(4, 0, 0, 12); // Left, top, right, bottom
+            paramsSubLine.setMargins(5, 0, 0, 12); // Left, top, right, bottom
 
             TextView textViewSubLine = new TextView(getActivity()); // Add textview
             textViewSubLine.setText(subLine);
