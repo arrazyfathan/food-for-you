@@ -2,8 +2,6 @@ package com.example.foodforyou;
 
 import android.content.Context;
 import android.database.Cursor;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -68,7 +66,6 @@ public class GoalFragment extends Fragment {
 
 
         ((FragmentActivity)getActivity()).getSupportActionBar().setTitle("Profile");
-
 
         initalizeGetDataFromDbAndDisplay();
 
@@ -580,7 +577,7 @@ public class GoalFragment extends Fragment {
 
             // Move user back to correct design
             FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-            //fragmentManager.beginTransaction().replace(R.id.flContent, new GoalFragment(), GoalFragment.class.getName()).commit();
+            fragmentManager.beginTransaction().replace(R.id.main_frame, new GoalFragment(), GoalFragment.class.getName()).commit();
 
 
         } // error == 0

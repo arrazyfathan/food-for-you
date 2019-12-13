@@ -68,7 +68,7 @@
             android:fontFamily="@font/mmedium"
             android:layout_marginStart="8dp"
             android:textSize="16sp"
-            android:text="Kkal"
+            android:text="Kcal"
             android:textColor="@color/colorWhite"
             app:layout_constraintBottom_toBottomOf="@+id/jumlah_kalori"
             app:layout_constraintStart_toEndOf="@+id/jumlah_kalori" />
@@ -204,7 +204,7 @@
                         android:foreground="?android:attr/selectableItemBackground"
                         android:src="@drawable/drinks_img"
                         android:scaleType="fitXY"
-                        android:onClick="toCategoryFood"/>
+                        android:onClick="toSeeGoal"/>
 
                 </LinearLayout>
 
