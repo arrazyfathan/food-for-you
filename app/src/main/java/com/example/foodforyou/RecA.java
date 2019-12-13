@@ -1,6 +1,8 @@
 package com.example.foodforyou;
 
 import android.content.Context;
+import android.database.Cursor;
+import android.database.SQLException;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -9,6 +11,10 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.SearchView;
+import android.widget.Toast;
 
 
 /**
@@ -28,6 +34,10 @@ public class RecA extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private Cursor listCursor;
+    SearchView SearchFood;
+    ListView MyFood;
 
     private OnFragmentInteractionListener mListener;
 
@@ -93,6 +103,87 @@ public class RecA extends Fragment {
         mListener = null;
     }
 
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+       ((Recommendation) getActivity()).getSupportActionBar().setTitle("Food Recommendation");
+
+        populateListFood();
+
+        setHasOptionsMenu(true);
+
+//        /* Get data from fragment */
+//        Bundle bundle = this.getArguments();
+//        if(bundle != null){
+//            currentId = bundle.getString("currentFoodId");
+//
+//            // Need to run to get edit and delete buttons: onCreateOptionsMenu();
+//        }
+//        if(currentId.equals("")) {
+//            // Populate the list of categories
+//            populateListFood();
+//        }
+//        else{
+//            preListItemClickedReadyCursor();
+//        }
+    } // onActivityCreated
+
+    /*- populate List -------------------------------------------------------------- */
+    public void populateListFood(){
+
+        /* Database */
+        DBAdapter db = new DBAdapter(getActivity());
+        db.open();
+
+        // Get categories
+        String fields[] = new String[] {
+                "_id",
+                "food_name",
+                "food_manufactor_name",
+                "food_description",
+                "food_serving_size_gram",
+                "food_serving_size_gram_mesurment",
+                "food_serving_size_pcs",
+                "food_serving_size_pcs_mesurment",
+                "food_energy_calculated"
+        };
+        try{
+            listCursor = db.select("food", fields, "food_energy_calculated", "0","food_energy_calculated","100", "food_name", "ASC");
+        }
+        catch (SQLException sqle){
+            Toast.makeText(getActivity(), sqle.toString(), Toast.LENGTH_LONG).show();
+        }
+
+
+        // Find ListView to populate
+        ListView lvItems = (ListView)getActivity().findViewById(R.id.listViewFoodA);
+
+
+        // Setup cursor adapter using cursor from last step
+        FoodCursorAdapter continentsAdapter = new FoodCursorAdapter(getActivity(), listCursor);
+
+        // Attach cursor adapter to the ListView
+        try{
+            lvItems.setAdapter(continentsAdapter); // uses ContinensCursorAdapter
+        }
+        catch (Exception e){
+            Toast.makeText(getActivity(), e.toString(), Toast.LENGTH_LONG).show();
+        }
+
+
+//        // OnClick
+//        lvItems.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+//                listItemClicked(arg2);
+//            }
+//        });
+
+        // Close db
+        db.close();
+
+    }
 
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name

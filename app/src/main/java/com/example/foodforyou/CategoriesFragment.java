@@ -131,8 +131,11 @@ public class CategoriesFragment extends Fragment {
         int id = menuItem.getItemId();
         if (id == R.id.action_edit) {
             editCategory();
+            setHasOptionsMenu(false);
+
         } else if (id == R.id.action_del) {
             deleteCategory();
+            setHasOptionsMenu(false);
         }
         return super.onOptionsItemSelected(menuItem);
     }
