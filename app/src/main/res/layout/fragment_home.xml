@@ -181,7 +181,7 @@
                         android:clickable="true"
                         android:focusable="true"
                         android:foreground="?android:attr/selectableItemBackground"
-                        android:src="@drawable/foods_img"
+                        android:src="@drawable/bg_category"
                         android:scaleType="fitXY"
                         android:onClick="toCategoryFood"/>
 
@@ -202,7 +202,7 @@
                         android:clickable="true"
                         android:focusable="true"
                         android:foreground="?android:attr/selectableItemBackground"
-                        android:src="@drawable/drinks_img"
+                        android:src="@drawable/bg_goals"
                         android:scaleType="fitXY"
                         android:onClick="toSeeGoal"/>
 
@@ -224,7 +224,7 @@
                         android:clickable="true"
                         android:focusable="true"
                         android:foreground="?android:attr/selectableItemBackground"
-                        android:src="@drawable/fruits_img"
+                        android:src="@drawable/bg_foyyou"
                         android:scaleType="fitXY"
                         android:onClick="toRec"/>
 
