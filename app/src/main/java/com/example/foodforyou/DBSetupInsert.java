@@ -175,9 +175,10 @@ public class DBSetupInsert {
         setupInsertToFood("NULL,'Makaroni','fatsecret','140','gram','1','portion','157','5.76','30.68','0.92','220','8.06','42.95','1.29',NULL,NULL,'2','thumb.jpg','foodimage_a.jpg','foodimage_b.jpg','foodimage_c.jpg',NULL");
         setupInsertToFood("NULL,'Makaroni dengan Keju','fatsecret','243','gram','1','portion','203','7.94','21.46','9.4','493','19.29','52.15','22.84',NULL,NULL,'2','thumb.jpg','foodimage_a.jpg','foodimage_b.jpg','foodimage_c.jpg',NULL");
         setupInsertToFood("NULL,'Makaroni Gandum','fatsecret','140','gram','1','portion','123','5.3','26.38','0.54','172','7.42','36.93','0.76',NULL,NULL,'2','thumb.jpg','foodimage_a.jpg','foodimage_b.jpg','foodimage_c.jpg',NULL");
-        //Roti & Sereal
-        setupInsertToFood("NULL,'Roti Tawar','fatsecret','26','gram','1','slice','266','7.64','50.61','3.29','66','1.91','12.65','0.82',NULL,NULL,'10','roti.jpg','foodimage_a.jpg','foodimage_b.jpg','foodimage_c.jpg',NULL");
-        setupInsertToFood("NULL,'Roti Gandum','fatsecret','26','gram','1','slice','259','9.13','47.14','4.11','67','2.37','12.26','1.07',NULL,NULL,'11','roti.jpg','foodimage_a.jpg','foodimage_b.jpg','foodimage_c.jpg',NULL");
+
+        //Roti
+        setupInsertToFood("NULL,'Roti Tawar','fatsecret','26','gram','1','slice','266','7.64','50.61','3.29','66','1.91','12.65','0.82',NULL,NULL,'11','roti.jpg','foodimage_a.jpg','foodimage_b.jpg','foodimage_c.jpg',NULL");
+        setupInsertToFood("NULL,'Roti Gandum','fatsecret','26','gram','1','slice','259','9.13','47.14','4.11','67','2.37','12.26','1.07',NULL,NULL,'10','roti.jpg','foodimage_a.jpg','foodimage_b.jpg','foodimage_c.jpg',NULL");
         setupInsertToFood("NULL,'Roti Panggang','fatsecret','26','gram','1','slice','293','9','54.4','4','64','1.98','11.97','0.88',NULL,NULL,'12','roti.jpg','foodimage_a.jpg','foodimage_b.jpg','foodimage_c.jpg',NULL");
         setupInsertToFood("NULL,'Biskuit','fatsecret','6.5','cm','1','piece','353','7','44.6','16.3','212','4.2','26.76','9.78',NULL,NULL,'8','roti.jpg','foodimage_a.jpg','foodimage_b.jpg','foodimage_c.jpg',NULL");
         setupInsertToFood("NULL,'Oatmeal','fatsecret','157','gram','1','portion','62','2.5','10.84','1.02','97','4.07','17.02','1.6',NULL,NULL,'9','roti.jpg','foodimage_a.jpg','foodimage_b.jpg','foodimage_c.jpg',NULL");
@@ -199,11 +200,11 @@ public class DBSetupInsert {
         setupInsertToFood("NULL,'Stroberi','fatsecret','12.4','gram','1','piece','32','0.67','7.68','0.3','4','0.08','0.92','0.04',NULL,NULL,'27','buah.jpg','foodimage_a.jpg','foodimage_b.jpg','foodimage_c.jpg',NULL");
 
         //Telur
-        setupInsertToFood("NULL,'Kuning Telur','fatsecret','17','gram','1','piece','322','15.86','3.59','26.54','55','2.7','0.61','4.51',NULL,NULL,'28','telur.jpg','foodimage_a.jpg','foodimage_b.jpg','foodimage_c.jpg',NULL");
-        setupInsertToFood("NULL,'Putih Telur','fatsecret','33','gram','1','piece','52','10.9','0.73','0.17','17','3.6','0.24','0.06',NULL,NULL,'29','telur.jpg','foodimage_a.jpg','foodimage_b.jpg','foodimage_c.jpg',NULL");
-        setupInsertToFood("NULL,'Telur Dadar','fatsecret','61.3','gram','1','piece','153','10.62','0.63','12.02','93','6.48','0.42','7.33',NULL,NULL,'30','telur.jpg','foodimage_a.jpg','foodimage_b.jpg','foodimage_c.jpg',NULL");
-        setupInsertToFood("NULL,'Telur Goreng','fatsecret','46','gram','1','piece','194','13.56','0.93','14.69','89','6.24','0.43','6.76',NULL,NULL,'31','telur.jpg','foodimage_a.jpg','foodimage_b.jpg','foodimage_c.jpg',NULL");
-        setupInsertToFood("NULL,'Telur Rebus','fatsecret','50','gram','1','portion','154','12.53','1.12','10.57','77','6.26','0.56','5.28',NULL,NULL,'32','telur.jpg','foodimage_a.jpg','foodimage_b.jpg','foodimage_c.jpg',NULL");
+        setupInsertToFood("NULL,'Kuning Telur','fatsecret','17','gram','1','piece','322','15.86','3.59','26.54','55','2.7','0.61','4.51',NULL,NULL,'29','telur.jpg','foodimage_a.jpg','foodimage_b.jpg','foodimage_c.jpg',NULL");
+        setupInsertToFood("NULL,'Putih Telur','fatsecret','33','gram','1','piece','52','10.9','0.73','0.17','17','3.6','0.24','0.06',NULL,NULL,'30','telur.jpg','foodimage_a.jpg','foodimage_b.jpg','foodimage_c.jpg',NULL");
+        setupInsertToFood("NULL,'Telur Dadar','fatsecret','61.3','gram','1','piece','153','10.62','0.63','12.02','93','6.48','0.42','7.33',NULL,NULL,'31','telur.jpg','foodimage_a.jpg','foodimage_b.jpg','foodimage_c.jpg',NULL");
+        setupInsertToFood("NULL,'Telur Goreng','fatsecret','46','gram','1','piece','194','13.56','0.93','14.69','89','6.24','0.43','6.76',NULL,NULL,'32','telur.jpg','foodimage_a.jpg','foodimage_b.jpg','foodimage_c.jpg',NULL");
+        setupInsertToFood("NULL,'Telur Rebus','fatsecret','50','gram','1','portion','154','12.53','1.12','10.57','77','6.26','0.56','5.28',NULL,NULL,'33','telur.jpg','foodimage_a.jpg','foodimage_b.jpg','foodimage_c.jpg',NULL");
 
         //Daging
         setupInsertToFood("NULL,'Ayam','fatsecret','85','gram','1','portion','237','27.07','0','13.49','201','23.01','0','11.47',NULL,NULL,'35','Daging.jpg','foodimage_a.jpg','foodimage_b.jpg','foodimage_c.jpg',NULL");
@@ -250,31 +251,31 @@ public class DBSetupInsert {
         setupInsertToFood("NULL,'Wortel','fatsecret','19','cm','1','piece','41','0.93','9.58','0.24','30','0.67','6.9','0.17',NULL,NULL,'69','sayur.jpg','foodimage_a.jpg','foodimage_b.jpg','foodimage_c.jpg',NULL");
 
         //Air
-        setupInsertToFood("NULL,'Air Mineral','fatsecret','240''ml','1','cup','0','0','0','0','0','0','0','0',NULL,NULL,'71','air.jpg','foodimage_a.jpg','foodimage_b.jpg','foodimage_c.jpg',NULL");
-        setupInsertToFood("NULL,'Kopi','fatsecret','180''ml','1','cup coffee','1','0.12','0.04','0.02','2','0.21','0.07','0.04',NULL,NULL,'72','air.jpg','foodimage_a.jpg','foodimage_b.jpg','foodimage_c.jpg',NULL");
-        setupInsertToFood("NULL,'Teh','fatsecret','240''ml','1','cup','1','0','0.3','0','2','0','0.71','0',NULL,NULL,'73','air.jpg','foodimage_a.jpg','foodimage_b.jpg','foodimage_c.jpg',NULL");
+        setupInsertToFood("NULL,'Air Mineral','fatsecret','240','ml','1','cup','0','0','0','0','0','0','0','0',NULL,NULL,'71','air.jpg','foodimage_a.jpg','foodimage_b.jpg','foodimage_c.jpg',NULL");
+        setupInsertToFood("NULL,'Kopi','fatsecret','180','ml','1','cup coffee','1','0.12','0.04','0.02','2','0.21','0.07','0.04',NULL,NULL,'72','air.jpg','foodimage_a.jpg','foodimage_b.jpg','foodimage_c.jpg',NULL");
+        setupInsertToFood("NULL,'Teh','fatsecret','240','ml','1','cup','1','0','0.3','0','2','0','0.71','0',NULL,NULL,'73','air.jpg','foodimage_a.jpg','foodimage_b.jpg','foodimage_c.jpg',NULL");
         setupInsertToFood("NULL,'Jus Apel','fatsecret','300','ml','1','bottle','47','0.06','11.68','0.11','146','0.1','36.21','0.34',NULL,NULL,'74','air.jpg','foodimage_a.jpg','foodimage_b.jpg','foodimage_c.jpg',NULL");
         setupInsertToFood("NULL,'Jus Jeruk','fatsecret','300','ml','1','bottle','45','0.7','10.4','0.2','141','2.19','32.7','0.63',NULL,NULL,'74','air.jpg','foodimage_a.jpg','foodimage_b.jpg','foodimage_c.jpg',NULL");
-        setupInsertToFood("NULL,'Susu','fatsecret','240''ml','1','cup','60','3.22','4.52','3.25','146','7.86','11.03','7.93',NULL,NULL,'75','air.jpg','foodimage_a.jpg','foodimage_b.jpg','foodimage_c.jpg',NULL");
+        setupInsertToFood("NULL,'Susu','fatsecret','240','ml','1','cup','60','3.22','4.52','3.25','146','7.86','11.03','7.93',NULL,NULL,'75','air.jpg','foodimage_a.jpg','foodimage_b.jpg','foodimage_c.jpg',NULL");
 
-        //Snack
-        setupInsertToFood("NULL,'Brownies','fatsecret','34','gram','1','portion','379','4.76','62.54','13.77','129','1.62','21.26','4.68',NULL,NULL,'76','snack.png','foodimage_a.jpg','foodimage_b.jpg','foodimage_c.jpg',NULL");
-        setupInsertToFood("NULL,'Cokelat','fatsecret','41','gram','1','bar','505','3.9','59.6','34.2','207','1.6','24.44','14.02',NULL,NULL,'77','snack.png','foodimage_a.jpg','foodimage_b.jpg','foodimage_c.jpg',NULL");
-        setupInsertToFood("NULL,'Kue','fatsecret','5','gram','1','slice','486','5.42','68.97','21.39','24','0.27','3.4','1.07',NULL,NULL,'78','snack.png','foodimage_a.jpg','foodimage_b.jpg','foodimage_c.jpg',NULL");
-        setupInsertToFood("NULL,'Kue Keju','fatsecret','75','gram','1','slice','321','5.5','25.5','22.5','257','4.4','20.4','18',NULL,NULL,'78','snack.png','foodimage_a.jpg','foodimage_b.jpg','foodimage_c.jpg',NULL");
-        setupInsertToFood("NULL,'Kue Bolu','fatsecret','63','gram','1','slice','297','7.3','57.7','4.3','187','4.6','36.35','2.71',NULL,NULL,'78','snack.png','foodimage_a.jpg','foodimage_b.jpg','foodimage_c.jpg',NULL");
-        setupInsertToFood("NULL,'Donat','fatsecret','8,5','cm diameters','1','medium piece','421','5','49.7','322.9','198','2.35','23.36','10.76',NULL,NULL,'79','snack.png','foodimage_a.jpg','foodimage_b.jpg','foodimage_c.jpg',NULL");
-        setupInsertToFood("NULL,'Donat Coklat','fatsecret','7','cm diameters','1','medium piece','474','5','48','31','204','2.15','20.64','13.33',NULL,NULL,'79','snack.png','foodimage_a.jpg','foodimage_b.jpg','foodimage_c.jpg',NULL");
-        setupInsertToFood("NULL,'Es Krim','fatsecret','66','gram','1','cup','201','3.52','24.4','10.72','133','2.32','16.1','7.08',NULL,NULL,'80','snack.png','foodimage_a.jpg','foodimage_b.jpg','foodimage_c.jpg',NULL");
-        setupInsertToFood("NULL,'Es Krim Vanilla','fatsecret','71','gram','1','cup','201','3.5','23.6','11','145','2.52','16.99','7.92',NULL,NULL,'80','snack.png','foodimage_a.jpg','foodimage_b.jpg','foodimage_c.jpg',NULL");
-        setupInsertToFood("NULL,'Es Krim Stroberi','fatsecret','67','gram','1','cup','192','3.2','27.6','8.4','127','2.11','18.22','5.54',NULL,NULL,'80','snack.png','foodimage_a.jpg','foodimage_b.jpg','foodimage_c.jpg',NULL");
-        setupInsertToFood("NULL,'Puding Coklat','fatsecret','112','gram','1','cup','139','2.7','23','4','157','3.05','25.99','4.52',NULL,NULL,'81','snack.png','foodimage_a.jpg','foodimage_b.jpg','foodimage_c.jpg',NULL");
-        setupInsertToFood("NULL,'Puding Vanilla','fatsecret','112','gram','1','cup','130','2.3','22','3.6','147','2.6','24.86','4.07',NULL,NULL,'81','snack.png','foodimage_a.jpg','foodimage_b.jpg','foodimage_c.jpg',NULL");
-        setupInsertToFood("NULL,'Kerupuk','3.9','gram','1','piece','502','7.4','61','25.3','20','0.3','2.44','1.01',NULL,NULL,'82','snack.png','foodimage_a.jpg','foodimage_b.jpg','foodimage_c.jpg',NULL");
-        setupInsertToFood("NULL,'Keripik Kentang','28','gram','1','portion','547','6.56','49.74','37.47','153','1.84','13.93','10.49',NULL,NULL,'83','snack.png','foodimage_a.jpg','foodimage_b.jpg','foodimage_c.jpg',NULL");
-        setupInsertToFood("NULL,'Popcorn','28','gram','1','portion','387','12.94','77.78','4.54','110','3.67','22.05','1.29',NULL,NULL,'84','snack.png','foodimage_a.jpg','foodimage_b.jpg','foodimage_c.jpg',NULL");
-        setupInsertToFood("NULL,'Sandwich Keju','83','gram','1','piece','315','10.96','33.25','15.27','261','9.1','27.6','12.67',NULL,NULL,'85','snack.png','foodimage_a.jpg','foodimage_b.jpg','foodimage_c.jpg',NULL");
-        setupInsertToFood("NULL,'Sandwich Daging Sapi Panggang','136','gram','1','portion','251','19.74','19.13','89.92','341','26.85','26.02','13.49',NULL,NULL,'85','snack.png','foodimage_a.jpg','foodimage_b.jpg','foodimage_c.jpg',NULL");
+        //Kue
+        setupInsertToFood("NULL,'Brownies','fatsecret','34','gram','1','portion','379','4.76','62.54','13.77','129','1.62','21.26','4.68',NULL,NULL,'77','snack.png','foodimage_a.jpg','foodimage_b.jpg','foodimage_c.jpg',NULL");
+        setupInsertToFood("NULL,'Cokelat','fatsecret','41','gram','1','bar','505','3.9','59.6','34.2','207','1.6','24.44','14.02',NULL,NULL,'78','snack.png','foodimage_a.jpg','foodimage_b.jpg','foodimage_c.jpg',NULL");
+        setupInsertToFood("NULL,'Kue','fatsecret','5','gram','1','slice','486','5.42','68.97','21.39','24','0.27','3.4','1.07',NULL,NULL,'79','snack.png','foodimage_a.jpg','foodimage_b.jpg','foodimage_c.jpg',NULL");
+        setupInsertToFood("NULL,'Kue Keju','fatsecret','75','gram','1','slice','321','5.5','25.5','22.5','257','4.4','20.4','18',NULL,NULL,'79','snack.png','foodimage_a.jpg','foodimage_b.jpg','foodimage_c.jpg',NULL");
+        setupInsertToFood("NULL,'Kue Bolu','fatsecret','63','gram','1','slice','297','7.3','57.7','4.3','187','4.6','36.35','2.71',NULL,NULL,'79','snack.png','foodimage_a.jpg','foodimage_b.jpg','foodimage_c.jpg',NULL");
+        setupInsertToFood("NULL,'Donat','fatsecret','8,5','cm diameters','1','medium piece','421','5','49.7','322.9','198','2.35','23.36','10.76',NULL,NULL,'80','snack.png','foodimage_a.jpg','foodimage_b.jpg','foodimage_c.jpg',NULL");
+        setupInsertToFood("NULL,'Donat Coklat','fatsecret','7','cm diameters','1','medium piece','474','5','48','31','204','2.15','20.64','13.33',NULL,NULL,'80','snack.png','foodimage_a.jpg','foodimage_b.jpg','foodimage_c.jpg',NULL");
+        setupInsertToFood("NULL,'Es Krim','fatsecret','66','gram','1','cup','201','3.52','24.4','10.72','133','2.32','16.1','7.08',NULL,NULL,'81','snack.png','foodimage_a.jpg','foodimage_b.jpg','foodimage_c.jpg',NULL");
+        setupInsertToFood("NULL,'Es Krim Vanilla','fatsecret','71','gram','1','cup','201','3.5','23.6','11','145','2.52','16.99','7.92',NULL,NULL,'81','snack.png','foodimage_a.jpg','foodimage_b.jpg','foodimage_c.jpg',NULL");
+        setupInsertToFood("NULL,'Es Krim Stroberi','fatsecret','67','gram','1','cup','192','3.2','27.6','8.4','127','2.11','18.22','5.54',NULL,NULL,'81','snack.png','foodimage_a.jpg','foodimage_b.jpg','foodimage_c.jpg',NULL");
+        setupInsertToFood("NULL,'Puding Coklat','fatsecret','112','gram','1','cup','139','2.7','23','4','157','3.05','25.99','4.52',NULL,NULL,'82','snack.png','foodimage_a.jpg','foodimage_b.jpg','foodimage_c.jpg',NULL");
+        setupInsertToFood("NULL,'Puding Vanilla','fatsecret','112','gram','1','cup','130','2.3','22','3.6','147','2.6','24.86','4.07',NULL,NULL,'82','snack.png','foodimage_a.jpg','foodimage_b.jpg','foodimage_c.jpg',NULL");
+        setupInsertToFood("NULL,'Kerupuk','fatsecret','3.9','gram','1','piece','502','7.4','61','25.3','20','0.3','2.44','1.01',NULL,NULL,'83','snack.png','foodimage_a.jpg','foodimage_b.jpg','foodimage_c.jpg',NULL");
+        setupInsertToFood("NULL,'Keripik Kentang','fatsecret','28','gram','1','portion','547','6.56','49.74','37.47','153','1.84','13.93','10.49',NULL,NULL,'84','snack.png','foodimage_a.jpg','foodimage_b.jpg','foodimage_c.jpg',NULL");
+        setupInsertToFood("NULL,'Popcorn','fatsecret','28','gram','1','portion','387','12.94','77.78','4.54','110','3.67','22.05','1.29',NULL,NULL,'85','snack.png','foodimage_a.jpg','foodimage_b.jpg','foodimage_c.jpg',NULL");
+        setupInsertToFood("NULL,'Sandwich Keju','fatsecret','83','gram','1','piece','315','10.96','33.25','15.27','261','9.1','27.6','12.67',NULL,NULL,'86','snack.png','foodimage_a.jpg','foodimage_b.jpg','foodimage_c.jpg',NULL");
+        setupInsertToFood("NULL,'Sandwich Daging Sapi Panggang','fatsecret','136','gram','1','portion','251','19.74','19.13','89.92','341','26.85','26.02','13.49',NULL,NULL,'86','snack.png','foodimage_a.jpg','foodimage_b.jpg','foodimage_c.jpg',NULL");
     }
 
 
