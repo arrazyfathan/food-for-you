@@ -65,7 +65,7 @@ public class GoalFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
 
-        ((FragmentActivity)getActivity()).getSupportActionBar().setTitle("Goal");
+        ((FragmentActivity)getActivity()).getSupportActionBar().setTitle("Profile");
 
         initalizeGetDataFromDbAndDisplay();
 
@@ -154,11 +154,12 @@ public class GoalFragment extends Fragment {
 
         String method = "";
         if(goalIWantTo.equals("0")){
-            method = "Lose Weight "  + goalWeeklyGoal;
+            method = "Lose Weight "  + goalWeeklyGoal + " Kg / Week";
         }
         else{
-            method = "Gain Weight "  + goalWeeklyGoal;
+            method = "Gain Weight "  + goalWeeklyGoal  + " Kg / Week";
         }
+        textViewGoalMethodText.setText(method);
 
 
         /* Activity level */
@@ -576,7 +577,7 @@ public class GoalFragment extends Fragment {
 
             // Move user back to correct design
             FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-            //fragmentManager.beginTransaction().replace(R.id.flContent, new GoalFragment(), GoalFragment.class.getName()).commit();
+            fragmentManager.beginTransaction().replace(R.id.main_frame, new GoalFragment(), GoalFragment.class.getName()).commit();
 
 
         } // error == 0

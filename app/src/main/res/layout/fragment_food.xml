@@ -4,29 +4,19 @@
     android:layout_height="match_parent"
     tools:context=".FoodFragment">
 
-    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fadingEdgeLength="0dp"
-        android:fillViewport="true"
-        android:overScrollMode="never"
-        android:scrollbars="none" >
+        >
 
-
-        <RelativeLayout
+        <ListView
+            android:id="@+id/listViewFood"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="match_parent"
+            android:dividerHeight="1dp"
+            android:padding="10dp" >
+        </ListView>
 
-            <ListView
-                android:id="@+id/listViewFood"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:dividerHeight="1dp"
-                android:padding="10dp" >
-            </ListView>
-
-        </RelativeLayout>
-
-    </ScrollView>
+    </RelativeLayout>
 
 </FrameLayout>

@@ -391,7 +391,8 @@
                 android:layout_gravity="center_horizontal"
                 android:background="@drawable/button_style"
                 android:onClick="toSeeGoal"
-                android:textColor="@color/colorWhite"/>
+                android:textColor="@color/colorWhite"
+                android:visibility="gone"/>
 
 
 <!--            <LinearLayout-->
