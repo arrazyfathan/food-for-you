@@ -226,7 +226,7 @@
                         android:foreground="?android:attr/selectableItemBackground"
                         android:src="@drawable/fruits_img"
                         android:scaleType="fitXY"
-                        android:onClick="toCategoryFood"/>
+                        android:onClick="toRec"/>
 
                 </LinearLayout>
             </LinearLayout>

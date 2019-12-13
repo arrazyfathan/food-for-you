@@ -48,6 +48,7 @@
     <string name="supper">Supper</string>
 
     //goal edit
+    <string name="goal_tilte">Goal Status</string>
     <string name="status">Status</string>
     <string name="weight">Weight</string>
     <string name="target_weight">Target weight</string>

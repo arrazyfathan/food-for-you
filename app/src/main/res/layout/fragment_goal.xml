@@ -1,333 +1,675 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/grey_color"
+    android:background="@color/colorWhite"
     android:fitsSystemWindows="true">
 
-
     <LinearLayout
-        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="18dp"
-        android:layout_marginRight="18dp"
-        android:layout_marginBottom="18dp"
-        android:layout_marginLeft="18dp">
+        android:orientation="vertical">
 
-
-        <!-- Status -->
         <TextView
-            android:id="@+id/textViewGoalCurrentStatus"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/status"
-            android:textSize="18sp"
+            android:layout_gravity="left"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
             android:fontFamily="@font/arialbold"
-            android:textColor="@color/titleColor"/>
+            android:text="Goal Information"
+            android:textColor="@color/titleColor"
+            android:textSize="20sp" />
 
-        <TableLayout
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginStart="16dp"
+            android:fontFamily="@font/arialregular"
+            android:text="About your goal information"
+            android:textColor="@color/captionColor"
+            android:textSize="12sp" />
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="2">
 
-            <!-- Current weight -->
-            <TableRow
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" >
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/content_round"
+                android:backgroundTint="#FFF9EE"
+                android:orientation="vertical">
+
 
                 <TextView
-                    android:id="@+id/textViewGoalCurrentWeight"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/weight"
-                    android:fontFamily="@font/arialbold"/>
+                    android:layout_gravity="left"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/arialmedium"
+                    android:text="Current Weight"
+                    android:textColor="@color/titleColor"
+                    android:textSize="16sp" />
 
-                <TextView
-                    android:id="@+id/textViewGoalCurrentWeightNumber"
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/ic_accessibility_new_24px"
+                    android:tint="#FFCD62" />
+
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="6dp"
-                    android:text="@string/kg" />
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="right">
 
-            </TableRow>
-            <!-- //Current weight -->
+                    <TextView
+                        android:id="@+id/textViewGoalCurrentWeightNumber"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/msemibold"
+                        android:text="50"
+                        android:textColor="@color/titleColor"
+                        android:textSize="60sp" />
 
-            <!-- Current weight -->
-            <TableRow
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:fontFamily="@font/mregular"
+                        android:text="Kg"
+                        android:textColor="#223A6F"
+                        android:textSize="14sp" />
+
+
+                </LinearLayout>
+
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" >
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_weight="1"
+                android:background="@drawable/content_round"
+                android:backgroundTint="#FDEFF2"
+                android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/textViewGoalTargetWeight"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/target"
-                    android:fontFamily="@font/arialbold"/>
+                    android:layout_gravity="left"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/arialmedium"
+                    android:text="Target Weight"
+                    android:textColor="@color/titleColor"
+                    android:textSize="16sp" />
 
-                <TextView
-                    android:id="@+id/textViewGoalCurrentTargetNumber"
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/ic_target"
+                    android:tint="#F6829B" />
+
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="6dp"
-                    android:text="@string/kg" />
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="right">
 
-            </TableRow>
-            <!-- //Current weight -->
+                    <TextView
+                        android:id="@+id/textViewGoalCurrentTargetNumber"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/msemibold"
+                        android:text="50"
+                        android:textColor="@color/titleColor"
+                        android:textSize="60sp" />
 
-            <!-- Method -->
-            <TableRow
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:fontFamily="@font/mregular"
+                        android:text="Kg"
+                        android:textColor="#223A6F"
+                        android:textSize="14sp" />
+
+
+
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+
+
+            <!--     vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv   -->
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" >
+                android:layout_height="match_parent"
+                android:layout_marginLeft="18dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginRight="18dp"
+                android:layout_marginBottom="18dp"
+                android:orientation="vertical"
+                android:visibility="gone">
 
+
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+
+                    <!-- Method -->
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/textView1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/arialbold"
+                            android:text="@string/method" />
+
+                        <TextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="6dp"
+                            android:text="Lose 0.5 kg week" />
+
+                    </TableRow>
+                    <!-- //Method -->
+
+                    <!-- Activity level -->
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/textView8"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/arialbold"
+                            android:text="@string/activity" />
+
+                        <TextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="6dp"
+                            android:text="@string/activity_level" />
+
+                    </TableRow>
+                    <!-- //Activity level -->
+
+
+                </TableLayout>
+                <!-- //Status -->
+
+
+                <!-- Numbers -->
+                <TableLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="14dp"
+                    android:stretchColumns="1">
+
+                    <TableRow
+                        android:layout_width="fill_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/textViewGoalNumbers"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:fontFamily="@font/arialbold"
+                            android:text="@string/numbers"
+                            android:textColor="@color/titleColor"
+                            android:textSize="18sp" />
+                    </TableRow>
+                </TableLayout>
+                <!-- //Numbers -->
+
+                <!-- I want to loose -->
                 <TextView
-                    android:id="@+id/textView1"
+                    android:id="@+id/textViewGoalNumbersIfYouWantToLooseWeight"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/method"
-                    android:fontFamily="@font/arialbold"/>
+                    android:text="@string/if_you_want_to_loose_weight"
+                    android:textSize="16sp" />
+                <!-- //I want to loose -->
+
+
+                <!-- I want to loose table layout -->
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <!-- Headcell -->
+                    <TableRow
+                        android:id="@+id/textViewGoalMethodRowA"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/textViewGoalMethod"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/blank" />
+
+                        <TextView
+                            android:id="@+id/textViewGoalHeadcellEnergy"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="6dp"
+                            android:fontFamily="@font/arialbold"
+                            android:text="@string/energy" />
+
+
+                    </TableRow>
+                    <!-- //Headcell -->
+
+                    <!-- Loose with out activity -->
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/textViewGoalMethodDiet"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/arialbold"
+                            android:text="@string/without_activity" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="6dp"
+                            android:text="@string/energy" />
+
+
+                    </TableRow>
+                    <!-- //Loose with out activity -->
+
+                    <!-- Loose with acitivty -->
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/textViewGoalMethodWithActivityAndDiet"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/arialbold"
+                            android:text="@string/with_activity_" />
+
+
+
+                    </TableRow>
+                    <!-- //With activity -->
+                </TableLayout>
+
 
                 <TextView
-                    android:id="@+id/textViewGoalMethodText"
+                    android:id="@+id/textViewGoalNumbersIfYouWantToKeepYourWeight"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="6dp"
-                    android:text="Lose 0.5 kg week" />
+                    android:layout_marginTop="8dp"
+                    android:text="@string/if_you_want_to_keep_your_weight"
+                    android:textSize="16sp" />
 
-            </TableRow>
-            <!-- //Method -->
 
-            <!-- Activity level -->
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" >
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <!-- Headcell -->
+                    <TableRow
+                        android:id="@+id/textViewGoalMethodRowB"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/textViewGoalMethodB"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="6dp"
+                            android:text="@string/blank" />
+
+                        <TextView
+                            android:id="@+id/textViewGoalHeadcellEnergyB"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="6dp"
+                            android:fontFamily="@font/arialbold"
+                            android:text="@string/energy" />
+
+
+                    </TableRow>
+                    <!-- //Headcell -->
+                    <!-- BMR -->
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/textViewGoalMethodBMR"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="6dp"
+                            android:fontFamily="@font/arialbold"
+                            android:text="@string/without_activity" />
+
+                        <TextView
+                            android:id="@+id/textViewGoalEnergyBMR"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="6dp"
+                            android:text="@string/energy" />
+
+
+                    </TableRow>
+                    <!-- //BMR -->
+
+
+                    <!-- with activity -->
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/textViewGoalMethodWithActivity"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="6dp"
+                            android:fontFamily="@font/arialbold"
+                            android:text="@string/with_activity_" />
+
+                        <TextView
+                            android:id="@+id/textViewGoalEnergyWithActivity"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="6dp"
+                            android:text="@string/energy" />
+
+                    </TableRow>
+                    <!-- //With activity -->
+
+                </TableLayout>
+                <!-- //Numbers -->
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/content_round"
+            android:backgroundTint="#1F346D"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/arialmedium"
+                android:text="What do you want?"
+                android:textColor="@color/colorWhite"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/textViewGoalMethodText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/arialregular"
+                android:text="Lose 0.5 kg week"
+                android:textColor="@color/colorWhite"
+                android:textSize="14sp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/textView8"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/activity"
-                    android:fontFamily="@font/arialbold"/>
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="6dp"
+                    android:fontFamily="@font/arialbold"
+                    android:text="With"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/textViewActivityLevel"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="6dp"
-                    android:text="@string/activity_level" />
+                    android:layout_marginStart="6dp"
+                    android:layout_marginTop="6dp"
+                    android:fontFamily="@font/arialregular"
+                    android:text="Little to no exercise"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="14sp" />
+            </LinearLayout>
 
-            </TableRow>
-            <!-- //Activity level -->
+        </LinearLayout>
 
-
-        </TableLayout>
-        <!-- //Status -->
-
-
-
-
-        <!-- Numbers -->
-        <TableLayout
-            android:layout_width="fill_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="14dp"
-            android:stretchColumns="1">
-            <TableRow
-                android:layout_width="fill_parent"
-                android:layout_height="match_parent" >
-                <TextView
-                    android:id="@+id/textViewGoalNumbers"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="@string/numbers"
-                    android:textSize="18sp"
-                    android:fontFamily="@font/arialbold"
-                    android:textColor="@color/titleColor"/>
-            </TableRow>
-        </TableLayout>
-        <!-- //Numbers -->
-
-        <!-- I want to loose -->
-        <TextView
-            android:id="@+id/textViewGoalNumbersIfYouWantToLooseWeight"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/if_you_want_to_loose_weight"
-            android:textSize="16sp"
-            />
-        <!-- //I want to loose -->
+            android:background="@drawable/content_round"
+            android:backgroundTint="#50CECD"
+            android:layout_marginTop="12dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Want to lose weight?"
+                android:textColor="@color/colorWhite"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:textSize="18sp"
+                android:layout_marginBottom="16dp"
+                android:fontFamily="@font/arialmedium"
+                />
 
-        <!-- I want to loose table layout -->
-        <TableLayout
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_down"
+                android:layout_marginStart="150dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:tint="@color/colorWhite"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/content_round"
+            android:backgroundTint="#E3FBF8"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="vertical">
 
-            <!-- Headcell -->
-            <TableRow
-                android:id="@+id/textViewGoalMethodRowA"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/arialmedium"
+                android:text="Without Activity"
+                android:textColor="#223A6F"
+                android:textSize="16sp" />
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" >
-
-                <TextView
-                    android:id="@+id/textViewGoalMethod"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/blank" />
-
-                <TextView
-                    android:id="@+id/textViewGoalHeadcellEnergy"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="6dp"
-                    android:text="@string/energy"
-                    android:fontFamily="@font/arialbold"/>
-
-
-            </TableRow>
-            <!-- //Headcell -->
-
-            <!-- Loose with out activity -->
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" >
-
-                <TextView
-                    android:id="@+id/textViewGoalMethodDiet"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/without_activity"
-                    android:fontFamily="@font/arialbold"/>
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="right">
 
                 <TextView
                     android:id="@+id/textViewGoalEnergyDiet"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="6dp"
-                    android:text="@string/energy" />
-
-
-            </TableRow>
-            <!-- //Loose with out activity -->
-
-            <!-- Loose with acitivty -->
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" >
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/msemibold"
+                    android:text="50"
+                    android:textColor="#223A6F"
+                    android:textSize="60sp" />
 
                 <TextView
-                    android:id="@+id/textViewGoalMethodWithActivityAndDiet"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/with_activity_"
-                    android:fontFamily="@font/arialbold"/>
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:fontFamily="@font/mregular"
+                    android:text="Kcal"
+                    android:textColor="#223A6F"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/content_round"
+            android:backgroundTint="#E3FBF8"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/arialmedium"
+                android:text="With Activity"
+                android:textColor="#223A6F"
+                android:textSize="16sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="right">
 
                 <TextView
                     android:id="@+id/textViewGoalEnergyWithActivityAndDiet"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="6dp"
-                    android:text="@string/energy" />
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/msemibold"
+                    android:text="50"
+                    android:textColor="#223A6F"
+                    android:textSize="60sp" />
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:fontFamily="@font/mregular"
+                    android:text="Kcal"
+                    android:textColor="#223A6F"
+                    android:textSize="14sp" />
 
-            </TableRow>
-            <!-- //With activity -->
-        </TableLayout>
+            </LinearLayout>
+        </LinearLayout>
 
-
-        <TextView
-            android:id="@+id/textViewGoalNumbersIfYouWantToKeepYourWeight"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="@string/if_you_want_to_keep_your_weight"
-            android:textSize="16sp"
-            />
+            android:background="@drawable/content_round"
+            android:backgroundTint="#50CECD"
+            android:layout_marginTop="12dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Want to lose weight?"
+                android:textColor="@color/colorWhite"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:textSize="18sp"
+                android:layout_marginBottom="16dp"
+                android:fontFamily="@font/arialmedium"
+                />
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_down"
+                android:layout_marginStart="150dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:tint="@color/colorWhite"
+                />
+
+        </LinearLayout>
 
 
 
-        <TableLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <!-- Headcell -->
-            <TableRow
-                android:id="@+id/textViewGoalMethodRowB"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/textViewGoalMethodB"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="6dp"
-                    android:text="@string/blank" />
-
-                <TextView
-                    android:id="@+id/textViewGoalHeadcellEnergyB"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="6dp"
-                    android:fontFamily="@font/arialbold"
-                    android:text="@string/energy" />
-
-
-            </TableRow>
-            <!-- //Headcell -->
-            <!-- BMR -->
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" >
-
-                <TextView
-                    android:id="@+id/textViewGoalMethodBMR"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="6dp"
-                    android:text="@string/without_activity"
-                    android:fontFamily="@font/arialbold"/>
-
-                <TextView
-                    android:id="@+id/textViewGoalEnergyBMR"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="6dp"
-                    android:text="@string/energy" />
-
-
-            </TableRow>
-            <!-- //BMR -->
-
-
-
-            <!-- with activity -->
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" >
-
-                <TextView
-                    android:id="@+id/textViewGoalMethodWithActivity"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="6dp"
-                    android:text="@string/with_activity_"
-                    android:fontFamily="@font/arialbold"/>
-
-                <TextView
-                    android:id="@+id/textViewGoalEnergyWithActivity"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="6dp"
-                    android:text="@string/energy" />
-
-            </TableRow>
-            <!-- //With activity -->
-
-        </TableLayout>
-        <!-- //Numbers -->
 
     </LinearLayout>
+
 
 </ScrollView>
