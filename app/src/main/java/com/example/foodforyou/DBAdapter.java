@@ -335,6 +335,22 @@ public class DBAdapter {
         return mCursor;
     }
 
+    public Cursor select(String table, String[] fields, String whereClause, String whereCondition, String namaAtas, String batasAtas, String orderBy, String OrderMethod) throws SQLException
+    {
+        Cursor mCursor = null;
+        if(whereClause.equals("")) {
+            // We dont want to se where
+            mCursor = db.query(table, fields, null, null, null, null, orderBy + " " + OrderMethod, null);
+        }
+        else {
+            mCursor = db.query(table, fields, whereClause + ">" + whereCondition + " AND " + namaAtas + "<" + batasAtas, null, null, null, orderBy + " " + OrderMethod, null);
+        }
+        if (mCursor != null) {
+            mCursor.moveToFirst();
+        }
+        return mCursor;
+    }
+
 
     public boolean update(String table, String primaryKey, long rowId, String field, String value) throws SQLException {
 
