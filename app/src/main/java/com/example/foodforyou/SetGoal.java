@@ -287,6 +287,7 @@ public class SetGoal extends AppCompatActivity {
         if (TexterrorMessage.isEmpty()) {
             Intent i = new Intent(SetGoal.this, MainActivity.class);
             startActivity(i);
+            finish();
         }
 
     }// SignUP Submit
