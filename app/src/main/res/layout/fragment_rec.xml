@@ -4,20 +4,11 @@
     android:layout_height="match_parent"
     tools:context=".RecA">
 
-    <SearchView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:queryHint="Search food"
-        android:iconifiedByDefault="false"
-        android:id="@+id/SearchView">
-
-    </SearchView>
     
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fadingEdgeLength="0dp"
-        android:layout_marginTop="35dp"
         android:fillViewport="true"
         android:overScrollMode="never"
         android:scrollbars="none" >
