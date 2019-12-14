@@ -118,6 +118,5 @@ public class FragmentActivity extends AppCompatActivity
 
     @Override
     public void onFragmentInteraction(Uri uri) {
-
     }
 }

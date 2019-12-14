@@ -18,12 +18,12 @@ import android.widget.Toast;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link RecC.OnFragmentInteractionListener} interface
+ * {@link RecE.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link RecC#newInstance} factory method to
+ * Use the {@link RecE#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class RecC extends Fragment {
+public class RecE extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -38,7 +38,7 @@ public class RecC extends Fragment {
     private Cursor listCursor;
 
 
-    public RecC() {
+    public RecE() {
         // Required empty public constructor
     }
 
@@ -48,11 +48,11 @@ public class RecC extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment RecC.
+     * @return A new instance of fragment RecE.
      */
     // TODO: Rename and change types and number of parameters
-    public static RecC newInstance(String param1, String param2) {
-        RecC fragment = new RecC();
+    public static RecE newInstance(String param1, String param2) {
+        RecE fragment = new RecE();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -86,8 +86,8 @@ public class RecC extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof RecC.OnFragmentInteractionListener) {
-            mListener = (RecC.OnFragmentInteractionListener) context;
+        if (context instanceof RecE.OnFragmentInteractionListener) {
+            mListener = (RecE.OnFragmentInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
@@ -145,7 +145,7 @@ public class RecC extends Fragment {
                 "food_energy_calculated"
         };
         try{
-            listCursor = db.select("food", fields, "food_energy_calculated", "650","food_energy_calculated","775", "food_name", "ASC");
+            listCursor = db.select("food", fields, "food_energy_calculated", "900","food_energy_calculated","1000000", "food_name", "ASC");
         }
         catch (SQLException sqle){
             Toast.makeText(getActivity(), sqle.toString(), Toast.LENGTH_LONG).show();

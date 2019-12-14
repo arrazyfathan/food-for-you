@@ -46,13 +46,18 @@ public class Recommendation extends AppCompatActivity
             System.out.println("Could not parse " + nfe);
         }
 
-        if ( intGoalEnergyWithActivityAndDiet >= 600 && intGoalEnergyWithActivityAndDiet <= 2000 ){
+        if ( intGoalEnergyWithActivityAndDiet >= 1 && intGoalEnergyWithActivityAndDiet <= 1800 ){
             loadFragment(new RecA());
 
-        }else if (intGoalEnergyWithActivityAndDiet >= 2000 && intGoalEnergyWithActivityAndDiet <= 2200){
+        }else if (intGoalEnergyWithActivityAndDiet > 1800 && intGoalEnergyWithActivityAndDiet <= 2200){
             loadFragment(new RecB());
-        }else if(intGoalEnergyWithActivityAndDiet >= 2200 && intGoalEnergyWithActivityAndDiet <= 2400){
+        }else if(intGoalEnergyWithActivityAndDiet > 2200 && intGoalEnergyWithActivityAndDiet <= 2600){
             loadFragment(new RecC());
+        }
+        else if(intGoalEnergyWithActivityAndDiet > 2600 && intGoalEnergyWithActivityAndDiet <= 3000){
+            loadFragment(new RecD());
+        }else {
+            loadFragment(new RecE());
         }
 
     }

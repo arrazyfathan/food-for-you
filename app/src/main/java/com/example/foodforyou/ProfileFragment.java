@@ -101,7 +101,6 @@ public class ProfileFragment extends Fragment {
         }
         return super.onOptionsItemSelected(item);
     }
-
     public void openDialog() {
         DialogViewLogout dialogView = new DialogViewLogout();
         dialogView.show(getActivity().getSupportFragmentManager(), "Example");

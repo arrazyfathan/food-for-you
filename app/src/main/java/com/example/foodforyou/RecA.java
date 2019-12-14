@@ -11,9 +11,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.SearchView;
 import android.widget.Toast;
 
 
@@ -36,8 +34,6 @@ public class RecA extends Fragment {
     private String mParam2;
 
     private Cursor listCursor;
-    SearchView SearchFood;
-    ListView MyFood;
 
     private OnFragmentInteractionListener mListener;
 
@@ -102,7 +98,6 @@ public class RecA extends Fragment {
         super.onDetach();
         mListener = null;
     }
-
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -149,7 +144,7 @@ public class RecA extends Fragment {
                 "food_energy_calculated"
         };
         try{
-            listCursor = db.select("food", fields, "food_energy_calculated", "0","food_energy_calculated","100", "food_name", "ASC");
+            listCursor = db.select("food", fields, "food_energy_calculated", "300","food_energy_calculated","500", "food_name", "ASC");
         }
         catch (SQLException sqle){
             Toast.makeText(getActivity(), sqle.toString(), Toast.LENGTH_LONG).show();
