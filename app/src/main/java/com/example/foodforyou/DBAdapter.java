@@ -343,7 +343,7 @@ public class DBAdapter {
             mCursor = db.query(table, fields, null, null, null, null, orderBy + " " + OrderMethod, null);
         }
         else {
-            mCursor = db.query(table, fields, whereClause + ">" + whereCondition + " AND " + namaAtas + "<" + batasAtas, null, null, null, orderBy + " " + OrderMethod, null);
+            mCursor = db.query(table, fields, whereClause + ">" + whereCondition + " AND " + namaAtas + "<=" + batasAtas, null, null, null, orderBy + " " + OrderMethod, null);
         }
         if (mCursor != null) {
             mCursor.moveToFirst();
