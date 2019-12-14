@@ -14,7 +14,7 @@ public class DBAdapter {
 
     //* 01 Variables ---------------------------------------- */
     private static final String databaseName = "foodforyou";
-    private static final int databaseVersion = 17;
+    private static final int databaseVersion = 20;
 
     /* 02 Database variables ------------------------------- */
     private final Context context;
