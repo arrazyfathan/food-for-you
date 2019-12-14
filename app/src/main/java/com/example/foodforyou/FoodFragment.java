@@ -36,6 +36,7 @@ public class FoodFragment extends Fragment {
     private View mainView;
     private Cursor listCursor;
 
+    private MenuItem menuItemAdd;
     private MenuItem menuItemEdit;
     private MenuItem menuItemDelete;
 
@@ -88,7 +89,7 @@ public class FoodFragment extends Fragment {
             populateListFood();
         }
         else{
-            preListItemClickedReadyCursor();
+            preListItemClickedReadyCursor(); // We are coming from another class with currentFoodId
         }
     } // onActivityCreated
 
@@ -109,8 +110,8 @@ public class FoodFragment extends Fragment {
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 
 
-        getActivity().getMenuInflater().inflate(R.menu.menu_food, menu);
-
+        ((FragmentActivity)getActivity()).getMenuInflater().inflate(R.menu.menu_food, menu);
+        menuItemAdd = menu.findItem(R.id.menu_action_food_add);
         menuItemEdit = menu.findItem(R.id.menu_action_food_edit);
         menuItemDelete = menu.findItem(R.id.menu_action_food_delete);
 
@@ -124,13 +125,15 @@ public class FoodFragment extends Fragment {
         int id = menuItem.getItemId();
         if (id == R.id.menu_action_food_add) {
             addFood();
+            setHasOptionsMenu(false);
         }
         if (id == R.id.menu_action_food_edit) {
             editFood();
-
+            setHasOptionsMenu(false);
         }
         if (id == R.id.menu_action_food_delete) {
             deleteFood();
+            setHasOptionsMenu(false);
         }
         return super.onOptionsItemSelected(menuItem);
     }
@@ -236,6 +239,7 @@ public class FoodFragment extends Fragment {
 
         // Show edt button
         try {
+            menuItemAdd.setVisible(false);
             menuItemEdit.setVisible(true);
             menuItemDelete.setVisible(true);
         }

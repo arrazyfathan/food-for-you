@@ -10,7 +10,9 @@ import android.os.Bundle;
 public class Recommendation extends AppCompatActivity
         implements RecA.OnFragmentInteractionListener,
         RecB.OnFragmentInteractionListener,
-        RecC.OnFragmentInteractionListener {
+        RecC.OnFragmentInteractionListener,
+        RecD.OnFragmentInteractionListener,
+        RecE.OnFragmentInteractionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,14 +20,14 @@ public class Recommendation extends AppCompatActivity
         setContentView(R.layout.activity_recommendation);
 
         // Transparent Action Bar
-        if (getSupportActionBar() != null){
+        if (getSupportActionBar() != null) {
             getSupportActionBar().setElevation(0);
         }
 
         getRecommendation();
     }
 
-    public void getRecommendation(){
+    public void getRecommendation() {
         DBAdapter db = new DBAdapter(this);
         db.open();
 
@@ -46,20 +48,24 @@ public class Recommendation extends AppCompatActivity
             System.out.println("Could not parse " + nfe);
         }
 
-        if ( intGoalEnergyWithActivityAndDiet >= 600 && intGoalEnergyWithActivityAndDiet <= 2000 ){
+        if (intGoalEnergyWithActivityAndDiet >= 1 && intGoalEnergyWithActivityAndDiet <= 1800) {
             loadFragment(new RecA());
 
-        }else if (intGoalEnergyWithActivityAndDiet >= 2000 && intGoalEnergyWithActivityAndDiet <= 2200){
+        } else if (intGoalEnergyWithActivityAndDiet > 1800 && intGoalEnergyWithActivityAndDiet <= 2200) {
             loadFragment(new RecB());
-        }else if(intGoalEnergyWithActivityAndDiet >= 2200 && intGoalEnergyWithActivityAndDiet <= 2400){
+        } else if (intGoalEnergyWithActivityAndDiet > 2200 && intGoalEnergyWithActivityAndDiet <= 2600) {
             loadFragment(new RecC());
+        } else if (intGoalEnergyWithActivityAndDiet > 2600 && intGoalEnergyWithActivityAndDiet <= 3000) {
+            loadFragment(new RecD());
+        } else {
+            loadFragment(new RecE());
         }
 
     }
 
 
-    private boolean loadFragment(Fragment fragment){
-        if (fragment != null){
+    private boolean loadFragment(Fragment fragment) {
+        if (fragment != null) {
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.frame_recommendation, fragment)
                     .commit();
@@ -67,11 +73,6 @@ public class Recommendation extends AppCompatActivity
         }
         return false;
     }
-
-
-
-
-
 
 
     @Override

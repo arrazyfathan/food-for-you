@@ -16,6 +16,8 @@
     <color name="colorTextSubtitle">#4e4e4e</color>
     <color name="colorTextTitle">#262626</color>
     <color name="textWarning">#F44336</color>
+    <color name="transparant">#00F8F8F8</color>
+
 
 
     //nav

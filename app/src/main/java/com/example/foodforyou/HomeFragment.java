@@ -84,12 +84,11 @@ public class HomeFragment extends Fragment {
         ((FragmentActivity) getActivity()).setActionBarTitle("Home");
         initalizeHome();
 
-        setHasOptionsMenu(true);
+        setHasOptionsMenu(false);
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mainView = inflater.inflate(R.layout.fragment_home, container, false);
         return mainView;
     }
@@ -159,7 +158,7 @@ public class HomeFragment extends Fragment {
         updateTableItems(stringFdDate, "1");
         updateTableItems(stringFdDate, "2");
         updateTableItems(stringFdDate, "3");
-        updateTableItems(stringFdDate, "4");
+        //updateTableItems(stringFdDate, "4");
 
         /* Calcualte number of calories today */
         calcualteNumberOfCalEatenToday(stringFdDate);
@@ -274,7 +273,7 @@ public class HomeFragment extends Fragment {
         int cursorFdceCount = cursorFdce.getCount();
 
         int errorFdce = 0;
-        if (cursorFdceCount == 0) {
+        if(cursorFdceCount == 0){
             // Toast.makeText(getActivity(), sqle.toString(), Toast.LENGTH_LONG).show();
             String insFields = "_id, fdce_date, fdce_meal_no, fdce_eaten_energy, fdce_eaten_proteins, fdce_eaten_carbs, fdce_eaten_fat";
             String insValues = "NULL, " + stringDateSQL + ", " + stringMealNumberSQL + ", '0', '0', '0', '0'";
@@ -392,8 +391,8 @@ public class HomeFragment extends Fragment {
 
                     // Get the row text
                     Context context = getContext();
-                    TableRow row = (TableRow) v;
-                    TextView tv = (TextView) row.getChildAt(0);
+                    TableRow row = (TableRow)v;
+                    TextView tv = (TextView)row.getChildAt(0);
 
                     // Send it to edit
                     String tvText = "" + tv.getText(); // Lot VALUE Selected
@@ -525,9 +524,9 @@ public class HomeFragment extends Fragment {
 
         // Send variable
         Bundle bundle = new Bundle();
-        bundle.putString("mealNumber", ""+mealNumber); // Put anything what you want
-        bundle.putString("currentFoodId", ""); // Put anything what you want
-        bundle.putString("action", ""); // Put anything what you want
+        bundle.putString("mealNumber", ""+mealNumber);
+        bundle.putString("currentFoodId", ""+currentFoodId); //1212
+        bundle.putString("action", "");
         fragment.setArguments(bundle);
 
         //
@@ -548,10 +547,9 @@ public class HomeFragment extends Fragment {
 
         ((FragmentActivity) getActivity()).setActionBarTitle("Edit Plan");
 
-
         /* Find information */
         // Select
-        String fields[] = new String[]{
+        String fields[] = new String[] {
                 "_id",
                 "fd_food_id",
                 "fd_serving_size_gram",
@@ -566,10 +564,10 @@ public class HomeFragment extends Fragment {
         String stringFdDate = currentDateYear + "-" + currentDateMonth + "-" + currentDateDay;
         String stringDateSQL = db.quoteSmart(stringFdDate);
         Cursor cursorFd = db.select("food_diary", fields, "fd_date", stringDateSQL);
-        String stringFdId = cursorFd.getString(0);
+        String stringFdId = "0"; //1212
 
         // Select for food name
-        String fieldsFood[] = new String[]{
+        String fieldsFood[] = new String[] {
                 "_id",
                 "food_name",
                 "food_manufactor_name"
@@ -588,14 +586,15 @@ public class HomeFragment extends Fragment {
 
         String stringFoodID = "";
         String stringFoodName = "";
-        String stringFoodManufactorName = "";
+        String stringFoodManufactorName  = "";
 
         // Loop trough cursor, find the corresponding line that has been clicked
         int intCursorFdCount = cursorFd.getCount();
-        for (int x = 0; x < intCursorFdCount; x++) {
+        for(int x=0;x<intCursorFdCount;x++) {
 
 
             // Variables from food diary
+            stringFdId = cursorFd.getString(0);
             stringFdFoodId = cursorFd.getString(1);
             stringFdFoodIdSQL = db.quoteSmart(stringFdFoodId);
             stringFdServingSizeGram = cursorFd.getString(2);
@@ -610,7 +609,7 @@ public class HomeFragment extends Fragment {
             // Variables from food
             stringFoodID = cursorFood.getString(0);
             stringFoodName = cursorFood.getString(1);
-            stringFoodManufactorName = cursorFood.getString(2);
+            stringFoodManufactorName  = cursorFood.getString(2);
 
             String subLine = stringFoodManufactorName + ", " +
                     stringFdServingSizeGram + " " +
@@ -636,8 +635,9 @@ public class HomeFragment extends Fragment {
         } else {
             // Add to current
             currentFoodName = stringFoodName;
-            currentFoodId = stringFoodID;
-            currentFdId = stringFdId;
+            currentFoodId   = stringFoodID;
+            currentFdId     = stringFdId;
+
 
             TextView textViewViewFoodName = getActivity().findViewById(R.id.textViewViewFoodName);
             textViewViewFoodName.setText(stringFoodName);
@@ -661,23 +661,19 @@ public class HomeFragment extends Fragment {
             /* Listener for editTextPortionSizePcs */
             editTextServingSizePcs.addTextChangedListener(new TextWatcher() {
                 public void afterTextChanged(Editable s) {
-                    if (!(s.toString().equals(""))) {
+                    if(!(s.toString().equals(""))){
                         // My code here
                         editTextPortionSizePcsOnChange();
                     }
                 }
-
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                }
-
-                public void onTextChanged(CharSequence s, int start, int before, int count) {
-                }
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+                public void onTextChanged(CharSequence s, int start, int before, int count) {}
             });
             editTextServingSizePcs.setOnFocusChangeListener(new View.OnFocusChangeListener() {
                 @Override
                 public void onFocusChange(View v, boolean hasFocus) {
-                    if (hasFocus) {
-                    } else {
+                    if(hasFocus){
+                    }else {
                         String lock = "portionSizePcs";
                         releaseLock(lock);
                     }
@@ -686,23 +682,19 @@ public class HomeFragment extends Fragment {
 
             editTextServingSizeGram.addTextChangedListener(new TextWatcher() {
                 public void afterTextChanged(Editable s) {
-                    if (!(s.toString().equals(""))) {
+                    if(!(s.toString().equals(""))){
                         // My code here
                         editTextPortionSizeGramOnChange();
                     }
                 }
-
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                }
-
-                public void onTextChanged(CharSequence s, int start, int before, int count) {
-                }
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+                public void onTextChanged(CharSequence s, int start, int before, int count) {}
             });
             editTextServingSizeGram.setOnFocusChangeListener(new View.OnFocusChangeListener() {
                 @Override
                 public void onFocusChange(View v, boolean hasFocus) {
-                    if (hasFocus) {
-                    } else {
+                    if(hasFocus){
+                    }else {
                         String lock = "portionSizeGram";
                         releaseLock(lock);
                     }
@@ -711,14 +703,14 @@ public class HomeFragment extends Fragment {
 
 
             // Watcher
-            Button buttonSubmitEdit = getActivity().findViewById(R.id.buttonSubmitEdit);
+            Button buttonSubmitEdit = (Button)getActivity().findViewById(R.id.buttonSubmitEdit);
             buttonSubmitEdit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     OnClickEditFdLineSubmit();
                 }
             });
-            Button buttonSubmitDelete = getActivity().findViewById(R.id.buttonSubmitDelete);
+            Button buttonSubmitDelete = (Button)getActivity().findViewById(R.id.buttonSubmitDelete);
             buttonSubmitDelete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -730,10 +722,11 @@ public class HomeFragment extends Fragment {
         db.close();
     }
 
-    private void releaseLock(String lock) {
-        if (lock.equals("portionSizeGram")) {
+    private void releaseLock(String lock){
+        if(lock.equals("portionSizeGram")){
             lockPortionSizeByGram = false;
-        } else {
+        }
+        else {
             lockPortionSizeByPcs = false;
         }
     }
@@ -849,15 +842,16 @@ public class HomeFragment extends Fragment {
 
         // FdID
         long longFdID = 0;
-        try {
+        try{
             longFdID = Long.parseLong(currentFdId);
-        } catch (NumberFormatException nfe) {
+        }
+        catch(NumberFormatException nfe) {
             System.out.println("Could not parse " + nfe);
         }
 
 
         // Get food info
-        String fields[] = new String[]{
+        String fields[] = new String[] {
                 "food_serving_size_gram",
                 "food_energy",
                 "food_proteins",
@@ -936,20 +930,21 @@ public class HomeFragment extends Fragment {
     public void OnClickDeleteFdLineSubmit() {
         Toast.makeText(getActivity(), "Deleted " + currentFoodName, Toast.LENGTH_SHORT).show();
 
+        // Database
         DBAdapter db = new DBAdapter(getActivity());
         db.open();
 
         long longPrimaryKey = 0;
-        try {
+        try{
             longPrimaryKey = Long.parseLong(currentFdId);
-        } catch (NumberFormatException nfe) {
+        }
+        catch(NumberFormatException nfe) {
             System.out.println("Could not parse " + nfe);
         }
 
         db.delete("food_diary", "_id", longPrimaryKey);
 
         db.close();
-
         /* Restart fragment */
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.main_frame, new HomeFragment(), HomeFragment.class.getName()).commit();
@@ -1142,7 +1137,6 @@ public class HomeFragment extends Fragment {
     }
 
     public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
 }

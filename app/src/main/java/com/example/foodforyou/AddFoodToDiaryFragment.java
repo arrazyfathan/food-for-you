@@ -89,7 +89,7 @@ public class AddFoodToDiaryFragment extends Fragment {
         }
 
         if(stringAction.equals("")) {
-
+            // Populate the list of categories
             populateListWithCategories("0", "");
         }
         else if(stringAction.equals("foodInCategoryListItemClicked")){
@@ -184,6 +184,7 @@ public class AddFoodToDiaryFragment extends Fragment {
 
         // Move to sub class
         populateListWithCategories(currentCategoryId, currentCategoryName);
+
 
         // Show food in category
         showFoodInCategory(currentCategoryId, currentCategoryName, parentCategoryID);
@@ -454,7 +455,6 @@ public class AddFoodToDiaryFragment extends Fragment {
         db.close();
     }
 
-
     private void releaseLock(String lock){
         if(lock.equals("portionSizeGram")){
             lockPortionSizeByGram = false;
@@ -471,8 +471,9 @@ public class AddFoodToDiaryFragment extends Fragment {
             lockPortionSizeByPcs = true;
 
             // Get value of pcs
-            TextInputEditText editTextPortionSizePcs = getActivity().findViewById(R.id.editTextPortionSizePcs);
+            TextInputEditText editTextPortionSizePcs = (TextInputEditText) getActivity().findViewById(R.id.editTextPortionSizePcs);
             String stringPortionSizePcs = editTextPortionSizePcs.getText().toString();
+
             double doublePortionSizePcs = 0;
 
             if (stringPortionSizePcs.equals("")) {
@@ -498,6 +499,7 @@ public class AddFoodToDiaryFragment extends Fragment {
             // Convert cursor to strings
             String stringServingSize = foodCursor.getString(0);
             db.close();
+
 
             // Convert cursor to double
             double doubleServingSize = 0;
