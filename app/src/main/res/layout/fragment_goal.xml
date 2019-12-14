@@ -186,72 +186,12 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="16dp"
-            android:background="@drawable/content_round"
-            android:backgroundTint="#1F346D"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:fontFamily="@font/arialmedium"
-                android:text="What do you want?"
-                android:textColor="@color/colorWhite"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/textViewGoalMethodText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:fontFamily="@font/arialregular"
-                android:text="Lose 0.5 kg week"
-                android:textColor="@color/colorWhite"
-                android:textSize="14sp" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="6dp"
-                    android:fontFamily="@font/arialbold"
-                    android:text="With"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:id="@+id/textViewActivityLevel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="6dp"
-                    android:layout_marginTop="6dp"
-                    android:fontFamily="@font/arialregular"
-                    android:text="Little to no exercise"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="14sp" />
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="12dp"
             android:layout_marginEnd="16dp"
             android:background="@drawable/content_round"
-            android:backgroundTint="#50CECD"
+            android:backgroundTint="#FFCD62"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
@@ -266,15 +206,6 @@
                 android:textColor="@color/colorWhite"
                 android:textSize="18sp" />
 
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginStart="150dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="16dp"
-                android:src="@drawable/ic_down"
-                android:tint="@color/colorWhite" />
 
         </LinearLayout>
 
@@ -285,7 +216,7 @@
             android:layout_marginTop="12dp"
             android:layout_marginEnd="16dp"
             android:background="@drawable/content_round"
-            android:backgroundTint="#E3FBF8"
+            android:backgroundTint="#FFF9EE"
             android:orientation="vertical">
 
             <TextView
@@ -335,7 +266,7 @@
             android:layout_marginTop="12dp"
             android:layout_marginEnd="16dp"
             android:background="@drawable/content_round"
-            android:backgroundTint="#E3FBF8"
+            android:backgroundTint="#FFF9EE"
             android:orientation="vertical">
 
             <TextView
@@ -400,15 +331,6 @@
                 android:textColor="@color/colorWhite"
                 android:textSize="18sp" />
 
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginStart="120dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="16dp"
-                android:src="@drawable/ic_balance"
-                android:tint="@color/colorWhite" />
 
         </LinearLayout>
 
