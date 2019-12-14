@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
             // Sign up
             // Toast.makeText(this, "You are only few fields away from signing up...", Toast.LENGTH_LONG).show();
 
-            Intent i = new Intent(MainActivity.this, SignUp.class);
+            Intent i = new Intent(MainActivity.this, OnboardingScreen.class);
             startActivity(i);
         }
         else{
