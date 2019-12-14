@@ -39,7 +39,8 @@
                     android:layout_width="35dp"
                     android:layout_height="35dp"
                     android:layout_marginTop="12dp"
-                    app:srcCompat="@drawable/button_add_ws" />
+                    app:srcCompat="@drawable/button_add_ws"
+                    android:visibility="gone"/>
 
 
             </TableRow>

@@ -199,7 +199,7 @@
 
                         <Spinner
                             android:id="@+id/spinnerDOBDay"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
                             android:layout_gravity="center"
@@ -230,7 +230,7 @@
 
                         <Spinner
                             android:id="@+id/spinnerDOBMonth"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
                             android:layout_gravity="center"
@@ -263,7 +263,7 @@
 
                         <Spinner
                             android:id="@+id/spinnerDOBYear"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
                             android:layout_gravity="center"

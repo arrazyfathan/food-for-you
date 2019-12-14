@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.SQLException;
 import android.os.Bundle;
 
@@ -18,6 +19,8 @@ public class DialogViewLogout extends AppCompatDialogFragment {
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
+
+                        deleteAcount();
                     }
                 }).setNegativeButton("No", new DialogInterface.OnClickListener() {
             @Override
@@ -26,6 +29,19 @@ public class DialogViewLogout extends AppCompatDialogFragment {
             }
         });
         return builder.create();
+    }
+
+    public void deleteAcount(){
+        DBAdapter db = new DBAdapter(getActivity());
+        db.open();
+
+        db.deleteAll();
+
+        db.close();
+
+        Intent intent = new Intent(getActivity(), SignUp.class);
+        startActivity(intent);
+
     }
 
 
