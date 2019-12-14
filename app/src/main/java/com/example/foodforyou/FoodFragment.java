@@ -88,7 +88,7 @@ public class FoodFragment extends Fragment {
             populateListFood();
         }
         else{
-            preListItemClickedReadyCursor();
+            preListItemClickedReadyCursor(); // We are coming from another class with currentFoodId
         }
     } // onActivityCreated
 
@@ -109,7 +109,7 @@ public class FoodFragment extends Fragment {
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 
 
-        getActivity().getMenuInflater().inflate(R.menu.menu_food, menu);
+        ((FragmentActivity)getActivity()).getMenuInflater().inflate(R.menu.menu_food, menu);
 
         menuItemEdit = menu.findItem(R.id.menu_action_food_edit);
         menuItemDelete = menu.findItem(R.id.menu_action_food_delete);
