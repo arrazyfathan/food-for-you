@@ -84,7 +84,7 @@ public class HomeFragment extends Fragment {
         ((FragmentActivity) getActivity()).setActionBarTitle("Home");
         initalizeHome();
 
-        setHasOptionsMenu(true);
+        setHasOptionsMenu(false);
     }
 
     @Override
