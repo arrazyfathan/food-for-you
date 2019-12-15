@@ -175,7 +175,7 @@
         android:layout_gravity="center"
         android:background="@drawable/button_style"
         android:fontFamily="@font/arialmedium"
-        android:layout_marginBottom="12dp"
+        android:layout_marginBottom="50dp"
         android:text="Let's Go"
         android:textAllCaps="false"
         android:textColor="@color/colorWhite"

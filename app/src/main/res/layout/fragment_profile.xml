@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/grey_color"
+    android:background="@color/grey1_color"
     android:orientation="vertical"
     tools:context=".ProfileFragment">
 
@@ -24,7 +24,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
                 android:src="@drawable/ic_action_user"
-                android:tint="@color/colorWhite" />
+                android:id="@+id/profileImage"/>
 
             <TextView
                 android:id="@+id/user_name"
