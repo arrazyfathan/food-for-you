@@ -99,11 +99,21 @@ public class MainActivity extends AppCompatActivity {
 
             Intent i = new Intent(MainActivity.this, OnboardingScreen.class);
             startActivity(i);
+
         }
         else{
-            Intent i = new Intent(MainActivity.this, FragmentActivity.class);
-            startActivity(i);
-            finish();
+            db.open();
+            int numberRowsGoal = db.cloumn("goal");
+            db.close();
+
+            if (numberRowsGoal < 1) {
+                Intent j = new Intent(MainActivity.this, SetGoal.class);
+                startActivity(j);
+            }else {
+                Intent i = new Intent(MainActivity.this, FragmentActivity.class);
+                startActivity(i);
+                finish();
+            }
 
         }
 
