@@ -395,4 +395,19 @@ public class DBAdapter {
         return db.delete(table, primaryKey + "=" + rowID, null);
     }
 
+    public void deleteAll() throws  SQLException {
+        db.execSQL("DELETE FROM users");
+        db.execSQL("DELETE FROM food_diary_cal_eaten");
+        db.execSQL("DELETE FROM food_diary_sum");
+        db.execSQL("DELETE FROM food_diary");
+        db.execSQL("DELETE FROM goal");
+
+        db.execSQL("UPDATE SQLITE_SEQUENCE SET SEQ=0 WHERE NAME='users';");
+        db.execSQL("UPDATE SQLITE_SEQUENCE SET SEQ=0 WHERE NAME='food_diary_cal_eaten';");
+        db.execSQL("UPDATE SQLITE_SEQUENCE SET SEQ=0 WHERE NAME='food_diary_sum';");
+        db.execSQL("UPDATE SQLITE_SEQUENCE SET SEQ=0 WHERE NAME='food_diary';");
+        db.execSQL("UPDATE SQLITE_SEQUENCE SET SEQ=0 WHERE NAME='goal';");
+    }
+
+
 }
