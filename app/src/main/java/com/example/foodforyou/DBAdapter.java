@@ -14,7 +14,7 @@ public class DBAdapter {
 
     //* 01 Variables ---------------------------------------- */
     private static final String databaseName = "foodforyou";
-    private static final int databaseVersion = 19;
+    private static final int databaseVersion = 20;
 
     /* 02 Database variables ------------------------------- */
     private final Context context;
@@ -343,7 +343,7 @@ public class DBAdapter {
             mCursor = db.query(table, fields, null, null, null, null, orderBy + " " + OrderMethod, null);
         }
         else {
-            mCursor = db.query(table, fields, whereClause + ">" + whereCondition + " AND " + namaAtas + "<=" + batasAtas, null, null, null, orderBy + " " + OrderMethod, null);
+            mCursor = db.query(table, fields, whereClause + ">" + whereCondition + " AND " + namaAtas + "<" + batasAtas, null, null, null, orderBy + " " + OrderMethod, null);
         }
         if (mCursor != null) {
             mCursor.moveToFirst();
@@ -393,20 +393,6 @@ public class DBAdapter {
     // Delete a particular record
     public int delete(String table, String primaryKey, long rowID) throws SQLException {
         return db.delete(table, primaryKey + "=" + rowID, null);
-    }
-
-    public void deleteAll() throws  SQLException {
-        db.execSQL("DELETE FROM users");
-        db.execSQL("DELETE FROM food_diary_cal_eaten");
-        db.execSQL("DELETE FROM food_diary_sum");
-        db.execSQL("DELETE FROM food_diary");
-        db.execSQL("DELETE FROM goal");
-
-        db.execSQL("UPDATE SQLITE_SEQUENCE SET SEQ=0 WHERE NAME='users';");
-        db.execSQL("UPDATE SQLITE_SEQUENCE SET SEQ=0 WHERE NAME='food_diary_cal_eaten';");
-        db.execSQL("UPDATE SQLITE_SEQUENCE SET SEQ=0 WHERE NAME='food_diary_sum';");
-        db.execSQL("UPDATE SQLITE_SEQUENCE SET SEQ=0 WHERE NAME='food_diary';");
-        db.execSQL("UPDATE SQLITE_SEQUENCE SET SEQ=0 WHERE NAME='goal';");
     }
 
 }
