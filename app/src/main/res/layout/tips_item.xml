@@ -37,24 +37,18 @@
 
         <TextView
             android:id="@+id/author"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:drawablePadding="10dp"
-
             android:padding="5dp"
             android:ellipsize="end"
-            android:maxLines="1"
             android:background="@drawable/round_white"
             android:textColor="@android:color/black"
-            android:singleLine="true"
             android:textSize="12sp"
-            android:layout_marginEnd="80sp"
             android:gravity="bottom"
             android:layout_alignLeft="@+id/title"
             android:layout_alignStart="@+id/title"
-            android:layout_alignRight="@+id/layoutDate"
             android:layout_alignTop="@+id/layoutDate"
-            android:layout_alignEnd="@+id/layoutDate"
             android:text="@string/title_placeholder" />
 
         <FrameLayout
@@ -116,8 +110,8 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_below="@+id/subTitle"
-            android:layout_marginLeft="10dp"
-            android:layout_marginStart="280dp"
+            android:layout_marginEnd="16dp"
+            android:layout_alignParentRight="true"
             android:layout_marginTop="3dp"
             android:layout_marginBottom="10dp"
             android:src="@drawable/ic_share_black_24dp"
