@@ -20,6 +20,7 @@ public class OnboardingScreen extends AppCompatActivity {
     private SlideAdapter slideAdapter;
 
     private Button nextButton;
+    private Button skipButton;
     private Button finishButton;
     private Button backButton;
 
@@ -33,6 +34,7 @@ public class OnboardingScreen extends AppCompatActivity {
         slideViewPager = findViewById(R.id.slideViewPager);
         dotsLayout = findViewById(R.id.dots_layout);
 
+        skipButton = findViewById(R.id.skipButton);
         finishButton = findViewById(R.id.finishButton);
         nextButton = findViewById(R.id.nextButton);
         backButton = findViewById(R.id.backButton);
@@ -58,6 +60,13 @@ public class OnboardingScreen extends AppCompatActivity {
         });
 
         finishButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                startActivity(new Intent(OnboardingScreen.this, SignUp.class));
+            }
+        });
+
+        skipButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
                 startActivity(new Intent(OnboardingScreen.this, SignUp.class));
@@ -97,6 +106,8 @@ public class OnboardingScreen extends AppCompatActivity {
 
             if(position == 0){
                 nextButton.setEnabled(true);
+                skipButton.setEnabled(true);
+                skipButton.setVisibility(View.VISIBLE);
                 backButton.setEnabled(false);
                 backButton.setVisibility(View.INVISIBLE);
                 finishButton.setEnabled(false);
@@ -107,6 +118,8 @@ public class OnboardingScreen extends AppCompatActivity {
                 finishButton.setText("");
             }else if(position == dots.length - 1){
                 nextButton.setEnabled(false);
+                skipButton.setVisibility(View.INVISIBLE);
+                skipButton.setEnabled(false);
                 nextButton.setVisibility(View.INVISIBLE);
                 backButton.setEnabled(true);
                 backButton.setVisibility(View.VISIBLE);
@@ -118,6 +131,8 @@ public class OnboardingScreen extends AppCompatActivity {
                 finishButton.setText("Finish");
             }else{
                 nextButton.setEnabled(true);
+                skipButton.setEnabled(false);
+                skipButton.setVisibility(View.INVISIBLE);
                 nextButton.setVisibility(View.VISIBLE);
                 backButton.setEnabled(true);
                 backButton.setVisibility(View.VISIBLE);
