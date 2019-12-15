@@ -268,6 +268,21 @@ public class DBAdapter {
 
     }
 
+    public int cloumn(String table)
+    {
+        try {
+            Cursor mCount = db.rawQuery("SELECT goal_target_weight FROM " + table + "", null);
+            mCount.moveToFirst();
+            int count = mCount.getInt(0);
+            mCount.close();
+            return count;
+        }
+        catch(SQLiteException e){
+            return -1;
+        }
+
+    }
+
     // Select
     public Cursor select(String table, String[] fields) throws SQLException
     {
