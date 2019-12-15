@@ -48,9 +48,7 @@
             android:gravity="bottom"
             android:layout_alignLeft="@+id/title"
             android:layout_alignStart="@+id/title"
-            android:layout_alignRight="@+id/layoutDate"
             android:layout_alignTop="@+id/layoutDate"
-            android:layout_alignEnd="@+id/layoutDate"
             android:text="@string/title_placeholder" />
 
         <FrameLayout
