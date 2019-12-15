@@ -3,6 +3,7 @@ package com.example.foodforyou;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -52,6 +53,7 @@ public class FragmentActivity extends AppCompatActivity
     public void onBackPressed(){
         if (doubleBackToExit){
             super.onBackPressed();
+
             return;
         }
 
@@ -64,6 +66,7 @@ public class FragmentActivity extends AppCompatActivity
                 doubleBackToExit=false;
             }
         }, 2000);
+
 
     }
 
