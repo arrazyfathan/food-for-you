@@ -31,6 +31,8 @@ public class OnboardingScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_onboarding_screen);
 
+        getSupportActionBar().hide();
+
         slideViewPager = findViewById(R.id.slideViewPager);
         dotsLayout = findViewById(R.id.dots_layout);
 
