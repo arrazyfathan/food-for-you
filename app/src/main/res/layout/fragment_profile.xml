@@ -63,7 +63,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
-                android:weightSum="3">
+                android:weightSum="2">
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -92,31 +92,32 @@
 
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
+<!--                <LinearLayout-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:gravity="center"-->
+<!--                    android:orientation="vertical">-->
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/arialcemedium"
-                        android:text="Consumed"
-                        android:textColor="@color/titleColor"
-                        android:textSize="14sp" />
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:fontFamily="@font/arialcemedium"-->
+<!--                        android:text="Consumed"-->
+<!--                        android:textColor="@color/titleColor"-->
+<!--                        android:textSize="14sp" />-->
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/arialbold"
-                        android:paddingTop="3dp"
-                        android:text="300"
-                        android:textColor="@color/orange_color"
-                        android:textSize="20sp" />
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:fontFamily="@font/arialbold"-->
+<!--                        android:paddingTop="3dp"-->
+<!--                        android:text="300"-->
+<!--                        android:textColor="@color/orange_color"-->
+<!--                        android:textSize="20sp"-->
+<!--                        android:id="@+id/rangeBMI"/>-->
 
-                </LinearLayout>
+<!--                </LinearLayout>-->
 
                 <LinearLayout
                     android:layout_width="0dp"
