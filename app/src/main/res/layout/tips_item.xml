@@ -82,7 +82,7 @@
             android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/arialbold"
+            android:fontFamily="@font/arialmedium"
             android:textColor="@color/colorTextTitle"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
@@ -101,7 +101,7 @@
             android:layout_marginRight="16dp"
             android:layout_marginTop="5dp"
             android:text="@string/tips_info_placeholder"
-            android:textSize="14sp"
+            android:textSize="13sp"
             android:autoSizeTextType="uniform"/>
 
         <ImageButton

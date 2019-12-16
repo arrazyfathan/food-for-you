@@ -21,21 +21,21 @@ public class SlideAdapter extends PagerAdapter {
     }
 
     public int[] slide_images = {
-        R.drawable.ic_action_user,
-        R.drawable.img_badminton,
-        R.drawable.img_baseball
+        R.drawable.slide_one,
+        R.drawable.sushi,
+        R.drawable.track
     };
 
     public String[] slide_headings = {
-        "Food For You",
-        "Control Your Weight",
-        "Recommendation"
+        "food for you",
+        "recommendation",
+        "set your goals"
     };
 
     public String[] slide_desc = {
-         "Food For You is ",
-         "You can control your weight",
-         "We recommendation food for you"
+         "Food for you is a solution for you who\nhave weight problems and have a \n less healthy diet",
+         "We give you food recommendations to meet\nyour calorie needs",
+         "Set your goals and keep track of your weight\nand your calorie needs"
     };
 
     @Override

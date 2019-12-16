@@ -2,14 +2,14 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark">
+    android:background="@color/colorPrimary">
 
     <ImageView
-        android:layout_width="142dp"
-        android:layout_height="131dp"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="135dp"
+        android:layout_marginTop="100dp"
         android:id="@+id/imageSlide"/>
 
     <TextView
@@ -18,21 +18,25 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="300dp"
+        android:layout_marginTop="400dp"
         android:textColor="@color/colorWhite"
         android:textSize="24sp"
-        android:textStyle="bold"
+        android:fontFamily="@font/msemibold"
         android:text="TextView" />
 
     <TextView
         android:id="@+id/textDescription"
-        android:layout_width="350dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="340dp"
+        android:layout_marginTop="440dp"
+        android:textAlignment="center"
+        android:fontFamily="@font/ariallight"
         android:textColor="@color/colorWhite"
-        android:textSize="14sp"
+        android:textSize="16sp"
         android:text="TextView" />
+
+
 
 </RelativeLayout>

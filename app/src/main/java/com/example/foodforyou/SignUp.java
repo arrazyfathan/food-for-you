@@ -91,24 +91,6 @@ public class SignUp extends AppCompatActivity {
         startActivity(intent);
     }
 
-//    @Override
-//    public void onBackPressed(){
-//        if (doubleBackToExit){
-//            super.onBackPressed();
-//            return;
-//        }
-//
-//        this.doubleBackToExit = true;
-//        Toast.makeText(this, "Press again to exit",Toast.LENGTH_SHORT).show();
-//
-//        new Handler().postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                doubleBackToExit=false;
-//            }
-//        }, 2000);
-//    }
-
 
     public void signUpSubmit(){
         //Error
@@ -151,33 +133,7 @@ public class SignUp extends AppCompatActivity {
         else{
             stringDOBMonth = "" + month;
         }
-//        Spinner spinnerDOBMonth = (Spinner) findViewById(R.id.spinnerDOBMonth);
-//        String stringDOBMonth = spinnerDOBMonth.getSelectedItem().toString();
-//        if (stringDOBMonth.startsWith("January")){
-//            stringDOBMonth = "01";
-//        }else if (stringDOBMonth.startsWith("February")){
-//            stringDOBMonth = "02";
-//        }else if (stringDOBMonth.startsWith("March")){
-//            stringDOBMonth = "03";
-//        }else if (stringDOBMonth.startsWith("April")){
-//            stringDOBMonth = "04";
-//        }else if (stringDOBMonth.startsWith("May")){
-//            stringDOBMonth = "05";
-//        }else if (stringDOBMonth.startsWith("June")){
-//            stringDOBMonth = "06";
-//        }else if (stringDOBMonth.startsWith("July")){
-//            stringDOBMonth = "07";
-//        }else if (stringDOBMonth.startsWith("August")){
-//            stringDOBMonth = "08";
-//        }else if (stringDOBMonth.startsWith("September")){
-//            stringDOBMonth = "09";
-//        }else if (stringDOBMonth.startsWith("October")){
-//            stringDOBMonth = "10";
-//        }else if (stringDOBMonth.startsWith("November")){
-//            stringDOBMonth = "11";
-//        }else if (stringDOBMonth.startsWith("December")){
-//            stringDOBMonth = "12";
-//        }
+
 
         //Date of Bird Year
         Spinner spinnerDOBYear = (Spinner)findViewById(R.id.spinnerDOBYear);
