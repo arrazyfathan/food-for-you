@@ -244,6 +244,7 @@ public class SignUp extends AppCompatActivity {
             //Move User back to mainactivity
             Intent i = new Intent(SignUp.this, SetGoal.class);
             startActivity(i);
+            finish();
 
         }else {
             errorMessage.setText(TexterrorMessage);

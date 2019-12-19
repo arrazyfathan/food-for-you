@@ -47,6 +47,12 @@ public class SetGoal extends AppCompatActivity {
 
     }// Oncreate
 
+    @Override
+    public void onBackPressed(){
+
+        moveTaskToBack(true);
+    }
+
     public void signUpGoalSubmit() {
         //Open databse
         DBAdapter db = new DBAdapter(this);

@@ -76,6 +76,14 @@ public class OnboardingScreen extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void onBackPressed(){
+
+
+
+        moveTaskToBack(true);
+    }
+
     public void addDotsIndicator(int position){
         dots = new TextView[3];
         dotsLayout.removeAllViews();

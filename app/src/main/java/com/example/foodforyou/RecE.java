@@ -145,7 +145,7 @@ public class RecE extends Fragment {
                 "food_energy_calculated"
         };
         try{
-            listCursor = db.select("food", fields, "food_energy_calculated", "900","food_energy_calculated","1000000", "food_name", "ASC");
+            listCursor = db.select("food", fields, "food_energy_calculated", "775","food_energy_calculated","1000000", "food_name", "ASC");
         }
         catch (SQLException sqle){
             Toast.makeText(getActivity(), sqle.toString(), Toast.LENGTH_LONG).show();
